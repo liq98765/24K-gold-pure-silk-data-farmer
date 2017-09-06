@@ -1,0 +1,354 @@
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/Spark/spark-1.6.2-bin-hadoop2.6/lib/spark-assembly-1.6.2-hadoop2.6.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/Spark/spark-1.6.0-bin-hadoop2.6/lib/spark-assembly-1.6.0-hadoop2.6.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+16/11/28 01:30:52 INFO SparkContext: Running Spark version 1.6.2
+16/11/28 01:30:53 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+16/11/28 01:30:53 INFO SecurityManager: Changing view acls to: liq9876
+16/11/28 01:30:53 INFO SecurityManager: Changing modify acls to: liq9876
+16/11/28 01:30:53 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(liq9876); users with modify permissions: Set(liq9876)
+16/11/28 01:30:53 INFO Utils: Successfully started service 'sparkDriver' on port 58805.
+16/11/28 01:30:54 INFO Slf4jLogger: Slf4jLogger started
+16/11/28 01:30:54 INFO Remoting: Starting remoting
+16/11/28 01:30:54 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://sparkDriverActorSystem@192.168.145.1:58818]
+16/11/28 01:30:54 INFO Utils: Successfully started service 'sparkDriverActorSystem' on port 58818.
+16/11/28 01:30:54 INFO SparkEnv: Registering MapOutputTracker
+16/11/28 01:30:54 INFO SparkEnv: Registering BlockManagerMaster
+16/11/28 01:30:54 INFO DiskBlockManager: Created local directory at C:\Users\liq9876\AppData\Local\Temp\blockmgr-8f3ac354-54f3-4023-876f-e66509d6b54d
+16/11/28 01:30:54 INFO MemoryStore: MemoryStore started with capacity 2.4 GB
+16/11/28 01:30:54 INFO SparkEnv: Registering OutputCommitCoordinator
+16/11/28 01:30:54 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+16/11/28 01:30:54 INFO SparkUI: Started SparkUI at http://192.168.145.1:4040
+16/11/28 01:30:54 INFO Executor: Starting executor ID driver on host localhost
+16/11/28 01:30:54 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 58825.
+16/11/28 01:30:54 INFO NettyBlockTransferService: Server created on 58825
+16/11/28 01:30:54 INFO BlockManagerMaster: Trying to register BlockManager
+16/11/28 01:30:54 INFO BlockManagerMasterEndpoint: Registering block manager localhost:58825 with 2.4 GB RAM, BlockManagerId(driver, localhost, 58825)
+16/11/28 01:30:54 INFO BlockManagerMaster: Registered BlockManager
+16/11/28 01:30:56 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 127.4 KB, free 127.4 KB)
+16/11/28 01:30:56 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 13.9 KB, free 141.3 KB)
+16/11/28 01:30:56 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on localhost:58825 (size: 13.9 KB, free: 2.4 GB)
+16/11/28 01:30:56 INFO SparkContext: Created broadcast 0 from textFile at RunKMeans.scala:17
+16/11/28 01:30:56 INFO FileInputFormat: Total input paths to process : 1
+16/11/28 01:30:56 INFO SparkContext: Starting job: countByValue at RunKMeans.scala:18
+16/11/28 01:30:56 INFO DAGScheduler: Registering RDD 4 (countByValue at RunKMeans.scala:18)
+16/11/28 01:30:56 INFO DAGScheduler: Got job 0 (countByValue at RunKMeans.scala:18) with 23 output partitions
+16/11/28 01:30:56 INFO DAGScheduler: Final stage: ResultStage 1 (countByValue at RunKMeans.scala:18)
+16/11/28 01:30:56 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 0)
+16/11/28 01:30:56 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 0)
+16/11/28 01:30:56 INFO DAGScheduler: Submitting ShuffleMapStage 0 (MapPartitionsRDD[4] at countByValue at RunKMeans.scala:18), which has no missing parents
+16/11/28 01:30:56 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 4.4 KB, free 145.7 KB)
+16/11/28 01:30:56 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 2.4 KB, free 148.1 KB)
+16/11/28 01:30:56 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on localhost:58825 (size: 2.4 KB, free: 2.4 GB)
+16/11/28 01:30:56 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1006
+16/11/28 01:30:56 INFO DAGScheduler: Submitting 23 missing tasks from ShuffleMapStage 0 (MapPartitionsRDD[4] at countByValue at RunKMeans.scala:18)
+16/11/28 01:30:56 INFO TaskSchedulerImpl: Adding task set 0.0 with 23 tasks
+16/11/28 01:30:56 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, localhost, partition 0,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:30:56 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+16/11/28 01:30:56 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:0+33554432
+16/11/28 01:30:56 INFO deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+16/11/28 01:30:56 INFO deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+16/11/28 01:30:56 INFO deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+16/11/28 01:30:56 INFO deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+16/11/28 01:30:56 INFO deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id
+16/11/28 01:30:57 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 2275 bytes result sent to driver
+16/11/28 01:30:57 INFO TaskSetManager: Starting task 1.0 in stage 0.0 (TID 1, localhost, partition 1,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:30:57 INFO Executor: Running task 1.0 in stage 0.0 (TID 1)
+16/11/28 01:30:57 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:33554432+33554432
+16/11/28 01:30:57 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 1340 ms on localhost (1/23)
+16/11/28 01:30:58 INFO Executor: Finished task 1.0 in stage 0.0 (TID 1). 2275 bytes result sent to driver
+16/11/28 01:30:58 INFO TaskSetManager: Starting task 2.0 in stage 0.0 (TID 2, localhost, partition 2,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:30:58 INFO Executor: Running task 2.0 in stage 0.0 (TID 2)
+16/11/28 01:30:58 INFO TaskSetManager: Finished task 1.0 in stage 0.0 (TID 1) in 942 ms on localhost (2/23)
+16/11/28 01:30:58 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:67108864+33554432
+16/11/28 01:30:59 INFO Executor: Finished task 2.0 in stage 0.0 (TID 2). 2275 bytes result sent to driver
+16/11/28 01:30:59 INFO TaskSetManager: Starting task 3.0 in stage 0.0 (TID 3, localhost, partition 3,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:30:59 INFO Executor: Running task 3.0 in stage 0.0 (TID 3)
+16/11/28 01:30:59 INFO TaskSetManager: Finished task 2.0 in stage 0.0 (TID 2) in 909 ms on localhost (3/23)
+16/11/28 01:30:59 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:100663296+33554432
+16/11/28 01:31:00 INFO Executor: Finished task 3.0 in stage 0.0 (TID 3). 2275 bytes result sent to driver
+16/11/28 01:31:00 INFO TaskSetManager: Starting task 4.0 in stage 0.0 (TID 4, localhost, partition 4,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:00 INFO Executor: Running task 4.0 in stage 0.0 (TID 4)
+16/11/28 01:31:00 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:134217728+33554432
+16/11/28 01:31:00 INFO TaskSetManager: Finished task 3.0 in stage 0.0 (TID 3) in 929 ms on localhost (4/23)
+16/11/28 01:31:01 INFO Executor: Finished task 4.0 in stage 0.0 (TID 4). 2275 bytes result sent to driver
+16/11/28 01:31:01 INFO TaskSetManager: Starting task 5.0 in stage 0.0 (TID 5, localhost, partition 5,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:01 INFO Executor: Running task 5.0 in stage 0.0 (TID 5)
+16/11/28 01:31:01 INFO TaskSetManager: Finished task 4.0 in stage 0.0 (TID 4) in 883 ms on localhost (5/23)
+16/11/28 01:31:01 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:167772160+33554432
+16/11/28 01:31:02 INFO Executor: Finished task 5.0 in stage 0.0 (TID 5). 2275 bytes result sent to driver
+16/11/28 01:31:02 INFO TaskSetManager: Starting task 6.0 in stage 0.0 (TID 6, localhost, partition 6,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:02 INFO Executor: Running task 6.0 in stage 0.0 (TID 6)
+16/11/28 01:31:02 INFO TaskSetManager: Finished task 5.0 in stage 0.0 (TID 5) in 886 ms on localhost (6/23)
+16/11/28 01:31:02 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:201326592+33554432
+16/11/28 01:31:03 INFO Executor: Finished task 6.0 in stage 0.0 (TID 6). 2275 bytes result sent to driver
+16/11/28 01:31:03 INFO TaskSetManager: Starting task 7.0 in stage 0.0 (TID 7, localhost, partition 7,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:03 INFO Executor: Running task 7.0 in stage 0.0 (TID 7)
+16/11/28 01:31:03 INFO TaskSetManager: Finished task 6.0 in stage 0.0 (TID 6) in 893 ms on localhost (7/23)
+16/11/28 01:31:03 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:234881024+33554432
+16/11/28 01:31:04 INFO Executor: Finished task 7.0 in stage 0.0 (TID 7). 2275 bytes result sent to driver
+16/11/28 01:31:04 INFO TaskSetManager: Starting task 8.0 in stage 0.0 (TID 8, localhost, partition 8,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:04 INFO TaskSetManager: Finished task 7.0 in stage 0.0 (TID 7) in 872 ms on localhost (8/23)
+16/11/28 01:31:04 INFO Executor: Running task 8.0 in stage 0.0 (TID 8)
+16/11/28 01:31:04 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:268435456+33554432
+16/11/28 01:31:05 INFO Executor: Finished task 8.0 in stage 0.0 (TID 8). 2275 bytes result sent to driver
+16/11/28 01:31:05 INFO TaskSetManager: Starting task 9.0 in stage 0.0 (TID 9, localhost, partition 9,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:05 INFO TaskSetManager: Finished task 8.0 in stage 0.0 (TID 8) in 867 ms on localhost (9/23)
+16/11/28 01:31:05 INFO Executor: Running task 9.0 in stage 0.0 (TID 9)
+16/11/28 01:31:05 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:301989888+33554432
+16/11/28 01:31:05 INFO Executor: Finished task 9.0 in stage 0.0 (TID 9). 2275 bytes result sent to driver
+16/11/28 01:31:05 INFO TaskSetManager: Starting task 10.0 in stage 0.0 (TID 10, localhost, partition 10,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:05 INFO TaskSetManager: Finished task 9.0 in stage 0.0 (TID 9) in 848 ms on localhost (10/23)
+16/11/28 01:31:05 INFO Executor: Running task 10.0 in stage 0.0 (TID 10)
+16/11/28 01:31:05 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:335544320+33554432
+16/11/28 01:31:06 INFO Executor: Finished task 10.0 in stage 0.0 (TID 10). 2275 bytes result sent to driver
+16/11/28 01:31:06 INFO TaskSetManager: Starting task 11.0 in stage 0.0 (TID 11, localhost, partition 11,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:06 INFO Executor: Running task 11.0 in stage 0.0 (TID 11)
+16/11/28 01:31:06 INFO TaskSetManager: Finished task 10.0 in stage 0.0 (TID 10) in 870 ms on localhost (11/23)
+16/11/28 01:31:06 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:369098752+33554432
+16/11/28 01:31:07 INFO Executor: Finished task 11.0 in stage 0.0 (TID 11). 2275 bytes result sent to driver
+16/11/28 01:31:07 INFO TaskSetManager: Starting task 12.0 in stage 0.0 (TID 12, localhost, partition 12,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:07 INFO TaskSetManager: Finished task 11.0 in stage 0.0 (TID 11) in 851 ms on localhost (12/23)
+16/11/28 01:31:07 INFO Executor: Running task 12.0 in stage 0.0 (TID 12)
+16/11/28 01:31:07 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:402653184+33554432
+16/11/28 01:31:08 INFO Executor: Finished task 12.0 in stage 0.0 (TID 12). 2275 bytes result sent to driver
+16/11/28 01:31:08 INFO TaskSetManager: Starting task 13.0 in stage 0.0 (TID 13, localhost, partition 13,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:08 INFO TaskSetManager: Finished task 12.0 in stage 0.0 (TID 12) in 849 ms on localhost (13/23)
+16/11/28 01:31:08 INFO Executor: Running task 13.0 in stage 0.0 (TID 13)
+16/11/28 01:31:08 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:436207616+33554432
+16/11/28 01:31:09 INFO Executor: Finished task 13.0 in stage 0.0 (TID 13). 2275 bytes result sent to driver
+16/11/28 01:31:09 INFO TaskSetManager: Starting task 14.0 in stage 0.0 (TID 14, localhost, partition 14,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:09 INFO Executor: Running task 14.0 in stage 0.0 (TID 14)
+16/11/28 01:31:09 INFO TaskSetManager: Finished task 13.0 in stage 0.0 (TID 13) in 853 ms on localhost (14/23)
+16/11/28 01:31:09 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:469762048+33554432
+16/11/28 01:31:10 INFO Executor: Finished task 14.0 in stage 0.0 (TID 14). 2275 bytes result sent to driver
+16/11/28 01:31:10 INFO TaskSetManager: Starting task 15.0 in stage 0.0 (TID 15, localhost, partition 15,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:10 INFO Executor: Running task 15.0 in stage 0.0 (TID 15)
+16/11/28 01:31:10 INFO TaskSetManager: Finished task 14.0 in stage 0.0 (TID 14) in 847 ms on localhost (15/23)
+16/11/28 01:31:10 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:503316480+33554432
+16/11/28 01:31:11 INFO Executor: Finished task 15.0 in stage 0.0 (TID 15). 2275 bytes result sent to driver
+16/11/28 01:31:11 INFO TaskSetManager: Starting task 16.0 in stage 0.0 (TID 16, localhost, partition 16,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:11 INFO Executor: Running task 16.0 in stage 0.0 (TID 16)
+16/11/28 01:31:11 INFO TaskSetManager: Finished task 15.0 in stage 0.0 (TID 15) in 870 ms on localhost (16/23)
+16/11/28 01:31:11 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:536870912+33554432
+16/11/28 01:31:11 INFO Executor: Finished task 16.0 in stage 0.0 (TID 16). 2275 bytes result sent to driver
+16/11/28 01:31:11 INFO TaskSetManager: Starting task 17.0 in stage 0.0 (TID 17, localhost, partition 17,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:11 INFO Executor: Running task 17.0 in stage 0.0 (TID 17)
+16/11/28 01:31:11 INFO TaskSetManager: Finished task 16.0 in stage 0.0 (TID 16) in 870 ms on localhost (17/23)
+16/11/28 01:31:11 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:570425344+33554432
+16/11/28 01:31:12 INFO Executor: Finished task 17.0 in stage 0.0 (TID 17). 2275 bytes result sent to driver
+16/11/28 01:31:12 INFO TaskSetManager: Starting task 18.0 in stage 0.0 (TID 18, localhost, partition 18,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:12 INFO TaskSetManager: Finished task 17.0 in stage 0.0 (TID 17) in 861 ms on localhost (18/23)
+16/11/28 01:31:12 INFO Executor: Running task 18.0 in stage 0.0 (TID 18)
+16/11/28 01:31:12 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:603979776+33554432
+16/11/28 01:31:13 INFO Executor: Finished task 18.0 in stage 0.0 (TID 18). 2275 bytes result sent to driver
+16/11/28 01:31:13 INFO TaskSetManager: Starting task 19.0 in stage 0.0 (TID 19, localhost, partition 19,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:13 INFO Executor: Running task 19.0 in stage 0.0 (TID 19)
+16/11/28 01:31:13 INFO TaskSetManager: Finished task 18.0 in stage 0.0 (TID 18) in 845 ms on localhost (19/23)
+16/11/28 01:31:13 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:637534208+33554432
+16/11/28 01:31:14 INFO Executor: Finished task 19.0 in stage 0.0 (TID 19). 2275 bytes result sent to driver
+16/11/28 01:31:14 INFO TaskSetManager: Starting task 20.0 in stage 0.0 (TID 20, localhost, partition 20,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:14 INFO TaskSetManager: Finished task 19.0 in stage 0.0 (TID 19) in 864 ms on localhost (20/23)
+16/11/28 01:31:14 INFO Executor: Running task 20.0 in stage 0.0 (TID 20)
+16/11/28 01:31:14 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:671088640+33554432
+16/11/28 01:31:15 INFO Executor: Finished task 20.0 in stage 0.0 (TID 20). 2275 bytes result sent to driver
+16/11/28 01:31:15 INFO TaskSetManager: Starting task 21.0 in stage 0.0 (TID 21, localhost, partition 21,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:15 INFO Executor: Running task 21.0 in stage 0.0 (TID 21)
+16/11/28 01:31:15 INFO TaskSetManager: Finished task 20.0 in stage 0.0 (TID 20) in 856 ms on localhost (21/23)
+16/11/28 01:31:15 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:704643072+33554432
+16/11/28 01:31:16 INFO Executor: Finished task 21.0 in stage 0.0 (TID 21). 2275 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 22.0 in stage 0.0 (TID 22, localhost, partition 22,PROCESS_LOCAL, 2171 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 21.0 in stage 0.0 (TID 21) in 861 ms on localhost (22/23)
+16/11/28 01:31:16 INFO Executor: Running task 22.0 in stage 0.0 (TID 22)
+16/11/28 01:31:16 INFO HadoopRDD: Input split: file:/D:/Spark/eclipse/workplace/RunKMeans/src/kddcup.data/kddcup.data.corrected:738197504+4382325
+16/11/28 01:31:16 INFO Executor: Finished task 22.0 in stage 0.0 (TID 22). 2275 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 22.0 in stage 0.0 (TID 22) in 126 ms on localhost (23/23)
+16/11/28 01:31:16 INFO DAGScheduler: ShuffleMapStage 0 (countByValue at RunKMeans.scala:18) finished in 19.764 s
+16/11/28 01:31:16 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+16/11/28 01:31:16 INFO DAGScheduler: looking for newly runnable stages
+16/11/28 01:31:16 INFO DAGScheduler: running: Set()
+16/11/28 01:31:16 INFO DAGScheduler: waiting: Set(ResultStage 1)
+16/11/28 01:31:16 INFO DAGScheduler: failed: Set()
+16/11/28 01:31:16 INFO DAGScheduler: Submitting ResultStage 1 (ShuffledRDD[5] at countByValue at RunKMeans.scala:18), which has no missing parents
+16/11/28 01:31:16 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 2.6 KB, free 150.7 KB)
+16/11/28 01:31:16 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 1583.0 B, free 152.2 KB)
+16/11/28 01:31:16 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on localhost:58825 (size: 1583.0 B, free: 2.4 GB)
+16/11/28 01:31:16 INFO SparkContext: Created broadcast 2 from broadcast at DAGScheduler.scala:1006
+16/11/28 01:31:16 INFO DAGScheduler: Submitting 23 missing tasks from ResultStage 1 (ShuffledRDD[5] at countByValue at RunKMeans.scala:18)
+16/11/28 01:31:16 INFO TaskSchedulerImpl: Adding task set 1.0 with 23 tasks
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 2.0 in stage 1.0 (TID 23, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO Executor: Running task 2.0 in stage 1.0 (TID 23)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 6 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 5 ms
+16/11/28 01:31:16 INFO Executor: Finished task 2.0 in stage 1.0 (TID 23). 1345 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 3.0 in stage 1.0 (TID 24, localhost, partition 3,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 2.0 in stage 1.0 (TID 23) in 41 ms on localhost (1/23)
+16/11/28 01:31:16 INFO Executor: Running task 3.0 in stage 1.0 (TID 24)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 6 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 3.0 in stage 1.0 (TID 24). 1315 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 4.0 in stage 1.0 (TID 25, localhost, partition 4,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 3.0 in stage 1.0 (TID 24) in 9 ms on localhost (2/23)
+16/11/28 01:31:16 INFO Executor: Running task 4.0 in stage 1.0 (TID 25)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 21 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 4.0 in stage 1.0 (TID 25). 1313 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 5.0 in stage 1.0 (TID 26, localhost, partition 5,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 4.0 in stage 1.0 (TID 25) in 25 ms on localhost (3/23)
+16/11/28 01:31:16 INFO Executor: Running task 5.0 in stage 1.0 (TID 26)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 13 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 5.0 in stage 1.0 (TID 26). 1314 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 6.0 in stage 1.0 (TID 27, localhost, partition 6,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO Executor: Running task 6.0 in stage 1.0 (TID 27)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 5.0 in stage 1.0 (TID 26) in 18 ms on localhost (4/23)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 2 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 6.0 in stage 1.0 (TID 27). 1317 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 8.0 in stage 1.0 (TID 28, localhost, partition 8,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO Executor: Running task 8.0 in stage 1.0 (TID 28)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 6.0 in stage 1.0 (TID 27) in 4 ms on localhost (5/23)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 7 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 8.0 in stage 1.0 (TID 28). 1386 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 10.0 in stage 1.0 (TID 29, localhost, partition 10,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO Executor: Running task 10.0 in stage 1.0 (TID 29)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 8.0 in stage 1.0 (TID 28) in 6 ms on localhost (6/23)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 12 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 10.0 in stage 1.0 (TID 29). 1343 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 11.0 in stage 1.0 (TID 30, localhost, partition 11,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO Executor: Running task 11.0 in stage 1.0 (TID 30)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 10.0 in stage 1.0 (TID 29) in 10 ms on localhost (7/23)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 7 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 11.0 in stage 1.0 (TID 30). 1348 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 12.0 in stage 1.0 (TID 31, localhost, partition 12,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 11.0 in stage 1.0 (TID 30) in 6 ms on localhost (8/23)
+16/11/28 01:31:16 INFO Executor: Running task 12.0 in stage 1.0 (TID 31)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 4 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 12.0 in stage 1.0 (TID 31). 1312 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 13.0 in stage 1.0 (TID 32, localhost, partition 13,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 12.0 in stage 1.0 (TID 31) in 6 ms on localhost (9/23)
+16/11/28 01:31:16 INFO Executor: Running task 13.0 in stage 1.0 (TID 32)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 8 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 13.0 in stage 1.0 (TID 32). 1382 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 17.0 in stage 1.0 (TID 33, localhost, partition 17,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 13.0 in stage 1.0 (TID 32) in 8 ms on localhost (10/23)
+16/11/28 01:31:16 INFO Executor: Running task 17.0 in stage 1.0 (TID 33)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 1 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 17.0 in stage 1.0 (TID 33). 1311 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 20.0 in stage 1.0 (TID 34, localhost, partition 20,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 17.0 in stage 1.0 (TID 33) in 26 ms on localhost (11/23)
+16/11/28 01:31:16 INFO Executor: Running task 20.0 in stage 1.0 (TID 34)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 10 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 20.0 in stage 1.0 (TID 34). 1403 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 21.0 in stage 1.0 (TID 35, localhost, partition 21,NODE_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 20.0 in stage 1.0 (TID 34) in 15 ms on localhost (12/23)
+16/11/28 01:31:16 INFO Executor: Running task 21.0 in stage 1.0 (TID 35)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 8 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 21.0 in stage 1.0 (TID 35). 1323 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 36, localhost, partition 0,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO Executor: Running task 0.0 in stage 1.0 (TID 36)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 21.0 in stage 1.0 (TID 35) in 14 ms on localhost (13/23)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 0.0 in stage 1.0 (TID 36). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 1.0 in stage 1.0 (TID 37, localhost, partition 1,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 36) in 5 ms on localhost (14/23)
+16/11/28 01:31:16 INFO Executor: Running task 1.0 in stage 1.0 (TID 37)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 1.0 in stage 1.0 (TID 37). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 7.0 in stage 1.0 (TID 38, localhost, partition 7,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 1.0 in stage 1.0 (TID 37) in 5 ms on localhost (15/23)
+16/11/28 01:31:16 INFO Executor: Running task 7.0 in stage 1.0 (TID 38)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 7.0 in stage 1.0 (TID 38). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 9.0 in stage 1.0 (TID 39, localhost, partition 9,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO Executor: Running task 9.0 in stage 1.0 (TID 39)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 7.0 in stage 1.0 (TID 38) in 6 ms on localhost (16/23)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 9.0 in stage 1.0 (TID 39). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 14.0 in stage 1.0 (TID 40, localhost, partition 14,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 9.0 in stage 1.0 (TID 39) in 5 ms on localhost (17/23)
+16/11/28 01:31:16 INFO Executor: Running task 14.0 in stage 1.0 (TID 40)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 14.0 in stage 1.0 (TID 40). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 15.0 in stage 1.0 (TID 41, localhost, partition 15,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 14.0 in stage 1.0 (TID 40) in 4 ms on localhost (18/23)
+16/11/28 01:31:16 INFO Executor: Running task 15.0 in stage 1.0 (TID 41)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 15.0 in stage 1.0 (TID 41). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 16.0 in stage 1.0 (TID 42, localhost, partition 16,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 15.0 in stage 1.0 (TID 41) in 5 ms on localhost (19/23)
+16/11/28 01:31:16 INFO Executor: Running task 16.0 in stage 1.0 (TID 42)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 16.0 in stage 1.0 (TID 42). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 18.0 in stage 1.0 (TID 43, localhost, partition 18,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 16.0 in stage 1.0 (TID 42) in 10 ms on localhost (20/23)
+16/11/28 01:31:16 INFO Executor: Running task 18.0 in stage 1.0 (TID 43)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/28 01:31:16 INFO Executor: Finished task 18.0 in stage 1.0 (TID 43). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 19.0 in stage 1.0 (TID 44, localhost, partition 19,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 18.0 in stage 1.0 (TID 43) in 12 ms on localhost (21/23)
+16/11/28 01:31:16 INFO Executor: Running task 19.0 in stage 1.0 (TID 44)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 2 ms
+16/11/28 01:31:16 INFO Executor: Finished task 19.0 in stage 1.0 (TID 44). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Starting task 22.0 in stage 1.0 (TID 45, localhost, partition 22,PROCESS_LOCAL, 1894 bytes)
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 19.0 in stage 1.0 (TID 44) in 20 ms on localhost (22/23)
+16/11/28 01:31:16 INFO Executor: Running task 22.0 in stage 1.0 (TID 45)
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 23 blocks
+16/11/28 01:31:16 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/28 01:31:16 INFO Executor: Finished task 22.0 in stage 1.0 (TID 45). 1161 bytes result sent to driver
+16/11/28 01:31:16 INFO TaskSetManager: Finished task 22.0 in stage 1.0 (TID 45) in 17 ms on localhost (23/23)
+16/11/28 01:31:16 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+16/11/28 01:31:16 INFO DAGScheduler: ResultStage 1 (countByValue at RunKMeans.scala:18) finished in 0.245 s
+16/11/28 01:31:16 INFO DAGScheduler: Job 0 finished: countByValue at RunKMeans.scala:18, took 20.141529 s
+(smurf.,2807886)
+(neptune.,1072017)
+(normal.,972781)
+(satan.,15892)
+(ipsweep.,12481)
+(portsweep.,10413)
+(nmap.,2316)
+(back.,2203)
+(warezclient.,1020)
+(teardrop.,979)
+(pod.,264)
+(guess_passwd.,53)
+(buffer_overflow.,30)
+(land.,21)
+(warezmaster.,20)
+(imap.,12)
+(rootkit.,10)
+(loadmodule.,9)
+(ftp_write.,8)
+(multihop.,7)
+(phf.,4)
+(perl.,3)
+(spy.,2)
+16/11/28 01:31:16 INFO SparkContext: Invoking stop() from shutdown hook
+16/11/28 01:31:16 INFO SparkUI: Stopped Spark web UI at http://192.168.145.1:4040
+16/11/28 01:31:16 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+16/11/28 01:31:16 INFO MemoryStore: MemoryStore cleared
+16/11/28 01:31:16 INFO BlockManager: BlockManager stopped
+16/11/28 01:31:16 INFO BlockManagerMaster: BlockManagerMaster stopped
+16/11/28 01:31:16 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+16/11/28 01:31:16 INFO SparkContext: Successfully stopped SparkContext
+16/11/28 01:31:16 INFO ShutdownHookManager: Shutdown hook called
+16/11/28 01:31:16 INFO ShutdownHookManager: Deleting directory C:\Users\liq9876\AppData\Local\Temp\spark-5815ba8d-571b-4f89-8930-c9c9fdd0f4f5

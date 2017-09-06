@@ -1,0 +1,791 @@
+16/11/27 13:57:22 INFO BlockManagerInfo: Removed broadcast_247_piece0 on localhost:54166 in memory (size: 589.6 KB, free: 2.1 GB)
+16/11/27 13:57:22 INFO ContextCleaner: Cleaned accumulator 183
+16/11/27 13:57:22 INFO ContextCleaner: Cleaned shuffle 83
+16/11/27 13:57:22 INFO BlockManagerInfo: Removed broadcast_246_piece0 on localhost:54166 in memory (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:22 INFO BlockManagerInfo: Removed broadcast_245_piece0 on localhost:54166 in memory (size: 47.8 KB, free: 2.1 GB)
+16/11/27 13:57:22 INFO ContextCleaner: Cleaned accumulator 182
+16/11/27 13:57:22 INFO ContextCleaner: Cleaned accumulator 181
+16/11/27 13:57:22 INFO ContextCleaner: Cleaned shuffle 82
+16/11/27 13:57:22 INFO BlockManagerInfo: Removed broadcast_243_piece0 on localhost:54166 in memory (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:22 INFO BlockManagerInfo: Removed broadcast_242_piece0 on localhost:54166 in memory (size: 40.3 KB, free: 2.1 GB)
+16/11/27 13:57:22 INFO ContextCleaner: Cleaned accumulator 180
+16/11/27 13:57:22 INFO ContextCleaner: Cleaned accumulator 179
+16/11/27 13:57:22 INFO ContextCleaner: Cleaned shuffle 81
+16/11/27 13:57:22 INFO BlockManagerInfo: Removed broadcast_240_piece0 on localhost:54166 in memory (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:22 INFO BlockManager: Removing RDD 256
+16/11/27 13:57:22 INFO ContextCleaner: Cleaned RDD 256
+16/11/27 13:57:22 INFO Executor: Finished task 2.0 in stage 227.0 (TID 665). 60599 bytes result sent to driver
+16/11/27 13:57:22 INFO TaskSetManager: Finished task 2.0 in stage 227.0 (TID 665) in 1300 ms on localhost (3/3)
+16/11/27 13:57:22 INFO TaskSchedulerImpl: Removed TaskSet 227.0, whose tasks have all completed, from pool 
+16/11/27 13:57:22 INFO DAGScheduler: ResultStage 227 (collectAsMap at DecisionTree.scala:651) finished in 3.222 s
+16/11/27 13:57:22 INFO DAGScheduler: Job 122 finished: collectAsMap at DecisionTree.scala:651, took 4.356849 s
+16/11/27 13:57:22 INFO MemoryStore: Block broadcast_311 stored as values in memory (estimated size 40.0 B, free 382.1 MB)
+16/11/27 13:57:22 INFO MemoryStore: Block broadcast_311_piece0 stored as bytes in memory (estimated size 81.0 B, free 382.1 MB)
+16/11/27 13:57:22 INFO BlockManagerInfo: Added broadcast_311_piece0 in memory on localhost:54166 (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:22 INFO SparkContext: Created broadcast 311 from broadcast at DecisionTree.scala:601
+16/11/27 13:57:22 INFO SparkContext: Starting job: collectAsMap at DecisionTree.scala:651
+16/11/27 13:57:22 INFO DAGScheduler: Registering RDD 374 (mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:22 INFO DAGScheduler: Got job 123 (collectAsMap at DecisionTree.scala:651) with 3 output partitions
+16/11/27 13:57:22 INFO DAGScheduler: Final stage: ResultStage 229 (collectAsMap at DecisionTree.scala:651)
+16/11/27 13:57:22 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 228)
+16/11/27 13:57:22 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 228)
+16/11/27 13:57:22 INFO DAGScheduler: Submitting ShuffleMapStage 228 (MapPartitionsRDD[374] at mapPartitions at DecisionTree.scala:622), which has no missing parents
+16/11/27 13:57:22 INFO MemoryStore: Block broadcast_312 stored as values in memory (estimated size 1061.0 KB, free 383.2 MB)
+16/11/27 13:57:22 INFO MemoryStore: Block broadcast_312_piece0 stored as bytes in memory (estimated size 365.0 KB, free 383.5 MB)
+16/11/27 13:57:22 INFO BlockManagerInfo: Added broadcast_312_piece0 in memory on localhost:54166 (size: 365.0 KB, free: 2.1 GB)
+16/11/27 13:57:22 INFO SparkContext: Created broadcast 312 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:22 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 228 (MapPartitionsRDD[374] at mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:22 INFO TaskSchedulerImpl: Adding task set 228.0 with 3 tasks
+16/11/27 13:57:22 INFO TaskSetManager: Starting task 0.0 in stage 228.0 (TID 666, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:22 INFO Executor: Running task 0.0 in stage 228.0 (TID 666)
+16/11/27 13:57:22 INFO BlockManager: Found block rdd_331_0 locally
+16/11/27 13:57:23 INFO Executor: Finished task 0.0 in stage 228.0 (TID 666). 2255 bytes result sent to driver
+16/11/27 13:57:23 INFO TaskSetManager: Starting task 1.0 in stage 228.0 (TID 667, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:23 INFO Executor: Running task 1.0 in stage 228.0 (TID 667)
+16/11/27 13:57:23 INFO TaskSetManager: Finished task 0.0 in stage 228.0 (TID 666) in 462 ms on localhost (1/3)
+16/11/27 13:57:23 INFO BlockManager: Found block rdd_331_1 locally
+16/11/27 13:57:23 INFO Executor: Finished task 1.0 in stage 228.0 (TID 667). 2255 bytes result sent to driver
+16/11/27 13:57:23 INFO TaskSetManager: Starting task 2.0 in stage 228.0 (TID 668, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:23 INFO Executor: Running task 2.0 in stage 228.0 (TID 668)
+16/11/27 13:57:23 INFO TaskSetManager: Finished task 1.0 in stage 228.0 (TID 667) in 455 ms on localhost (2/3)
+16/11/27 13:57:23 INFO BlockManager: Found block rdd_331_2 locally
+16/11/27 13:57:23 INFO Executor: Finished task 2.0 in stage 228.0 (TID 668). 2255 bytes result sent to driver
+16/11/27 13:57:23 INFO TaskSetManager: Finished task 2.0 in stage 228.0 (TID 668) in 351 ms on localhost (3/3)
+16/11/27 13:57:23 INFO TaskSchedulerImpl: Removed TaskSet 228.0, whose tasks have all completed, from pool 
+16/11/27 13:57:23 INFO DAGScheduler: ShuffleMapStage 228 (mapPartitions at DecisionTree.scala:622) finished in 1.269 s
+16/11/27 13:57:23 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:23 INFO DAGScheduler: running: Set()
+16/11/27 13:57:23 INFO DAGScheduler: waiting: Set(ResultStage 229)
+16/11/27 13:57:23 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:23 INFO DAGScheduler: Submitting ResultStage 229 (MapPartitionsRDD[376] at map at DecisionTree.scala:642), which has no missing parents
+16/11/27 13:57:23 INFO MemoryStore: Block broadcast_313 stored as values in memory (estimated size 155.9 KB, free 383.7 MB)
+16/11/27 13:57:23 INFO MemoryStore: Block broadcast_313_piece0 stored as bytes in memory (estimated size 44.3 KB, free 383.7 MB)
+16/11/27 13:57:23 INFO BlockManagerInfo: Added broadcast_313_piece0 in memory on localhost:54166 (size: 44.3 KB, free: 2.1 GB)
+16/11/27 13:57:23 INFO SparkContext: Created broadcast 313 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:23 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 229 (MapPartitionsRDD[376] at map at DecisionTree.scala:642)
+16/11/27 13:57:23 INFO TaskSchedulerImpl: Adding task set 229.0 with 3 tasks
+16/11/27 13:57:23 INFO TaskSetManager: Starting task 0.0 in stage 229.0 (TID 669, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:23 INFO Executor: Running task 0.0 in stage 229.0 (TID 669)
+16/11/27 13:57:23 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:23 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:24 INFO Executor: Finished task 0.0 in stage 229.0 (TID 669). 71134 bytes result sent to driver
+16/11/27 13:57:24 INFO TaskSetManager: Starting task 1.0 in stage 229.0 (TID 670, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:24 INFO Executor: Running task 1.0 in stage 229.0 (TID 670)
+16/11/27 13:57:24 INFO TaskSetManager: Finished task 0.0 in stage 229.0 (TID 669) in 1103 ms on localhost (1/3)
+16/11/27 13:57:24 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:24 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:26 INFO Executor: Finished task 1.0 in stage 229.0 (TID 670). 70971 bytes result sent to driver
+16/11/27 13:57:26 INFO TaskSetManager: Starting task 2.0 in stage 229.0 (TID 671, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:26 INFO Executor: Running task 2.0 in stage 229.0 (TID 671)
+16/11/27 13:57:26 INFO TaskSetManager: Finished task 1.0 in stage 229.0 (TID 670) in 1105 ms on localhost (2/3)
+16/11/27 13:57:26 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:26 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:27 INFO Executor: Finished task 2.0 in stage 229.0 (TID 671). 70730 bytes result sent to driver
+16/11/27 13:57:27 INFO TaskSetManager: Finished task 2.0 in stage 229.0 (TID 671) in 1089 ms on localhost (3/3)
+16/11/27 13:57:27 INFO TaskSchedulerImpl: Removed TaskSet 229.0, whose tasks have all completed, from pool 
+16/11/27 13:57:27 INFO DAGScheduler: ResultStage 229 (collectAsMap at DecisionTree.scala:651) finished in 3.296 s
+16/11/27 13:57:27 INFO DAGScheduler: Job 123 finished: collectAsMap at DecisionTree.scala:651, took 4.595688 s
+16/11/27 13:57:27 INFO MemoryStore: Block broadcast_314 stored as values in memory (estimated size 40.0 B, free 383.7 MB)
+16/11/27 13:57:27 INFO MemoryStore: Block broadcast_314_piece0 stored as bytes in memory (estimated size 81.0 B, free 383.7 MB)
+16/11/27 13:57:27 INFO BlockManagerInfo: Added broadcast_314_piece0 in memory on localhost:54166 (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:27 INFO SparkContext: Created broadcast 314 from broadcast at DecisionTree.scala:601
+16/11/27 13:57:27 INFO SparkContext: Starting job: collectAsMap at DecisionTree.scala:651
+16/11/27 13:57:27 INFO DAGScheduler: Registering RDD 377 (mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:27 INFO DAGScheduler: Got job 124 (collectAsMap at DecisionTree.scala:651) with 3 output partitions
+16/11/27 13:57:27 INFO DAGScheduler: Final stage: ResultStage 231 (collectAsMap at DecisionTree.scala:651)
+16/11/27 13:57:27 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 230)
+16/11/27 13:57:27 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 230)
+16/11/27 13:57:27 INFO DAGScheduler: Submitting ShuffleMapStage 230 (MapPartitionsRDD[377] at mapPartitions at DecisionTree.scala:622), which has no missing parents
+16/11/27 13:57:27 INFO MemoryStore: Block broadcast_315 stored as values in memory (estimated size 1350.9 KB, free 385.1 MB)
+16/11/27 13:57:27 INFO MemoryStore: Block broadcast_315_piece0 stored as bytes in memory (estimated size 462.7 KB, free 385.5 MB)
+16/11/27 13:57:27 INFO BlockManagerInfo: Added broadcast_315_piece0 in memory on localhost:54166 (size: 462.7 KB, free: 2.1 GB)
+16/11/27 13:57:27 INFO SparkContext: Created broadcast 315 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:27 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 230 (MapPartitionsRDD[377] at mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:27 INFO TaskSchedulerImpl: Adding task set 230.0 with 3 tasks
+16/11/27 13:57:27 INFO TaskSetManager: Starting task 0.0 in stage 230.0 (TID 672, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:27 INFO Executor: Running task 0.0 in stage 230.0 (TID 672)
+16/11/27 13:57:27 INFO BlockManager: Found block rdd_331_0 locally
+16/11/27 13:57:27 INFO Executor: Finished task 0.0 in stage 230.0 (TID 672). 2255 bytes result sent to driver
+16/11/27 13:57:27 INFO TaskSetManager: Starting task 1.0 in stage 230.0 (TID 673, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:27 INFO Executor: Running task 1.0 in stage 230.0 (TID 673)
+16/11/27 13:57:27 INFO TaskSetManager: Finished task 0.0 in stage 230.0 (TID 672) in 499 ms on localhost (1/3)
+16/11/27 13:57:27 INFO BlockManager: Found block rdd_331_1 locally
+16/11/27 13:57:28 INFO Executor: Finished task 1.0 in stage 230.0 (TID 673). 2255 bytes result sent to driver
+16/11/27 13:57:28 INFO TaskSetManager: Starting task 2.0 in stage 230.0 (TID 674, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:28 INFO Executor: Running task 2.0 in stage 230.0 (TID 674)
+16/11/27 13:57:28 INFO TaskSetManager: Finished task 1.0 in stage 230.0 (TID 673) in 508 ms on localhost (2/3)
+16/11/27 13:57:28 INFO BlockManager: Found block rdd_331_2 locally
+16/11/27 13:57:28 INFO Executor: Finished task 2.0 in stage 230.0 (TID 674). 2255 bytes result sent to driver
+16/11/27 13:57:28 INFO TaskSetManager: Finished task 2.0 in stage 230.0 (TID 674) in 385 ms on localhost (3/3)
+16/11/27 13:57:28 INFO TaskSchedulerImpl: Removed TaskSet 230.0, whose tasks have all completed, from pool 
+16/11/27 13:57:28 INFO DAGScheduler: ShuffleMapStage 230 (mapPartitions at DecisionTree.scala:622) finished in 1.391 s
+16/11/27 13:57:28 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:28 INFO DAGScheduler: running: Set()
+16/11/27 13:57:28 INFO DAGScheduler: waiting: Set(ResultStage 231)
+16/11/27 13:57:28 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:28 INFO DAGScheduler: Submitting ResultStage 231 (MapPartitionsRDD[379] at map at DecisionTree.scala:642), which has no missing parents
+16/11/27 13:57:28 INFO MemoryStore: Block broadcast_316 stored as values in memory (estimated size 167.5 KB, free 385.7 MB)
+16/11/27 13:57:28 INFO MemoryStore: Block broadcast_316_piece0 stored as bytes in memory (estimated size 46.7 KB, free 385.7 MB)
+16/11/27 13:57:28 INFO BlockManagerInfo: Added broadcast_316_piece0 in memory on localhost:54166 (size: 46.7 KB, free: 2.1 GB)
+16/11/27 13:57:28 INFO SparkContext: Created broadcast 316 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:28 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 231 (MapPartitionsRDD[379] at map at DecisionTree.scala:642)
+16/11/27 13:57:28 INFO TaskSchedulerImpl: Adding task set 231.0 with 3 tasks
+16/11/27 13:57:28 INFO TaskSetManager: Starting task 0.0 in stage 231.0 (TID 675, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:28 INFO Executor: Running task 0.0 in stage 231.0 (TID 675)
+16/11/27 13:57:28 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:28 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:28 INFO BlockManagerInfo: Removed broadcast_315_piece0 on localhost:54166 in memory (size: 462.7 KB, free: 2.1 GB)
+16/11/27 13:57:29 INFO Executor: Finished task 0.0 in stage 231.0 (TID 675). 80962 bytes result sent to driver
+16/11/27 13:57:29 INFO TaskSetManager: Starting task 1.0 in stage 231.0 (TID 676, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:29 INFO Executor: Running task 1.0 in stage 231.0 (TID 676)
+16/11/27 13:57:29 INFO TaskSetManager: Finished task 0.0 in stage 231.0 (TID 675) in 1235 ms on localhost (1/3)
+16/11/27 13:57:29 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:29 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:31 INFO Executor: Finished task 1.0 in stage 231.0 (TID 676). 80345 bytes result sent to driver
+16/11/27 13:57:31 INFO TaskSetManager: Starting task 2.0 in stage 231.0 (TID 677, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:31 INFO Executor: Running task 2.0 in stage 231.0 (TID 677)
+16/11/27 13:57:31 INFO TaskSetManager: Finished task 1.0 in stage 231.0 (TID 676) in 1230 ms on localhost (2/3)
+16/11/27 13:57:31 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:31 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:32 INFO Executor: Finished task 2.0 in stage 231.0 (TID 677). 80302 bytes result sent to driver
+16/11/27 13:57:32 INFO TaskSetManager: Finished task 2.0 in stage 231.0 (TID 677) in 1232 ms on localhost (3/3)
+16/11/27 13:57:32 INFO TaskSchedulerImpl: Removed TaskSet 231.0, whose tasks have all completed, from pool 
+16/11/27 13:57:32 INFO DAGScheduler: ResultStage 231 (collectAsMap at DecisionTree.scala:651) finished in 3.695 s
+16/11/27 13:57:32 INFO DAGScheduler: Job 124 finished: collectAsMap at DecisionTree.scala:651, took 5.124405 s
+16/11/27 13:57:32 INFO MemoryStore: Block broadcast_317 stored as values in memory (estimated size 40.0 B, free 383.9 MB)
+16/11/27 13:57:32 INFO MemoryStore: Block broadcast_317_piece0 stored as bytes in memory (estimated size 81.0 B, free 383.9 MB)
+16/11/27 13:57:32 INFO BlockManagerInfo: Added broadcast_317_piece0 in memory on localhost:54166 (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:32 INFO SparkContext: Created broadcast 317 from broadcast at DecisionTree.scala:601
+16/11/27 13:57:32 INFO SparkContext: Starting job: collectAsMap at DecisionTree.scala:651
+16/11/27 13:57:32 INFO DAGScheduler: Registering RDD 380 (mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:32 INFO DAGScheduler: Got job 125 (collectAsMap at DecisionTree.scala:651) with 3 output partitions
+16/11/27 13:57:32 INFO DAGScheduler: Final stage: ResultStage 233 (collectAsMap at DecisionTree.scala:651)
+16/11/27 13:57:32 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 232)
+16/11/27 13:57:32 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 232)
+16/11/27 13:57:32 INFO DAGScheduler: Submitting ShuffleMapStage 232 (MapPartitionsRDD[380] at mapPartitions at DecisionTree.scala:622), which has no missing parents
+16/11/27 13:57:32 INFO MemoryStore: Block broadcast_318 stored as values in memory (estimated size 1679.3 KB, free 385.6 MB)
+16/11/27 13:57:32 INFO MemoryStore: Block broadcast_318_piece0 stored as bytes in memory (estimated size 576.7 KB, free 386.1 MB)
+16/11/27 13:57:32 INFO BlockManagerInfo: Added broadcast_318_piece0 in memory on localhost:54166 (size: 576.7 KB, free: 2.1 GB)
+16/11/27 13:57:32 INFO SparkContext: Created broadcast 318 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:32 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 232 (MapPartitionsRDD[380] at mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:32 INFO TaskSchedulerImpl: Adding task set 232.0 with 3 tasks
+16/11/27 13:57:32 INFO TaskSetManager: Starting task 0.0 in stage 232.0 (TID 678, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:32 INFO Executor: Running task 0.0 in stage 232.0 (TID 678)
+16/11/27 13:57:32 INFO BlockManager: Found block rdd_331_0 locally
+16/11/27 13:57:32 INFO Executor: Finished task 0.0 in stage 232.0 (TID 678). 2255 bytes result sent to driver
+16/11/27 13:57:32 INFO TaskSetManager: Starting task 1.0 in stage 232.0 (TID 679, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:32 INFO Executor: Running task 1.0 in stage 232.0 (TID 679)
+16/11/27 13:57:32 INFO TaskSetManager: Finished task 0.0 in stage 232.0 (TID 678) in 526 ms on localhost (1/3)
+16/11/27 13:57:32 INFO BlockManager: Found block rdd_331_1 locally
+16/11/27 13:57:33 INFO Executor: Finished task 1.0 in stage 232.0 (TID 679). 2255 bytes result sent to driver
+16/11/27 13:57:33 INFO TaskSetManager: Starting task 2.0 in stage 232.0 (TID 680, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:33 INFO Executor: Running task 2.0 in stage 232.0 (TID 680)
+16/11/27 13:57:33 INFO TaskSetManager: Finished task 1.0 in stage 232.0 (TID 679) in 538 ms on localhost (2/3)
+16/11/27 13:57:33 INFO BlockManager: Found block rdd_331_2 locally
+16/11/27 13:57:33 INFO BlockManagerInfo: Removed broadcast_316_piece0 on localhost:54166 in memory (size: 46.7 KB, free: 2.1 GB)
+16/11/27 13:57:33 INFO ContextCleaner: Cleaned accumulator 232
+16/11/27 13:57:33 INFO ContextCleaner: Cleaned accumulator 231
+16/11/27 13:57:33 INFO ContextCleaner: Cleaned shuffle 106
+16/11/27 13:57:33 INFO BlockManagerInfo: Removed broadcast_314_piece0 on localhost:54166 in memory (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:33 INFO BlockManagerInfo: Removed broadcast_313_piece0 on localhost:54166 in memory (size: 44.3 KB, free: 2.1 GB)
+16/11/27 13:57:33 INFO ContextCleaner: Cleaned accumulator 230
+16/11/27 13:57:33 INFO BlockManagerInfo: Removed broadcast_312_piece0 on localhost:54166 in memory (size: 365.0 KB, free: 2.1 GB)
+16/11/27 13:57:33 INFO ContextCleaner: Cleaned accumulator 229
+16/11/27 13:57:33 INFO ContextCleaner: Cleaned shuffle 105
+16/11/27 13:57:33 INFO BlockManagerInfo: Removed broadcast_311_piece0 on localhost:54166 in memory (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:33 INFO BlockManagerInfo: Removed broadcast_310_piece0 on localhost:54166 in memory (size: 40.5 KB, free: 2.1 GB)
+16/11/27 13:57:33 INFO ContextCleaner: Cleaned accumulator 228
+16/11/27 13:57:33 INFO ContextCleaner: Cleaned accumulator 227
+16/11/27 13:57:33 INFO ContextCleaner: Cleaned shuffle 104
+16/11/27 13:57:33 INFO BlockManagerInfo: Removed broadcast_308_piece0 on localhost:54166 in memory (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:34 INFO Executor: Finished task 2.0 in stage 232.0 (TID 680). 2255 bytes result sent to driver
+16/11/27 13:57:34 INFO TaskSetManager: Finished task 2.0 in stage 232.0 (TID 680) in 714 ms on localhost (3/3)
+16/11/27 13:57:34 INFO TaskSchedulerImpl: Removed TaskSet 232.0, whose tasks have all completed, from pool 
+16/11/27 13:57:34 INFO DAGScheduler: ShuffleMapStage 232 (mapPartitions at DecisionTree.scala:622) finished in 1.777 s
+16/11/27 13:57:34 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:34 INFO DAGScheduler: running: Set()
+16/11/27 13:57:34 INFO DAGScheduler: waiting: Set(ResultStage 233)
+16/11/27 13:57:34 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:34 INFO DAGScheduler: Submitting ResultStage 233 (MapPartitionsRDD[382] at map at DecisionTree.scala:642), which has no missing parents
+16/11/27 13:57:34 INFO MemoryStore: Block broadcast_319 stored as values in memory (estimated size 174.5 KB, free 384.3 MB)
+16/11/27 13:57:34 INFO MemoryStore: Block broadcast_319_piece0 stored as bytes in memory (estimated size 48.6 KB, free 384.4 MB)
+16/11/27 13:57:34 INFO BlockManagerInfo: Added broadcast_319_piece0 in memory on localhost:54166 (size: 48.6 KB, free: 2.1 GB)
+16/11/27 13:57:34 INFO SparkContext: Created broadcast 319 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:34 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 233 (MapPartitionsRDD[382] at map at DecisionTree.scala:642)
+16/11/27 13:57:34 INFO TaskSchedulerImpl: Adding task set 233.0 with 3 tasks
+16/11/27 13:57:34 INFO TaskSetManager: Starting task 0.0 in stage 233.0 (TID 681, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:34 INFO Executor: Running task 0.0 in stage 233.0 (TID 681)
+16/11/27 13:57:34 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:34 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:35 INFO Executor: Finished task 0.0 in stage 233.0 (TID 681). 86188 bytes result sent to driver
+16/11/27 13:57:35 INFO TaskSetManager: Starting task 1.0 in stage 233.0 (TID 682, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:35 INFO Executor: Running task 1.0 in stage 233.0 (TID 682)
+16/11/27 13:57:35 INFO TaskSetManager: Finished task 0.0 in stage 233.0 (TID 681) in 1403 ms on localhost (1/3)
+16/11/27 13:57:35 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:35 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:36 INFO Executor: Finished task 1.0 in stage 233.0 (TID 682). 86218 bytes result sent to driver
+16/11/27 13:57:36 INFO TaskSetManager: Starting task 2.0 in stage 233.0 (TID 683, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:36 INFO Executor: Running task 2.0 in stage 233.0 (TID 683)
+16/11/27 13:57:36 INFO TaskSetManager: Finished task 1.0 in stage 233.0 (TID 682) in 1304 ms on localhost (2/3)
+16/11/27 13:57:36 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:36 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:38 INFO Executor: Finished task 2.0 in stage 233.0 (TID 683). 86039 bytes result sent to driver
+16/11/27 13:57:38 INFO TaskSetManager: Finished task 2.0 in stage 233.0 (TID 683) in 1303 ms on localhost (3/3)
+16/11/27 13:57:38 INFO DAGScheduler: ResultStage 233 (collectAsMap at DecisionTree.scala:651) finished in 4.008 s
+16/11/27 13:57:38 INFO TaskSchedulerImpl: Removed TaskSet 233.0, whose tasks have all completed, from pool 
+16/11/27 13:57:38 INFO DAGScheduler: Job 125 finished: collectAsMap at DecisionTree.scala:651, took 5.830350 s
+16/11/27 13:57:38 INFO MemoryStore: Block broadcast_320 stored as values in memory (estimated size 40.0 B, free 384.4 MB)
+16/11/27 13:57:38 INFO MemoryStore: Block broadcast_320_piece0 stored as bytes in memory (estimated size 81.0 B, free 384.4 MB)
+16/11/27 13:57:38 INFO BlockManagerInfo: Added broadcast_320_piece0 in memory on localhost:54166 (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:38 INFO SparkContext: Created broadcast 320 from broadcast at DecisionTree.scala:601
+16/11/27 13:57:38 INFO SparkContext: Starting job: collectAsMap at DecisionTree.scala:651
+16/11/27 13:57:38 INFO DAGScheduler: Registering RDD 383 (mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:38 INFO DAGScheduler: Got job 126 (collectAsMap at DecisionTree.scala:651) with 3 output partitions
+16/11/27 13:57:38 INFO DAGScheduler: Final stage: ResultStage 235 (collectAsMap at DecisionTree.scala:651)
+16/11/27 13:57:38 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 234)
+16/11/27 13:57:38 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 234)
+16/11/27 13:57:38 INFO DAGScheduler: Submitting ShuffleMapStage 234 (MapPartitionsRDD[383] at mapPartitions at DecisionTree.scala:622), which has no missing parents
+16/11/27 13:57:38 INFO MemoryStore: Block broadcast_321 stored as values in memory (estimated size 2030.5 KB, free 386.4 MB)
+16/11/27 13:57:38 INFO MemoryStore: Block broadcast_321_piece0 stored as bytes in memory (estimated size 695.6 KB, free 387.1 MB)
+16/11/27 13:57:38 INFO BlockManagerInfo: Added broadcast_321_piece0 in memory on localhost:54166 (size: 695.6 KB, free: 2.1 GB)
+16/11/27 13:57:38 INFO SparkContext: Created broadcast 321 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:38 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 234 (MapPartitionsRDD[383] at mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:38 INFO TaskSchedulerImpl: Adding task set 234.0 with 3 tasks
+16/11/27 13:57:38 INFO TaskSetManager: Starting task 0.0 in stage 234.0 (TID 684, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:38 INFO Executor: Running task 0.0 in stage 234.0 (TID 684)
+16/11/27 13:57:38 INFO BlockManager: Found block rdd_331_0 locally
+16/11/27 13:57:38 INFO Executor: Finished task 0.0 in stage 234.0 (TID 684). 2255 bytes result sent to driver
+16/11/27 13:57:38 INFO TaskSetManager: Starting task 1.0 in stage 234.0 (TID 685, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:38 INFO Executor: Running task 1.0 in stage 234.0 (TID 685)
+16/11/27 13:57:38 INFO TaskSetManager: Finished task 0.0 in stage 234.0 (TID 684) in 549 ms on localhost (1/3)
+16/11/27 13:57:38 INFO BlockManager: Found block rdd_331_1 locally
+16/11/27 13:57:39 INFO Executor: Finished task 1.0 in stage 234.0 (TID 685). 2255 bytes result sent to driver
+16/11/27 13:57:39 INFO TaskSetManager: Starting task 2.0 in stage 234.0 (TID 686, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:39 INFO Executor: Running task 2.0 in stage 234.0 (TID 686)
+16/11/27 13:57:39 INFO TaskSetManager: Finished task 1.0 in stage 234.0 (TID 685) in 551 ms on localhost (2/3)
+16/11/27 13:57:39 INFO BlockManager: Found block rdd_331_2 locally
+16/11/27 13:57:39 INFO Executor: Finished task 2.0 in stage 234.0 (TID 686). 2255 bytes result sent to driver
+16/11/27 13:57:39 INFO TaskSetManager: Finished task 2.0 in stage 234.0 (TID 686) in 433 ms on localhost (3/3)
+16/11/27 13:57:39 INFO TaskSchedulerImpl: Removed TaskSet 234.0, whose tasks have all completed, from pool 
+16/11/27 13:57:39 INFO DAGScheduler: ShuffleMapStage 234 (mapPartitions at DecisionTree.scala:622) finished in 1.532 s
+16/11/27 13:57:39 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:39 INFO DAGScheduler: running: Set()
+16/11/27 13:57:39 INFO DAGScheduler: waiting: Set(ResultStage 235)
+16/11/27 13:57:39 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:39 INFO DAGScheduler: Submitting ResultStage 235 (MapPartitionsRDD[385] at map at DecisionTree.scala:642), which has no missing parents
+16/11/27 13:57:39 INFO MemoryStore: Block broadcast_322 stored as values in memory (estimated size 179.3 KB, free 387.2 MB)
+16/11/27 13:57:39 INFO MemoryStore: Block broadcast_322_piece0 stored as bytes in memory (estimated size 50.5 KB, free 387.3 MB)
+16/11/27 13:57:39 INFO BlockManagerInfo: Added broadcast_322_piece0 in memory on localhost:54166 (size: 50.5 KB, free: 2.1 GB)
+16/11/27 13:57:39 INFO SparkContext: Created broadcast 322 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:39 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 235 (MapPartitionsRDD[385] at map at DecisionTree.scala:642)
+16/11/27 13:57:39 INFO TaskSchedulerImpl: Adding task set 235.0 with 3 tasks
+16/11/27 13:57:39 INFO TaskSetManager: Starting task 0.0 in stage 235.0 (TID 687, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:39 INFO Executor: Running task 0.0 in stage 235.0 (TID 687)
+16/11/27 13:57:39 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:39 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:41 INFO Executor: Finished task 0.0 in stage 235.0 (TID 687). 90435 bytes result sent to driver
+16/11/27 13:57:41 INFO TaskSetManager: Starting task 1.0 in stage 235.0 (TID 688, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:41 INFO Executor: Running task 1.0 in stage 235.0 (TID 688)
+16/11/27 13:57:41 INFO TaskSetManager: Finished task 0.0 in stage 235.0 (TID 687) in 1345 ms on localhost (1/3)
+16/11/27 13:57:41 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:41 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:42 INFO Executor: Finished task 1.0 in stage 235.0 (TID 688). 90159 bytes result sent to driver
+16/11/27 13:57:42 INFO TaskSetManager: Starting task 2.0 in stage 235.0 (TID 689, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:42 INFO Executor: Running task 2.0 in stage 235.0 (TID 689)
+16/11/27 13:57:42 INFO TaskSetManager: Finished task 1.0 in stage 235.0 (TID 688) in 1356 ms on localhost (2/3)
+16/11/27 13:57:42 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:42 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:43 INFO Executor: Finished task 2.0 in stage 235.0 (TID 689). 90171 bytes result sent to driver
+16/11/27 13:57:43 INFO TaskSetManager: Finished task 2.0 in stage 235.0 (TID 689) in 1372 ms on localhost (3/3)
+16/11/27 13:57:43 INFO TaskSchedulerImpl: Removed TaskSet 235.0, whose tasks have all completed, from pool 
+16/11/27 13:57:43 INFO DAGScheduler: ResultStage 235 (collectAsMap at DecisionTree.scala:651) finished in 4.071 s
+16/11/27 13:57:43 INFO DAGScheduler: Job 126 finished: collectAsMap at DecisionTree.scala:651, took 5.657247 s
+16/11/27 13:57:43 INFO MemoryStore: Block broadcast_323 stored as values in memory (estimated size 40.0 B, free 387.3 MB)
+16/11/27 13:57:43 INFO MemoryStore: Block broadcast_323_piece0 stored as bytes in memory (estimated size 81.0 B, free 387.3 MB)
+16/11/27 13:57:43 INFO BlockManagerInfo: Added broadcast_323_piece0 in memory on localhost:54166 (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:43 INFO SparkContext: Created broadcast 323 from broadcast at DecisionTree.scala:601
+16/11/27 13:57:43 INFO SparkContext: Starting job: collectAsMap at DecisionTree.scala:651
+16/11/27 13:57:43 INFO DAGScheduler: Registering RDD 386 (mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:43 INFO DAGScheduler: Got job 127 (collectAsMap at DecisionTree.scala:651) with 3 output partitions
+16/11/27 13:57:43 INFO DAGScheduler: Final stage: ResultStage 237 (collectAsMap at DecisionTree.scala:651)
+16/11/27 13:57:43 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 236)
+16/11/27 13:57:43 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 236)
+16/11/27 13:57:43 INFO DAGScheduler: Submitting ShuffleMapStage 236 (MapPartitionsRDD[386] at mapPartitions at DecisionTree.scala:622), which has no missing parents
+16/11/27 13:57:44 INFO MemoryStore: Block broadcast_324 stored as values in memory (estimated size 2.3 MB, free 389.6 MB)
+16/11/27 13:57:44 INFO MemoryStore: Block broadcast_324_piece0 stored as bytes in memory (estimated size 820.6 KB, free 390.4 MB)
+16/11/27 13:57:44 INFO BlockManagerInfo: Added broadcast_324_piece0 in memory on localhost:54166 (size: 820.6 KB, free: 2.1 GB)
+16/11/27 13:57:44 INFO SparkContext: Created broadcast 324 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:44 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 236 (MapPartitionsRDD[386] at mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:44 INFO TaskSchedulerImpl: Adding task set 236.0 with 3 tasks
+16/11/27 13:57:44 INFO TaskSetManager: Starting task 0.0 in stage 236.0 (TID 690, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:44 INFO Executor: Running task 0.0 in stage 236.0 (TID 690)
+16/11/27 13:57:44 INFO BlockManager: Found block rdd_331_0 locally
+16/11/27 13:57:44 INFO Executor: Finished task 0.0 in stage 236.0 (TID 690). 2255 bytes result sent to driver
+16/11/27 13:57:44 INFO TaskSetManager: Starting task 1.0 in stage 236.0 (TID 691, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:44 INFO Executor: Running task 1.0 in stage 236.0 (TID 691)
+16/11/27 13:57:44 INFO TaskSetManager: Finished task 0.0 in stage 236.0 (TID 690) in 581 ms on localhost (1/3)
+16/11/27 13:57:44 INFO BlockManager: Found block rdd_331_1 locally
+16/11/27 13:57:45 INFO Executor: Finished task 1.0 in stage 236.0 (TID 691). 2255 bytes result sent to driver
+16/11/27 13:57:45 INFO TaskSetManager: Starting task 2.0 in stage 236.0 (TID 692, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:45 INFO Executor: Running task 2.0 in stage 236.0 (TID 692)
+16/11/27 13:57:45 INFO TaskSetManager: Finished task 1.0 in stage 236.0 (TID 691) in 572 ms on localhost (2/3)
+16/11/27 13:57:45 INFO BlockManager: Found block rdd_331_2 locally
+16/11/27 13:57:45 INFO Executor: Finished task 2.0 in stage 236.0 (TID 692). 2255 bytes result sent to driver
+16/11/27 13:57:45 INFO TaskSetManager: Finished task 2.0 in stage 236.0 (TID 692) in 454 ms on localhost (3/3)
+16/11/27 13:57:45 INFO TaskSchedulerImpl: Removed TaskSet 236.0, whose tasks have all completed, from pool 
+16/11/27 13:57:45 INFO DAGScheduler: ShuffleMapStage 236 (mapPartitions at DecisionTree.scala:622) finished in 1.607 s
+16/11/27 13:57:45 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:45 INFO DAGScheduler: running: Set()
+16/11/27 13:57:45 INFO DAGScheduler: waiting: Set(ResultStage 237)
+16/11/27 13:57:45 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:45 INFO DAGScheduler: Submitting ResultStage 237 (MapPartitionsRDD[388] at map at DecisionTree.scala:642), which has no missing parents
+16/11/27 13:57:45 INFO MemoryStore: Block broadcast_325 stored as values in memory (estimated size 183.0 KB, free 390.6 MB)
+16/11/27 13:57:45 INFO MemoryStore: Block broadcast_325_piece0 stored as bytes in memory (estimated size 50.3 KB, free 390.6 MB)
+16/11/27 13:57:45 INFO BlockManagerInfo: Added broadcast_325_piece0 in memory on localhost:54166 (size: 50.3 KB, free: 2.1 GB)
+16/11/27 13:57:45 INFO SparkContext: Created broadcast 325 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:45 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 237 (MapPartitionsRDD[388] at map at DecisionTree.scala:642)
+16/11/27 13:57:45 INFO TaskSchedulerImpl: Adding task set 237.0 with 3 tasks
+16/11/27 13:57:45 INFO TaskSetManager: Starting task 0.0 in stage 237.0 (TID 693, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:45 INFO Executor: Running task 0.0 in stage 237.0 (TID 693)
+16/11/27 13:57:45 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:45 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:46 INFO BlockManagerInfo: Removed broadcast_324_piece0 on localhost:54166 in memory (size: 820.6 KB, free: 2.1 GB)
+16/11/27 13:57:46 INFO BlockManagerInfo: Removed broadcast_322_piece0 on localhost:54166 in memory (size: 50.5 KB, free: 2.1 GB)
+16/11/27 13:57:46 INFO ContextCleaner: Cleaned accumulator 236
+16/11/27 13:57:46 INFO BlockManagerInfo: Removed broadcast_321_piece0 on localhost:54166 in memory (size: 695.6 KB, free: 2.1 GB)
+16/11/27 13:57:46 INFO ContextCleaner: Cleaned accumulator 235
+16/11/27 13:57:46 INFO ContextCleaner: Cleaned shuffle 108
+16/11/27 13:57:46 INFO BlockManagerInfo: Removed broadcast_320_piece0 on localhost:54166 in memory (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:46 INFO BlockManagerInfo: Removed broadcast_319_piece0 on localhost:54166 in memory (size: 48.6 KB, free: 2.1 GB)
+16/11/27 13:57:46 INFO ContextCleaner: Cleaned accumulator 234
+16/11/27 13:57:46 INFO BlockManagerInfo: Removed broadcast_318_piece0 on localhost:54166 in memory (size: 576.7 KB, free: 2.1 GB)
+16/11/27 13:57:46 INFO ContextCleaner: Cleaned accumulator 233
+16/11/27 13:57:46 INFO ContextCleaner: Cleaned shuffle 107
+16/11/27 13:57:46 INFO BlockManagerInfo: Removed broadcast_317_piece0 on localhost:54166 in memory (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:47 INFO Executor: Finished task 0.0 in stage 237.0 (TID 693). 93201 bytes result sent to driver
+16/11/27 13:57:47 INFO TaskSetManager: Starting task 1.0 in stage 237.0 (TID 694, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:47 INFO Executor: Running task 1.0 in stage 237.0 (TID 694)
+16/11/27 13:57:47 INFO TaskSetManager: Finished task 0.0 in stage 237.0 (TID 693) in 1638 ms on localhost (1/3)
+16/11/27 13:57:47 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:47 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:48 INFO Executor: Finished task 1.0 in stage 237.0 (TID 694). 93208 bytes result sent to driver
+16/11/27 13:57:48 INFO TaskSetManager: Starting task 2.0 in stage 237.0 (TID 695, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:48 INFO Executor: Running task 2.0 in stage 237.0 (TID 695)
+16/11/27 13:57:48 INFO TaskSetManager: Finished task 1.0 in stage 237.0 (TID 694) in 1384 ms on localhost (2/3)
+16/11/27 13:57:48 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:48 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:50 INFO Executor: Finished task 2.0 in stage 237.0 (TID 695). 92983 bytes result sent to driver
+16/11/27 13:57:50 INFO TaskSetManager: Finished task 2.0 in stage 237.0 (TID 695) in 1384 ms on localhost (3/3)
+16/11/27 13:57:50 INFO TaskSchedulerImpl: Removed TaskSet 237.0, whose tasks have all completed, from pool 
+16/11/27 13:57:50 INFO DAGScheduler: ResultStage 237 (collectAsMap at DecisionTree.scala:651) finished in 4.404 s
+16/11/27 13:57:50 INFO DAGScheduler: Job 127 finished: collectAsMap at DecisionTree.scala:651, took 6.077578 s
+16/11/27 13:57:50 INFO MemoryStore: Block broadcast_326 stored as values in memory (estimated size 40.0 B, free 382.2 MB)
+16/11/27 13:57:50 INFO MemoryStore: Block broadcast_326_piece0 stored as bytes in memory (estimated size 81.0 B, free 382.2 MB)
+16/11/27 13:57:50 INFO BlockManagerInfo: Added broadcast_326_piece0 in memory on localhost:54166 (size: 81.0 B, free: 2.1 GB)
+16/11/27 13:57:50 INFO SparkContext: Created broadcast 326 from broadcast at DecisionTree.scala:601
+16/11/27 13:57:50 INFO SparkContext: Starting job: collectAsMap at DecisionTree.scala:651
+16/11/27 13:57:50 INFO DAGScheduler: Registering RDD 389 (mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:50 INFO DAGScheduler: Got job 128 (collectAsMap at DecisionTree.scala:651) with 3 output partitions
+16/11/27 13:57:50 INFO DAGScheduler: Final stage: ResultStage 239 (collectAsMap at DecisionTree.scala:651)
+16/11/27 13:57:50 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 238)
+16/11/27 13:57:50 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 238)
+16/11/27 13:57:50 INFO DAGScheduler: Submitting ShuffleMapStage 238 (MapPartitionsRDD[389] at mapPartitions at DecisionTree.scala:622), which has no missing parents
+16/11/27 13:57:50 INFO MemoryStore: Block broadcast_327 stored as values in memory (estimated size 2.7 MB, free 384.9 MB)
+16/11/27 13:57:50 INFO MemoryStore: Block broadcast_327_piece0 stored as bytes in memory (estimated size 946.6 KB, free 385.8 MB)
+16/11/27 13:57:50 INFO BlockManagerInfo: Added broadcast_327_piece0 in memory on localhost:54166 (size: 946.6 KB, free: 2.1 GB)
+16/11/27 13:57:50 INFO SparkContext: Created broadcast 327 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:50 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 238 (MapPartitionsRDD[389] at mapPartitions at DecisionTree.scala:622)
+16/11/27 13:57:50 INFO TaskSchedulerImpl: Adding task set 238.0 with 3 tasks
+16/11/27 13:57:50 INFO TaskSetManager: Starting task 0.0 in stage 238.0 (TID 696, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:50 INFO Executor: Running task 0.0 in stage 238.0 (TID 696)
+16/11/27 13:57:50 INFO BlockManager: Found block rdd_331_0 locally
+16/11/27 13:57:50 INFO Executor: Finished task 0.0 in stage 238.0 (TID 696). 2255 bytes result sent to driver
+16/11/27 13:57:50 INFO TaskSetManager: Starting task 1.0 in stage 238.0 (TID 697, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:50 INFO Executor: Running task 1.0 in stage 238.0 (TID 697)
+16/11/27 13:57:50 INFO TaskSetManager: Finished task 0.0 in stage 238.0 (TID 696) in 566 ms on localhost (1/3)
+16/11/27 13:57:50 INFO BlockManager: Found block rdd_331_1 locally
+16/11/27 13:57:51 INFO Executor: Finished task 1.0 in stage 238.0 (TID 697). 2255 bytes result sent to driver
+16/11/27 13:57:51 INFO TaskSetManager: Starting task 2.0 in stage 238.0 (TID 698, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:51 INFO Executor: Running task 2.0 in stage 238.0 (TID 698)
+16/11/27 13:57:51 INFO TaskSetManager: Finished task 1.0 in stage 238.0 (TID 697) in 582 ms on localhost (2/3)
+16/11/27 13:57:51 INFO BlockManager: Found block rdd_331_2 locally
+16/11/27 13:57:51 INFO Executor: Finished task 2.0 in stage 238.0 (TID 698). 2255 bytes result sent to driver
+16/11/27 13:57:51 INFO TaskSetManager: Finished task 2.0 in stage 238.0 (TID 698) in 452 ms on localhost (3/3)
+16/11/27 13:57:51 INFO TaskSchedulerImpl: Removed TaskSet 238.0, whose tasks have all completed, from pool 
+16/11/27 13:57:51 INFO DAGScheduler: ShuffleMapStage 238 (mapPartitions at DecisionTree.scala:622) finished in 1.600 s
+16/11/27 13:57:51 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:51 INFO DAGScheduler: running: Set()
+16/11/27 13:57:51 INFO DAGScheduler: waiting: Set(ResultStage 239)
+16/11/27 13:57:51 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:51 INFO DAGScheduler: Submitting ResultStage 239 (MapPartitionsRDD[391] at map at DecisionTree.scala:642), which has no missing parents
+16/11/27 13:57:51 INFO MemoryStore: Block broadcast_328 stored as values in memory (estimated size 183.2 KB, free 386.0 MB)
+16/11/27 13:57:51 INFO MemoryStore: Block broadcast_328_piece0 stored as bytes in memory (estimated size 49.1 KB, free 386.1 MB)
+16/11/27 13:57:51 INFO BlockManagerInfo: Added broadcast_328_piece0 in memory on localhost:54166 (size: 49.1 KB, free: 2.1 GB)
+16/11/27 13:57:51 INFO SparkContext: Created broadcast 328 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:51 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 239 (MapPartitionsRDD[391] at map at DecisionTree.scala:642)
+16/11/27 13:57:51 INFO TaskSchedulerImpl: Adding task set 239.0 with 3 tasks
+16/11/27 13:57:51 INFO TaskSetManager: Starting task 0.0 in stage 239.0 (TID 699, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:51 INFO Executor: Running task 0.0 in stage 239.0 (TID 699)
+16/11/27 13:57:51 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:51 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:53 INFO Executor: Finished task 0.0 in stage 239.0 (TID 699). 93362 bytes result sent to driver
+16/11/27 13:57:53 INFO TaskSetManager: Starting task 1.0 in stage 239.0 (TID 700, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:53 INFO Executor: Running task 1.0 in stage 239.0 (TID 700)
+16/11/27 13:57:53 INFO TaskSetManager: Finished task 0.0 in stage 239.0 (TID 699) in 1368 ms on localhost (1/3)
+16/11/27 13:57:53 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:53 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:54 INFO Executor: Finished task 1.0 in stage 239.0 (TID 700). 92994 bytes result sent to driver
+16/11/27 13:57:54 INFO TaskSetManager: Starting task 2.0 in stage 239.0 (TID 701, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:54 INFO Executor: Running task 2.0 in stage 239.0 (TID 701)
+16/11/27 13:57:54 INFO TaskSetManager: Finished task 1.0 in stage 239.0 (TID 700) in 1365 ms on localhost (2/3)
+16/11/27 13:57:54 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:54 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:55 INFO Executor: Finished task 2.0 in stage 239.0 (TID 701). 93459 bytes result sent to driver
+16/11/27 13:57:55 INFO TaskSetManager: Finished task 2.0 in stage 239.0 (TID 701) in 1358 ms on localhost (3/3)
+16/11/27 13:57:55 INFO TaskSchedulerImpl: Removed TaskSet 239.0, whose tasks have all completed, from pool 
+16/11/27 13:57:55 INFO DAGScheduler: ResultStage 239 (collectAsMap at DecisionTree.scala:651) finished in 4.087 s
+16/11/27 13:57:55 INFO DAGScheduler: Job 128 finished: collectAsMap at DecisionTree.scala:651, took 5.763969 s
+16/11/27 13:57:55 INFO MapPartitionsRDD: Removing RDD 331 from persistence list
+16/11/27 13:57:55 INFO BlockManager: Removing RDD 331
+16/11/27 13:57:55 INFO RandomForest: Internal timing for DecisionTree:
+16/11/27 13:57:55 INFO RandomForest:   init: 9.410798057
+  total: 61.571949286
+  findSplitsBins: 9.390252821
+  findBestSplits: 52.131654967
+  chooseSplits: 52.123839733
+16/11/27 13:57:55 INFO SparkContext: Starting job: collectAsMap at MulticlassMetrics.scala:49
+16/11/27 13:57:55 INFO DAGScheduler: Registering RDD 393 (map at MulticlassMetrics.scala:46)
+16/11/27 13:57:55 INFO DAGScheduler: Got job 129 (collectAsMap at MulticlassMetrics.scala:49) with 3 output partitions
+16/11/27 13:57:55 INFO DAGScheduler: Final stage: ResultStage 241 (collectAsMap at MulticlassMetrics.scala:49)
+16/11/27 13:57:55 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 240)
+16/11/27 13:57:55 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 240)
+16/11/27 13:57:55 INFO DAGScheduler: Submitting ShuffleMapStage 240 (MapPartitionsRDD[393] at map at MulticlassMetrics.scala:46), which has no missing parents
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_329 stored as values in memory (estimated size 2.9 MB, free 252.4 MB)
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_329_piece0 stored as bytes in memory (estimated size 1014.0 KB, free 253.4 MB)
+16/11/27 13:57:56 INFO BlockManagerInfo: Added broadcast_329_piece0 in memory on localhost:54166 (size: 1014.0 KB, free: 2.2 GB)
+16/11/27 13:57:56 INFO SparkContext: Created broadcast 329 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:56 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 240 (MapPartitionsRDD[393] at map at MulticlassMetrics.scala:46)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Adding task set 240.0 with 3 tasks
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 0.0 in stage 240.0 (TID 702, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 0.0 in stage 240.0 (TID 702)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_0 locally
+16/11/27 13:57:56 INFO Executor: Finished task 0.0 in stage 240.0 (TID 702). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 1.0 in stage 240.0 (TID 703, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 1.0 in stage 240.0 (TID 703)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 0.0 in stage 240.0 (TID 702) in 59 ms on localhost (1/3)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_1 locally
+16/11/27 13:57:56 INFO Executor: Finished task 1.0 in stage 240.0 (TID 703). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 2.0 in stage 240.0 (TID 704, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 2.0 in stage 240.0 (TID 704)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 1.0 in stage 240.0 (TID 703) in 60 ms on localhost (2/3)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_2 locally
+16/11/27 13:57:56 INFO Executor: Finished task 2.0 in stage 240.0 (TID 704). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 2.0 in stage 240.0 (TID 704) in 51 ms on localhost (3/3)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Removed TaskSet 240.0, whose tasks have all completed, from pool 
+16/11/27 13:57:56 INFO DAGScheduler: ShuffleMapStage 240 (map at MulticlassMetrics.scala:46) finished in 0.169 s
+16/11/27 13:57:56 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:56 INFO DAGScheduler: running: Set()
+16/11/27 13:57:56 INFO DAGScheduler: waiting: Set(ResultStage 241)
+16/11/27 13:57:56 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:56 INFO DAGScheduler: Submitting ResultStage 241 (ShuffledRDD[394] at reduceByKey at MulticlassMetrics.scala:48), which has no missing parents
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_330 stored as values in memory (estimated size 2.6 KB, free 253.4 MB)
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_330_piece0 stored as bytes in memory (estimated size 1612.0 B, free 253.4 MB)
+16/11/27 13:57:56 INFO BlockManagerInfo: Added broadcast_330_piece0 in memory on localhost:54166 (size: 1612.0 B, free: 2.2 GB)
+16/11/27 13:57:56 INFO SparkContext: Created broadcast 330 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:56 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 241 (ShuffledRDD[394] at reduceByKey at MulticlassMetrics.scala:48)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Adding task set 241.0 with 3 tasks
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 0.0 in stage 241.0 (TID 705, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 0.0 in stage 241.0 (TID 705)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/27 13:57:56 INFO Executor: Finished task 0.0 in stage 241.0 (TID 705). 1449 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 1.0 in stage 241.0 (TID 706, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 1.0 in stage 241.0 (TID 706)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 0.0 in stage 241.0 (TID 705) in 2 ms on localhost (1/3)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 1.0 in stage 241.0 (TID 706). 1389 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 2.0 in stage 241.0 (TID 707, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 2.0 in stage 241.0 (TID 707)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 1.0 in stage 241.0 (TID 706) in 2 ms on localhost (2/3)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 2.0 in stage 241.0 (TID 707). 1356 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 2.0 in stage 241.0 (TID 707) in 2 ms on localhost (3/3)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Removed TaskSet 241.0, whose tasks have all completed, from pool 
+16/11/27 13:57:56 INFO DAGScheduler: ResultStage 241 (collectAsMap at MulticlassMetrics.scala:49) finished in 0.005 s
+16/11/27 13:57:56 INFO DAGScheduler: Job 129 finished: collectAsMap at MulticlassMetrics.scala:49, took 0.251361 s
+16/11/27 13:57:56 INFO SparkContext: Starting job: countByValue at MulticlassMetrics.scala:43
+16/11/27 13:57:56 INFO DAGScheduler: Registering RDD 397 (countByValue at MulticlassMetrics.scala:43)
+16/11/27 13:57:56 INFO DAGScheduler: Got job 130 (countByValue at MulticlassMetrics.scala:43) with 3 output partitions
+16/11/27 13:57:56 INFO DAGScheduler: Final stage: ResultStage 243 (countByValue at MulticlassMetrics.scala:43)
+16/11/27 13:57:56 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 242)
+16/11/27 13:57:56 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 242)
+16/11/27 13:57:56 INFO DAGScheduler: Submitting ShuffleMapStage 242 (MapPartitionsRDD[397] at countByValue at MulticlassMetrics.scala:43), which has no missing parents
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_331 stored as values in memory (estimated size 2.9 MB, free 256.3 MB)
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_331_piece0 stored as bytes in memory (estimated size 1014.4 KB, free 257.3 MB)
+16/11/27 13:57:56 INFO BlockManagerInfo: Added broadcast_331_piece0 in memory on localhost:54166 (size: 1014.4 KB, free: 2.2 GB)
+16/11/27 13:57:56 INFO SparkContext: Created broadcast 331 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:56 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 242 (MapPartitionsRDD[397] at countByValue at MulticlassMetrics.scala:43)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Adding task set 242.0 with 3 tasks
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 0.0 in stage 242.0 (TID 708, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 0.0 in stage 242.0 (TID 708)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_0 locally
+16/11/27 13:57:56 INFO Executor: Finished task 0.0 in stage 242.0 (TID 708). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 1.0 in stage 242.0 (TID 709, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 1.0 in stage 242.0 (TID 709)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 0.0 in stage 242.0 (TID 708) in 58 ms on localhost (1/3)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_1 locally
+16/11/27 13:57:56 INFO Executor: Finished task 1.0 in stage 242.0 (TID 709). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 2.0 in stage 242.0 (TID 710, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 2.0 in stage 242.0 (TID 710)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 1.0 in stage 242.0 (TID 709) in 64 ms on localhost (2/3)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_2 locally
+16/11/27 13:57:56 INFO Executor: Finished task 2.0 in stage 242.0 (TID 710). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 2.0 in stage 242.0 (TID 710) in 47 ms on localhost (3/3)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Removed TaskSet 242.0, whose tasks have all completed, from pool 
+16/11/27 13:57:56 INFO DAGScheduler: ShuffleMapStage 242 (countByValue at MulticlassMetrics.scala:43) finished in 0.169 s
+16/11/27 13:57:56 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:56 INFO DAGScheduler: running: Set()
+16/11/27 13:57:56 INFO DAGScheduler: waiting: Set(ResultStage 243)
+16/11/27 13:57:56 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:56 INFO DAGScheduler: Submitting ResultStage 243 (ShuffledRDD[398] at countByValue at MulticlassMetrics.scala:43), which has no missing parents
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_332 stored as values in memory (estimated size 2.6 KB, free 257.3 MB)
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_332_piece0 stored as bytes in memory (estimated size 1585.0 B, free 257.3 MB)
+16/11/27 13:57:56 INFO BlockManagerInfo: Added broadcast_332_piece0 in memory on localhost:54166 (size: 1585.0 B, free: 2.2 GB)
+16/11/27 13:57:56 INFO SparkContext: Created broadcast 332 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:56 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 243 (ShuffledRDD[398] at countByValue at MulticlassMetrics.scala:43)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Adding task set 243.0 with 3 tasks
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 0.0 in stage 243.0 (TID 711, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 0.0 in stage 243.0 (TID 711)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 0.0 in stage 243.0 (TID 711). 1462 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 1.0 in stage 243.0 (TID 712, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 1.0 in stage 243.0 (TID 712)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 0.0 in stage 243.0 (TID 711) in 2 ms on localhost (1/3)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/27 13:57:56 INFO Executor: Finished task 1.0 in stage 243.0 (TID 712). 1394 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 2.0 in stage 243.0 (TID 713, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 2.0 in stage 243.0 (TID 713)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 1.0 in stage 243.0 (TID 712) in 2 ms on localhost (2/3)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 2.0 in stage 243.0 (TID 713). 1357 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 2.0 in stage 243.0 (TID 713) in 2 ms on localhost (3/3)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Removed TaskSet 243.0, whose tasks have all completed, from pool 
+16/11/27 13:57:56 INFO DAGScheduler: ResultStage 243 (countByValue at MulticlassMetrics.scala:43) finished in 0.005 s
+16/11/27 13:57:56 INFO DAGScheduler: Job 130 finished: countByValue at MulticlassMetrics.scala:43, took 0.256497 s
+16/11/27 13:57:56 INFO SparkContext: Starting job: collectAsMap at MulticlassMetrics.scala:49
+16/11/27 13:57:56 INFO DAGScheduler: Registering RDD 399 (map at MulticlassMetrics.scala:46)
+16/11/27 13:57:56 INFO DAGScheduler: Got job 131 (collectAsMap at MulticlassMetrics.scala:49) with 3 output partitions
+16/11/27 13:57:56 INFO DAGScheduler: Final stage: ResultStage 245 (collectAsMap at MulticlassMetrics.scala:49)
+16/11/27 13:57:56 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 244)
+16/11/27 13:57:56 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 244)
+16/11/27 13:57:56 INFO DAGScheduler: Submitting ShuffleMapStage 244 (MapPartitionsRDD[399] at map at MulticlassMetrics.scala:46), which has no missing parents
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_333 stored as values in memory (estimated size 9.6 KB, free 257.3 MB)
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_333_piece0 stored as bytes in memory (estimated size 5.0 KB, free 257.3 MB)
+16/11/27 13:57:56 INFO BlockManagerInfo: Added broadcast_333_piece0 in memory on localhost:54166 (size: 5.0 KB, free: 2.2 GB)
+16/11/27 13:57:56 INFO SparkContext: Created broadcast 333 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:56 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 244 (MapPartitionsRDD[399] at map at MulticlassMetrics.scala:46)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Adding task set 244.0 with 3 tasks
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 0.0 in stage 244.0 (TID 714, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 0.0 in stage 244.0 (TID 714)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_0 locally
+16/11/27 13:57:56 INFO Executor: Finished task 0.0 in stage 244.0 (TID 714). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 1.0 in stage 244.0 (TID 715, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 1.0 in stage 244.0 (TID 715)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 0.0 in stage 244.0 (TID 714) in 13 ms on localhost (1/3)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_1 locally
+16/11/27 13:57:56 INFO Executor: Finished task 1.0 in stage 244.0 (TID 715). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 2.0 in stage 244.0 (TID 716, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 2.0 in stage 244.0 (TID 716)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 1.0 in stage 244.0 (TID 715) in 12 ms on localhost (2/3)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_2 locally
+16/11/27 13:57:56 INFO Executor: Finished task 2.0 in stage 244.0 (TID 716). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 2.0 in stage 244.0 (TID 716) in 7 ms on localhost (3/3)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Removed TaskSet 244.0, whose tasks have all completed, from pool 
+16/11/27 13:57:56 INFO DAGScheduler: ShuffleMapStage 244 (map at MulticlassMetrics.scala:46) finished in 0.032 s
+16/11/27 13:57:56 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:56 INFO DAGScheduler: running: Set()
+16/11/27 13:57:56 INFO DAGScheduler: waiting: Set(ResultStage 245)
+16/11/27 13:57:56 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:56 INFO DAGScheduler: Submitting ResultStage 245 (ShuffledRDD[400] at reduceByKey at MulticlassMetrics.scala:48), which has no missing parents
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_334 stored as values in memory (estimated size 2.6 KB, free 257.3 MB)
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_334_piece0 stored as bytes in memory (estimated size 1612.0 B, free 257.3 MB)
+16/11/27 13:57:56 INFO BlockManagerInfo: Added broadcast_334_piece0 in memory on localhost:54166 (size: 1612.0 B, free: 2.2 GB)
+16/11/27 13:57:56 INFO SparkContext: Created broadcast 334 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:56 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 245 (ShuffledRDD[400] at reduceByKey at MulticlassMetrics.scala:48)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Adding task set 245.0 with 3 tasks
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 0.0 in stage 245.0 (TID 717, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 0.0 in stage 245.0 (TID 717)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 0.0 in stage 245.0 (TID 717). 1449 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 1.0 in stage 245.0 (TID 718, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 1.0 in stage 245.0 (TID 718)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 0.0 in stage 245.0 (TID 717) in 2 ms on localhost (1/3)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 1.0 in stage 245.0 (TID 718). 1389 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 2.0 in stage 245.0 (TID 719, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 2.0 in stage 245.0 (TID 719)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 1.0 in stage 245.0 (TID 718) in 3 ms on localhost (2/3)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 2.0 in stage 245.0 (TID 719). 1356 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 2.0 in stage 245.0 (TID 719) in 2 ms on localhost (3/3)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Removed TaskSet 245.0, whose tasks have all completed, from pool 
+16/11/27 13:57:56 INFO DAGScheduler: ResultStage 245 (collectAsMap at MulticlassMetrics.scala:49) finished in 0.007 s
+16/11/27 13:57:56 INFO DAGScheduler: Job 131 finished: collectAsMap at MulticlassMetrics.scala:49, took 0.044355 s
+16/11/27 13:57:56 INFO SparkContext: Starting job: collectAsMap at MulticlassMetrics.scala:59
+16/11/27 13:57:56 INFO DAGScheduler: Registering RDD 401 (map at MulticlassMetrics.scala:56)
+16/11/27 13:57:56 INFO DAGScheduler: Got job 132 (collectAsMap at MulticlassMetrics.scala:59) with 3 output partitions
+16/11/27 13:57:56 INFO DAGScheduler: Final stage: ResultStage 247 (collectAsMap at MulticlassMetrics.scala:59)
+16/11/27 13:57:56 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 246)
+16/11/27 13:57:56 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 246)
+16/11/27 13:57:56 INFO DAGScheduler: Submitting ShuffleMapStage 246 (MapPartitionsRDD[401] at map at MulticlassMetrics.scala:56), which has no missing parents
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_335 stored as values in memory (estimated size 9.6 KB, free 257.3 MB)
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_335_piece0 stored as bytes in memory (estimated size 5.0 KB, free 257.3 MB)
+16/11/27 13:57:56 INFO BlockManagerInfo: Added broadcast_335_piece0 in memory on localhost:54166 (size: 5.0 KB, free: 2.2 GB)
+16/11/27 13:57:56 INFO SparkContext: Created broadcast 335 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:56 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 246 (MapPartitionsRDD[401] at map at MulticlassMetrics.scala:56)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Adding task set 246.0 with 3 tasks
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 0.0 in stage 246.0 (TID 720, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 0.0 in stage 246.0 (TID 720)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_0 locally
+16/11/27 13:57:56 INFO Executor: Finished task 0.0 in stage 246.0 (TID 720). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 1.0 in stage 246.0 (TID 721, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 1.0 in stage 246.0 (TID 721)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 0.0 in stage 246.0 (TID 720) in 62 ms on localhost (1/3)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_1 locally
+16/11/27 13:57:56 INFO Executor: Finished task 1.0 in stage 246.0 (TID 721). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 2.0 in stage 246.0 (TID 722, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 1.0 in stage 246.0 (TID 721) in 26 ms on localhost (2/3)
+16/11/27 13:57:56 INFO Executor: Running task 2.0 in stage 246.0 (TID 722)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_2 locally
+16/11/27 13:57:56 INFO Executor: Finished task 2.0 in stage 246.0 (TID 722). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 2.0 in stage 246.0 (TID 722) in 15 ms on localhost (3/3)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Removed TaskSet 246.0, whose tasks have all completed, from pool 
+16/11/27 13:57:56 INFO DAGScheduler: ShuffleMapStage 246 (map at MulticlassMetrics.scala:56) finished in 0.103 s
+16/11/27 13:57:56 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:56 INFO DAGScheduler: running: Set()
+16/11/27 13:57:56 INFO DAGScheduler: waiting: Set(ResultStage 247)
+16/11/27 13:57:56 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:56 INFO DAGScheduler: Submitting ResultStage 247 (ShuffledRDD[402] at reduceByKey at MulticlassMetrics.scala:58), which has no missing parents
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_336 stored as values in memory (estimated size 2.6 KB, free 257.3 MB)
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_336_piece0 stored as bytes in memory (estimated size 1582.0 B, free 257.3 MB)
+16/11/27 13:57:56 INFO BlockManagerInfo: Added broadcast_336_piece0 in memory on localhost:54166 (size: 1582.0 B, free: 2.2 GB)
+16/11/27 13:57:56 INFO SparkContext: Created broadcast 336 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:56 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 247 (ShuffledRDD[402] at reduceByKey at MulticlassMetrics.scala:58)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Adding task set 247.0 with 3 tasks
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 0.0 in stage 247.0 (TID 723, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 0.0 in stage 247.0 (TID 723)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 0.0 in stage 247.0 (TID 723). 1909 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 1.0 in stage 247.0 (TID 724, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 1.0 in stage 247.0 (TID 724)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 0.0 in stage 247.0 (TID 723) in 2 ms on localhost (1/3)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 1.0 in stage 247.0 (TID 724). 1749 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 2.0 in stage 247.0 (TID 725, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 2.0 in stage 247.0 (TID 725)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 1.0 in stage 247.0 (TID 724) in 2 ms on localhost (2/3)
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:56 INFO Executor: Finished task 2.0 in stage 247.0 (TID 725). 1469 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 2.0 in stage 247.0 (TID 725) in 2 ms on localhost (3/3)
+16/11/27 13:57:56 INFO DAGScheduler: ResultStage 247 (collectAsMap at MulticlassMetrics.scala:59) finished in 0.006 s
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Removed TaskSet 247.0, whose tasks have all completed, from pool 
+16/11/27 13:57:56 INFO DAGScheduler: Job 132 finished: collectAsMap at MulticlassMetrics.scala:59, took 0.114230 s
+14605.0  6293.0   9.0     0.0    0.0  2.0   420.0  
+5776.0   21968.0  379.0   18.0   0.0  9.0   54.0   
+0.0      456.0    2960.0  58.0   0.0  11.0  0.0    
+0.0      0.0      160.0   111.0  0.0  0.0   0.0    
+0.0      925.0    39.0    1.0    0.0  0.0   0.0    
+0.0      471.0    1163.0  26.0   0.0  49.0  0.0    
+1122.0   21.0     0.0     0.0    0.0  0.0   934.0  
+16/11/27 13:57:56 INFO SparkContext: Starting job: countByValue at MulticlassMetrics.scala:43
+16/11/27 13:57:56 INFO DAGScheduler: Registering RDD 405 (countByValue at MulticlassMetrics.scala:43)
+16/11/27 13:57:56 INFO DAGScheduler: Got job 133 (countByValue at MulticlassMetrics.scala:43) with 3 output partitions
+16/11/27 13:57:56 INFO DAGScheduler: Final stage: ResultStage 249 (countByValue at MulticlassMetrics.scala:43)
+16/11/27 13:57:56 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 248)
+16/11/27 13:57:56 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 248)
+16/11/27 13:57:56 INFO DAGScheduler: Submitting ShuffleMapStage 248 (MapPartitionsRDD[405] at countByValue at MulticlassMetrics.scala:43), which has no missing parents
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_337 stored as values in memory (estimated size 10.1 KB, free 257.4 MB)
+16/11/27 13:57:56 INFO MemoryStore: Block broadcast_337_piece0 stored as bytes in memory (estimated size 5.2 KB, free 257.4 MB)
+16/11/27 13:57:56 INFO BlockManagerInfo: Added broadcast_337_piece0 in memory on localhost:54166 (size: 5.2 KB, free: 2.2 GB)
+16/11/27 13:57:56 INFO SparkContext: Created broadcast 337 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:56 INFO DAGScheduler: Submitting 3 missing tasks from ShuffleMapStage 248 (MapPartitionsRDD[405] at countByValue at MulticlassMetrics.scala:43)
+16/11/27 13:57:56 INFO TaskSchedulerImpl: Adding task set 248.0 with 3 tasks
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 0.0 in stage 248.0 (TID 726, localhost, partition 0,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO Executor: Running task 0.0 in stage 248.0 (TID 726)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_0 locally
+16/11/27 13:57:56 INFO Executor: Finished task 0.0 in stage 248.0 (TID 726). 2255 bytes result sent to driver
+16/11/27 13:57:56 INFO TaskSetManager: Starting task 1.0 in stage 248.0 (TID 727, localhost, partition 1,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:56 INFO TaskSetManager: Finished task 0.0 in stage 248.0 (TID 726) in 25 ms on localhost (1/3)
+16/11/27 13:57:56 INFO Executor: Running task 1.0 in stage 248.0 (TID 727)
+16/11/27 13:57:56 INFO BlockManager: Found block rdd_4_1 locally
+16/11/27 13:57:57 INFO Executor: Finished task 1.0 in stage 248.0 (TID 727). 2255 bytes result sent to driver
+16/11/27 13:57:57 INFO TaskSetManager: Starting task 2.0 in stage 248.0 (TID 728, localhost, partition 2,PROCESS_LOCAL, 2147 bytes)
+16/11/27 13:57:57 INFO TaskSetManager: Finished task 1.0 in stage 248.0 (TID 727) in 30 ms on localhost (2/3)
+16/11/27 13:57:57 INFO Executor: Running task 2.0 in stage 248.0 (TID 728)
+16/11/27 13:57:57 INFO BlockManager: Found block rdd_4_2 locally
+16/11/27 13:57:57 INFO Executor: Finished task 2.0 in stage 248.0 (TID 728). 2255 bytes result sent to driver
+16/11/27 13:57:57 INFO TaskSetManager: Finished task 2.0 in stage 248.0 (TID 728) in 12 ms on localhost (3/3)
+16/11/27 13:57:57 INFO DAGScheduler: ShuffleMapStage 248 (countByValue at MulticlassMetrics.scala:43) finished in 0.067 s
+16/11/27 13:57:57 INFO DAGScheduler: looking for newly runnable stages
+16/11/27 13:57:57 INFO DAGScheduler: running: Set()
+16/11/27 13:57:57 INFO DAGScheduler: waiting: Set(ResultStage 249)
+16/11/27 13:57:57 INFO DAGScheduler: failed: Set()
+16/11/27 13:57:57 INFO TaskSchedulerImpl: Removed TaskSet 248.0, whose tasks have all completed, from pool 
+16/11/27 13:57:57 INFO DAGScheduler: Submitting ResultStage 249 (ShuffledRDD[406] at countByValue at MulticlassMetrics.scala:43), which has no missing parents
+16/11/27 13:57:57 INFO MemoryStore: Block broadcast_338 stored as values in memory (estimated size 2.6 KB, free 257.4 MB)
+16/11/27 13:57:57 INFO MemoryStore: Block broadcast_338_piece0 stored as bytes in memory (estimated size 1582.0 B, free 257.4 MB)
+16/11/27 13:57:57 INFO BlockManagerInfo: Added broadcast_338_piece0 in memory on localhost:54166 (size: 1582.0 B, free: 2.2 GB)
+16/11/27 13:57:57 INFO SparkContext: Created broadcast 338 from broadcast at DAGScheduler.scala:1006
+16/11/27 13:57:57 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 249 (ShuffledRDD[406] at countByValue at MulticlassMetrics.scala:43)
+16/11/27 13:57:57 INFO TaskSchedulerImpl: Adding task set 249.0 with 3 tasks
+16/11/27 13:57:57 INFO TaskSetManager: Starting task 0.0 in stage 249.0 (TID 729, localhost, partition 0,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:57 INFO Executor: Running task 0.0 in stage 249.0 (TID 729)
+16/11/27 13:57:57 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:57 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:57 INFO Executor: Finished task 0.0 in stage 249.0 (TID 729). 1462 bytes result sent to driver
+16/11/27 13:57:57 INFO TaskSetManager: Starting task 1.0 in stage 249.0 (TID 730, localhost, partition 1,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:57 INFO Executor: Running task 1.0 in stage 249.0 (TID 730)
+16/11/27 13:57:57 INFO TaskSetManager: Finished task 0.0 in stage 249.0 (TID 729) in 3 ms on localhost (1/3)
+16/11/27 13:57:57 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:57 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+16/11/27 13:57:57 INFO Executor: Finished task 1.0 in stage 249.0 (TID 730). 1394 bytes result sent to driver
+16/11/27 13:57:57 INFO TaskSetManager: Starting task 2.0 in stage 249.0 (TID 731, localhost, partition 2,NODE_LOCAL, 1894 bytes)
+16/11/27 13:57:57 INFO Executor: Running task 2.0 in stage 249.0 (TID 731)
+16/11/27 13:57:57 INFO TaskSetManager: Finished task 1.0 in stage 249.0 (TID 730) in 2 ms on localhost (2/3)
+16/11/27 13:57:57 INFO ShuffleBlockFetcherIterator: Getting 3 non-empty blocks out of 3 blocks
+16/11/27 13:57:57 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+16/11/27 13:57:57 INFO Executor: Finished task 2.0 in stage 249.0 (TID 731). 1357 bytes result sent to driver
+16/11/27 13:57:57 INFO TaskSetManager: Finished task 2.0 in stage 249.0 (TID 731) in 2 ms on localhost (3/3)
+16/11/27 13:57:57 INFO TaskSchedulerImpl: Removed TaskSet 249.0, whose tasks have all completed, from pool 
+16/11/27 13:57:57 INFO DAGScheduler: ResultStage 249 (countByValue at MulticlassMetrics.scala:43) finished in 0.007 s
+16/11/27 13:57:57 INFO DAGScheduler: Job 133 finished: countByValue at MulticlassMetrics.scala:43, took 0.082661 s
+0.6999827705031013
+((entropy,20,300),0.9127842866988284)
+((gini,20,300),0.9073053066850448)
+((entropy,20,10),0.8979152308752585)
+((gini,20,10),0.8895589248793935)
+((gini,1,10),0.6363542384562371)
+((gini,1,300),0.635027567195038)
+((entropy,1,300),0.4859407305306685)
+((entropy,1,10),0.4859407305306685)
+16/11/27 13:57:57 INFO SparkContext: Invoking stop() from shutdown hook
+16/11/27 13:57:57 INFO SparkUI: Stopped Spark web UI at http://192.168.145.1:4040
+16/11/27 13:57:57 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+16/11/27 13:57:57 INFO MemoryStore: MemoryStore cleared
+16/11/27 13:57:57 INFO BlockManager: BlockManager stopped
+16/11/27 13:57:57 INFO BlockManagerMaster: BlockManagerMaster stopped
+16/11/27 13:57:57 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+16/11/27 13:57:57 INFO SparkContext: Successfully stopped SparkContext
+16/11/27 13:57:57 INFO ShutdownHookManager: Shutdown hook called
+16/11/27 13:57:57 INFO ShutdownHookManager: Deleting directory C:\Users\liq9876\AppData\Local\Temp\spark-36437f60-94a8-46df-bcd3-d418fbe23a6b
