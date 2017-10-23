@@ -1,0 +1,948 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0052)http://blog.csdn.net/lmalds/article/details/51798814 -->
+<!DOCTYPE html PUBLIC "" ""><HTML><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+             <LINK href="http://blog.csdn.net/lmalds/article/details/51798814" 
+rel="canonical">     
+<SCRIPT type="text/javascript">
+        var username = "lmalds";var _blogger = username;var blog_address = "http://blog.csdn.net/lmalds";var static_host = "http://static.blog.csdn.net";
+        var currentUserName = ""; var fileName = '51798814';var commentscount = 0; var islock = false
+        window.quickReplyflag = true;
+        var totalFloor=0;
+                
+                 var isBole = false;
+                
+                
+                 var isDigg = false;
+                
+          
+             var isExpert=false;
+          
+    </SCRIPT>
+ 
+<META http-equiv="content-type" content="text/html; charset=utf-8">     
+<META http-equiv="X-UA-Compatible" content="IE=Edge">     
+<META name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+    
+<META name="apple-mobile-web-app-status-bar-style" content="black">     
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/jquery-1.9.1.min.js" type="text/javascript"></SCRIPT>
+     <LINK href="Kafka%20producer(scala版)%20-%20CSDN博客.files/bootstrap.min.css" 
+rel="stylesheet">     <LINK href="Kafka%20producer(scala版)%20-%20CSDN博客.files/avatar.css" 
+rel="stylesheet">     <LINK href="Kafka%20producer(scala版)%20-%20CSDN博客.files/default.css" 
+rel="stylesheet" type="text/css">     <LINK href="Kafka%20producer(scala版)%20-%20CSDN博客.files/style.css" 
+rel="stylesheet">     <LINK href="Kafka%20producer(scala版)%20-%20CSDN博客.files/content_toolbar.css" 
+rel="stylesheet">     
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/iconfont.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/main.js"></SCRIPT>
+     
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/tracking_for_recommend.js" type="text/javascript" charset="utf-8"></SCRIPT>
+     
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/tracking.js" type="text/javascript" charset="utf-8"></SCRIPT>
+     
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/cnick.js" type="text/javascript" charset="utf-8"></SCRIPT>
+      <LINK href="Kafka%20producer(scala版)%20-%20CSDN博客.files/prettify.css" rel="stylesheet"> 
+    
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/prettify.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src=""></SCRIPT>
+     
+<SCRIPT type="text/javascript">
+
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+
+
+
+    </SCRIPT>
+     
+<META name="description" content="kafka&#10;scala">     
+<META name="keywords" content="scala,kafka">     
+<META http-equiv="Cache-Control" content="no-siteapp"><LINK href="#" rel="alternate" 
+media="handheld">     
+<META name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848"> 
+    <TITLE>Kafka producer(scala版) - CSDN博客</TITLE> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18817"></HEAD> 
+<BODY>
+<SCRIPT id="toolbar-tpl-scriptId" src="Kafka%20producer(scala版)%20-%20CSDN博客.files/content_toolbar.js" type="text/javascript" domain="http://blog.csdn.net" skin="black" prod="download"></SCRIPT>
+ 
+<DIV class="container clearfix"><main><ARTICLE>
+<H1 class="csdn_top">Kafka producer(scala版)</H1>
+<DIV class="article_bar clearfix">
+<DIV class="artical_tag"><SPAN class="original">原创</SPAN>                     
+<SPAN class="time">2016年07月01日 09:42:15</SPAN>                 </DIV>
+<UL class="article_tags clearfix csdn-tracking-statistics" 
+  data-mod="popu_377"><LI class="tit">标签：</LI>
+  <LI><A href="http://so.csdn.net/so/search/s.do?q=scala&amp;t=blog" target="_blank">scala</A> 
+  <SPAN>/</SPAN></LI>
+  <LI><A href="http://so.csdn.net/so/search/s.do?q=kafka&amp;t=blog" target="_blank">kafka</A> 
+  <SPAN>/</SPAN></LI></UL>
+<UL class="right_bar">
+  <LI><BUTTON class="btn-noborder"><I class="icon iconfont icon-read"></I><SPAN 
+  class="txt">3799</SPAN></BUTTON></LI><!--<li><button class="btn-noborder"><i class="icon iconfont icon-dashang-"></i><span class="txt">0</span></button></li>--> 
+                      
+  <LI class="edit"><A class="btn-noborder" href="Kafka%20producer(scala版)%20-%20CSDN博客.files/lmalds.htm"><I 
+  class="icon iconfont icon-bianji"></I><SPAN class="txt">编辑</SPAN>              
+             </A>                     </LI>
+  <LI class="del"><A class="btn-noborder" onclick="javascript:deleteArticle(fileName);return false;"><I 
+  class="icon iconfont icon-shanchu"></I><SPAN class="txt">删除</SPAN>             
+              </A>                     </LI></UL></DIV>
+<DIV class="article_content csdn-tracking-statistics" id="article_content" 
+data-mod="popu_307" data-dsm="post">
+<DIV class="markdown_views">
+<H2 id="1简介">1、简介</H2>
+<P>上一篇blog提到用Flink消费Kafka的数据，kafka的produce是用kafka console 
+produce的。今天主要测试下kafka的produce程序（scala编写），模拟在应用服务器上日志的收集，看看Flink能否正常消费数据。</P>
+<P>这里的producer实现了每隔3秒去查找特定目录下的文件，将文件的内容批量produce到kafka（async），然后将文件重命名并移动到另外的目录。</P>
+<H2 id="2代码">2、代码</H2>
+<P>2.1、添加maven依赖</P>
+<PRE class="prettyprint"><CODE class=" hljs xml"><SPAN class="hljs-comment">&lt;!--kafka相关的依赖--&gt;</SPAN>
+<SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">dependency</SPAN>&gt;</SPAN>
+    <SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">groupId</SPAN>&gt;</SPAN>org.apache.kafka<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">groupId</SPAN>&gt;</SPAN>
+    <SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">artifactId</SPAN>&gt;</SPAN>kafka_2.10<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">artifactId</SPAN>&gt;</SPAN>
+    <SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">version</SPAN>&gt;</SPAN>0.8.2.1<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">version</SPAN>&gt;</SPAN>
+<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">dependency</SPAN>&gt;</SPAN>
+
+<SPAN class="hljs-comment">&lt;!--scala相关的依赖--&gt;</SPAN>
+<SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">dependency</SPAN>&gt;</SPAN>
+    <SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">groupId</SPAN>&gt;</SPAN>org.scala-lang<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">groupId</SPAN>&gt;</SPAN>
+    <SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">artifactId</SPAN>&gt;</SPAN>scala-library<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">artifactId</SPAN>&gt;</SPAN>
+    <SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">version</SPAN>&gt;</SPAN>2.10.4<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">version</SPAN>&gt;</SPAN>
+<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">dependency</SPAN>&gt;</SPAN>
+
+<SPAN class="hljs-comment">&lt;!--reflect IO的依赖--&gt;</SPAN>
+<SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">dependency</SPAN>&gt;</SPAN>
+    <SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">groupId</SPAN>&gt;</SPAN>org.scala-lang<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">groupId</SPAN>&gt;</SPAN>
+    <SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">artifactId</SPAN>&gt;</SPAN>scala-reflect<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">artifactId</SPAN>&gt;</SPAN>
+    <SPAN class="hljs-tag">&lt;<SPAN class="hljs-title">version</SPAN>&gt;</SPAN>2.10.4<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">version</SPAN>&gt;</SPAN>
+<SPAN class="hljs-tag">&lt;/<SPAN class="hljs-title">dependency</SPAN>&gt;</SPAN></CODE></PRE>
+<P>2.2、class KafkaProduceMsg  
+<BR>继承Runnable接口，run()方法实现kafka的produce数据，且实现每隔3秒去查找一次：</P>
+<PRE class="prettyprint"><CODE class=" hljs livecodeserver">def run() : Unit = {
+    <SPAN class="hljs-keyword">while</SPAN>(<SPAN class="hljs-constant">true</SPAN>){
+      val <SPAN class="hljs-built_in">files</SPAN> = Path(this.DIR).walkFilter(p =&gt; p.isFile &amp;&amp; p.name.<SPAN class="hljs-operator">contains</SPAN>(<SPAN class="hljs-string">"transaction"</SPAN>))
+
+      <SPAN class="hljs-keyword">try</SPAN>{
+        <SPAN class="hljs-keyword">for</SPAN>(<SPAN class="hljs-built_in">file</SPAN> &lt;- <SPAN class="hljs-built_in">files</SPAN>){
+          val reader = Source.fromFile(<SPAN class="hljs-built_in">file</SPAN>.toString(), <SPAN class="hljs-string">"UTF-8"</SPAN>)
+
+          <SPAN class="hljs-keyword">for</SPAN>(<SPAN class="hljs-built_in">line</SPAN> &lt;- reader.getLines()){
+            val message = <SPAN class="hljs-built_in">new</SPAN> KeyedMessage[String, String](this.TARGET_TOPIC, <SPAN class="hljs-built_in">line</SPAN>)
+            producer.<SPAN class="hljs-built_in">send</SPAN>(message)
+          }
+
+         <SPAN class="hljs-comment"> //produce完成后，将文件copy到另一个目录，之后delete</SPAN>
+          val fileName = <SPAN class="hljs-built_in">file</SPAN>.toFile.name
+          <SPAN class="hljs-built_in">file</SPAN>.toFile.copyTo(Path(<SPAN class="hljs-string">"/root/Documents/completed/"</SPAN> +fileName + <SPAN class="hljs-string">".completed"</SPAN>))
+          <SPAN class="hljs-built_in">file</SPAN>.<SPAN class="hljs-built_in">delete</SPAN>()
+        }
+      }<SPAN class="hljs-keyword">catch</SPAN>{
+        <SPAN class="hljs-keyword">case</SPAN> e : Exception =&gt; println(e)
+      }
+
+      <SPAN class="hljs-keyword">try</SPAN>{
+       <SPAN class="hljs-comment"> //sleep for 3 seconds after send a micro batch of message</SPAN>
+        Thread.sleep(<SPAN class="hljs-number">3000</SPAN>)
+      }<SPAN class="hljs-keyword">catch</SPAN>{
+        <SPAN class="hljs-keyword">case</SPAN> e : Exception =&gt; println(e)
+      }
+    }</CODE></PRE>
+<P>class完整的代码如下：</P>
+<PRE class="prettyprint"><CODE class=" hljs scala"><SPAN class="hljs-keyword">package</SPAN> kafka
+
+<SPAN class="hljs-keyword">import</SPAN> java.util.Properties
+
+<SPAN class="hljs-keyword">import</SPAN> kafka.producer.{KeyedMessage, Producer, ProducerConfig}
+
+<SPAN class="hljs-keyword">import</SPAN> scala.io.Source
+<SPAN class="hljs-keyword">import</SPAN> scala.reflect.io.Path
+
+
+<SPAN class="hljs-javadoc">/**
+  * Kafka Producer
+  */</SPAN>
+<SPAN class="hljs-class"><SPAN class="hljs-keyword">class</SPAN> <SPAN class="hljs-title">KafkaProduceMsg</SPAN><SPAN class="hljs-params">(brokerList : String, topic : String)</SPAN> <SPAN class="hljs-keyword">extends</SPAN> <SPAN class="hljs-title">Runnable</SPAN>{</SPAN>
+
+  <SPAN class="hljs-keyword">private</SPAN> <SPAN class="hljs-keyword">val</SPAN> BROKER_LIST = brokerList <SPAN class="hljs-comment">//"master:9092,worker1:9092,worker2:9092"</SPAN>
+  <SPAN class="hljs-keyword">private</SPAN> <SPAN class="hljs-keyword">val</SPAN> TARGET_TOPIC = topic <SPAN class="hljs-comment">//"new"</SPAN>
+  <SPAN class="hljs-keyword">private</SPAN> <SPAN class="hljs-keyword">val</SPAN> DIR = <SPAN class="hljs-string">"/root/Documents/"</SPAN>
+
+  <SPAN class="hljs-javadoc">/**
+    * 1、配置属性
+    * metadata.broker.list : kafka集群的broker，只需指定2个即可
+    * serializer.class : 如何序列化发送消息
+    * request.required.acks : 1代表需要broker接收到消息后acknowledgment,默认是0
+    * producer.type : 默认就是同步sync
+    */</SPAN>
+  <SPAN class="hljs-keyword">private</SPAN> <SPAN class="hljs-keyword">val</SPAN> props = <SPAN class="hljs-keyword">new</SPAN> Properties()
+  props.put(<SPAN class="hljs-string">"metadata.broker.list"</SPAN>, <SPAN class="hljs-keyword">this</SPAN>.BROKER_LIST)
+  props.put(<SPAN class="hljs-string">"serializer.class"</SPAN>, <SPAN class="hljs-string">"kafka.serializer.StringEncoder"</SPAN>)
+  props.put(<SPAN class="hljs-string">"request.required.acks"</SPAN>, <SPAN class="hljs-string">"1"</SPAN>)
+  props.put(<SPAN class="hljs-string">"producer.type"</SPAN>, <SPAN class="hljs-string">"async"</SPAN>)
+
+  <SPAN class="hljs-javadoc">/**
+    * 2、创建Producer
+    */</SPAN>
+  <SPAN class="hljs-keyword">private</SPAN> <SPAN class="hljs-keyword">val</SPAN> config = <SPAN class="hljs-keyword">new</SPAN> ProducerConfig(<SPAN class="hljs-keyword">this</SPAN>.props)
+  <SPAN class="hljs-keyword">private</SPAN> <SPAN class="hljs-keyword">val</SPAN> producer = <SPAN class="hljs-keyword">new</SPAN> Producer[String, String](<SPAN class="hljs-keyword">this</SPAN>.config)
+
+  <SPAN class="hljs-javadoc">/**
+    * 3、产生并发送消息
+    * 搜索目录dir下的所有包含“transaction”的文件并将每行的记录以消息的形式发送到kafka
+    *
+    */</SPAN>
+  <SPAN class="hljs-keyword">def</SPAN> run() : Unit = {
+    <SPAN class="hljs-keyword">while</SPAN>(<SPAN class="hljs-keyword">true</SPAN>){
+      <SPAN class="hljs-keyword">val</SPAN> files = Path(<SPAN class="hljs-keyword">this</SPAN>.DIR).walkFilter(p =&gt; p.isFile &amp;&amp; p.name.contains(<SPAN class="hljs-string">"transaction"</SPAN>))
+
+      <SPAN class="hljs-keyword">try</SPAN>{
+        <SPAN class="hljs-keyword">for</SPAN>(file &lt;- files){
+          <SPAN class="hljs-keyword">val</SPAN> reader = Source.fromFile(file.toString(), <SPAN class="hljs-string">"UTF-8"</SPAN>)
+
+          <SPAN class="hljs-keyword">for</SPAN>(line &lt;- reader.getLines()){
+            <SPAN class="hljs-keyword">val</SPAN> message = <SPAN class="hljs-keyword">new</SPAN> KeyedMessage[String, String](<SPAN class="hljs-keyword">this</SPAN>.TARGET_TOPIC, line)
+            producer.send(message)
+          }
+
+          <SPAN class="hljs-comment">//produce完成后，将文件copy到另一个目录，之后delete</SPAN>
+          <SPAN class="hljs-keyword">val</SPAN> fileName = file.toFile.name
+          file.toFile.copyTo(Path(<SPAN class="hljs-string">"/root/Documents/completed/"</SPAN> +fileName + <SPAN class="hljs-string">".completed"</SPAN>))
+          file.delete()
+        }
+      }<SPAN class="hljs-keyword">catch</SPAN>{
+        <SPAN class="hljs-keyword">case</SPAN> e : Exception =&gt; println(e)
+      }
+
+      <SPAN class="hljs-keyword">try</SPAN>{
+        <SPAN class="hljs-comment">//sleep for 3 seconds after send a micro batch of message</SPAN>
+        Thread.sleep(<SPAN class="hljs-number">3000</SPAN>)
+      }<SPAN class="hljs-keyword">catch</SPAN>{
+        <SPAN class="hljs-keyword">case</SPAN> e : Exception =&gt; println(e)
+      }
+    }
+  }
+
+}
+</CODE></PRE>
+<P>2.3、main方法</P>
+<P>调用kafka的produce程序</P>
+<PRE class="prettyprint"><CODE class=" hljs python">package kafka
+
+object ProduceMsg {
+    <SPAN class="hljs-function"><SPAN class="hljs-keyword">def</SPAN> <SPAN class="hljs-title">main</SPAN><SPAN class="hljs-params">(args : Array[String])</SPAN>:</SPAN> Unit ={
+      <SPAN class="hljs-keyword">if</SPAN>(args.length &lt; <SPAN class="hljs-number">2</SPAN>){
+        println(<SPAN class="hljs-string">"Usage : ProduceMsg master:9092,worker1:9092 new"</SPAN>)
+
+        System.exit(<SPAN class="hljs-number">1</SPAN>)
+      }
+
+      new Thread(new KafkaProduceMsg(args(<SPAN class="hljs-number">0</SPAN>),args(<SPAN class="hljs-number">1</SPAN>))).start()
+    }
+}</CODE></PRE>
+<H2 id="3测试">3、测试</H2>
+<P>打包发布：</P>
+<PRE class="prettyprint"><CODE class=" hljs ruby">root<SPAN class="hljs-variable">@master</SPAN><SPAN class="hljs-symbol">:~</SPAN><SPAN class="hljs-comment"># java -cp /root/Documents/kafka-1.0-SNAPSHOT.jar kafka.ProduceMsg master:9092,worker1:9092 new</SPAN></CODE></PRE>
+<P>在目录/root/Documents/下添加一个transanction.csv文件（6400条记录），Flink很快消费了这部分数据，且transaction.csv文件在produce后被转移到了目录/root/Documents/completed/目录下。</P>
+<PRE class="prettyprint"><CODE class=" hljs ruby">root<SPAN class="hljs-variable">@worker2</SPAN><SPAN class="hljs-symbol">:/usr/local/flink/flink-</SPAN><SPAN class="hljs-number">1.0</SPAN>.<SPAN class="hljs-number">3</SPAN>/log<SPAN class="hljs-comment"># ls -l | grep out</SPAN>
+-rw-r--r-- <SPAN class="hljs-number">1</SPAN> root root <SPAN class="hljs-number">2081645</SPAN>  <SPAN class="hljs-number">6</SPAN>月 <SPAN class="hljs-number">30</SPAN> <SPAN class="hljs-number">16</SPAN><SPAN class="hljs-symbol">:</SPAN><SPAN class="hljs-number">13</SPAN> flink-root-taskmanager-<SPAN class="hljs-number">0</SPAN>-worker2.out
+</CODE></PRE>
+<PRE class="prettyprint"><CODE class=" hljs ruby">oot<SPAN class="hljs-variable">@master</SPAN><SPAN class="hljs-symbol">:~/Documents/completed</SPAN><SPAN class="hljs-comment"># ls -l</SPAN>
+total <SPAN class="hljs-number">2028</SPAN>
+-rw-r--r-- <SPAN class="hljs-number">1</SPAN> root root <SPAN class="hljs-number">2072869</SPAN>  <SPAN class="hljs-number">6</SPAN>月 <SPAN class="hljs-number">30</SPAN> <SPAN class="hljs-number">16</SPAN><SPAN class="hljs-symbol">:</SPAN><SPAN class="hljs-number">13</SPAN> transaction.csv.completed
+root<SPAN class="hljs-variable">@master</SPAN><SPAN class="hljs-symbol">:~/Documents/completed</SPAN><SPAN class="hljs-comment"># </SPAN></CODE></PRE>
+<P>文件大小不一样，主要是因为flink在print的时候，每条print增加了slot的标志，但record的数量都是6400条。</P>
+<BLOCKQUOTE>
+  <P><A 
+  href="http://kafka.apache.org/082/documentation.html#theproducer">http://kafka.apache.org/082/documentation.html#theproducer</A> 
+  <BR><A 
+  href="http://www.36dsj.com/archives/44818">http://www.36dsj.com/archives/44818</A> 
+  <BR><A 
+  href="http://www.jasongj.com/tags/Kafka/">http://www.jasongj.com/tags/Kafka/</A></P></BLOCKQUOTE><LINK 
+href="Kafka%20producer(scala版)%20-%20CSDN博客.files/markdown_views.css" rel="stylesheet"></DIV><LINK 
+href="Kafka%20producer(scala版)%20-%20CSDN博客.files/markdown_views.css" rel="stylesheet"> 
+            </DIV></ARTICLE>
+<DIV class="readall_box csdn-tracking-statistics" data-mod="popu_376">
+<DIV class="read_more_mask"></DIV><A class="btn btn-large btn-gray-fred read_more_btn" 
+target="_self">阅读全文</A>         </DIV>
+<DIV class="article_copyright">            版权声明：本文为博主原创文章，未经博主允许不得转载。         
+</DIV><!--  <div class="reward_box">
+            <div class="tit">
+              <button class="btn_reward"><i class="icon iconfont icon-dashang-"></i></button>
+            </div>
+            <dl class="clearfix">
+              <dt><a href="#" target="_blank">近期打赏</a></dt>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+            </dl>
+          </div>--> 
+        
+<UL class="article_collect clearfix csdn-tracking-statistics" data-mod="popu_378">
+  <LI class="tit">本文已收录于以下专栏：</LI></UL>
+<DIV class="comment_box clearfix">
+<DIV id="comment_form">
+<DIV id="commentsbmitarear"><!-- <h6><span>0</span>条评论</h6> -->            <!--          <dl class="clearfix" id="commentbox">
+                        <dt>
+                            <a href="http://my.csdn.net/"><img src="" ></a>
+                        </dt>
+                        <dd>
+                            <a href="http://my.csdn.net/" target="_blank"></a>
+                        </dd>
+                        <dd class="txt_tip"><span id="tip_comment" class="tip"></span></dd>
+                    </dl> --> 
+                    
+<DIV class="comment_area clearfix">
+<DIV class="userimg"><A href="http://my.csdn.net/"><IMG src="Kafka%20producer(scala版)%20-%20CSDN博客.files/lmalds.htm"></A></DIV>
+<FORM id="commentform" onsubmit="return subform(this);" action="/lmalds/comment/submit?id=51798814" 
+method="post"><TEXTAREA name="comment_content" class="comment_content" id="comment_content" placeholder="发表你的评论">发表你的评论</TEXTAREA> 
+                            
+<DIV class="bot_bar clearfix">
+<DIV class="add_code" id="ubbtools"><A href="http://blog.csdn.net/lmalds/article/details/51798814#insertcode" 
+target="_self" code="code"><I class="icon iconfont icon-daima"></I></A>          
+                       
+</DIV><INPUT name="comment_replyId" id="comment_replyId" type="hidden">          
+                       <INPUT name="comment_userId" id="comment_userId" type="hidden"> 
+                                <INPUT name="commentId" id="commentId" type="hidden"> 
+                                
+<INPUT class="btn btn-redborder" type="submit" value="发表评论">								 <SPAN 
+class="tip" id="tip_comment">
+<DIV class="csdn-tracking-statistics" style="display: none;" 
+data-mod="popu_384"><A class="comment_area_btn" href="http://blog.csdn.net/lmalds/article/details/51798814#" 
+target="_blank">发表评论</A></DIV>
+<DIV id="lang_list" code="code"><A class="long_name" style="width: 95px;" href="http://blog.csdn.net/lmalds/article/details/51798814#html" 
+target="_self">HTML/XML</A>                                     <A class="long_name" 
+style="width: 95px;" href="http://blog.csdn.net/lmalds/article/details/51798814#objc" 
+target="_self">objective-c</A>                                     <A class="zhong_name" 
+style="width: 58px;" href="http://blog.csdn.net/lmalds/article/details/51798814#delphi" 
+target="_self">Delphi</A>                                     <A class="zhong_name" 
+href="http://blog.csdn.net/lmalds/article/details/51798814#ruby" 
+target="_self">Ruby</A>                                     <A href="http://blog.csdn.net/lmalds/article/details/51798814#php" 
+target="_self">PHP</A>                                     <A class="duan_name" 
+href="http://blog.csdn.net/lmalds/article/details/51798814#csharp" target="_self">C#</A> 
+                                    <A class="duan_name" style="border-right-color: currentColor; border-right-width: medium; border-right-style: none;" 
+href="http://blog.csdn.net/lmalds/article/details/51798814#cpp" 
+target="_self">C++</A>                                     <A class="long_name" 
+style="width: 95px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/lmalds/article/details/51798814#javascript" target="_self">JavaScript</A> 
+                                    <A class="long_name" style="width: 95px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/lmalds/article/details/51798814#vb" 
+target="_self">Visual Basic</A>                                     <A class="zhong_name" 
+style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/lmalds/article/details/51798814#python" target="_self">Python</A> 
+                                    <A class="zhong_name" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/lmalds/article/details/51798814#java" 
+target="_self">Java</A>                                     <A class="duan_name" 
+style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/lmalds/article/details/51798814#css" 
+target="_self">CSS</A>                                     <A class="duan_name" 
+style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/lmalds/article/details/51798814#sql" 
+target="_self">SQL</A>                                     <A class="duan_name" 
+style="border: currentColor; border-image: none;" href="http://blog.csdn.net/lmalds/article/details/51798814#plain" 
+target="_self">其它</A>                                     <SPAN 
+class="arrb"></SPAN>                                 
+</DIV></SPAN></DIV></FORM></DIV></DIV></DIV></DIV>
+<DIV class="comment_li_outbox">
+<DIV id="comment_list"></DIV></DIV>
+<DIV class="more_comment">
+<DIV class="trackgin-ad" id="comment_bar" data-mod="popu_385"></DIV></DIV>
+<H3 class="recommend_tit">相关文章推荐</H3>
+<DIV class="recommend_list clearfix">
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/zhumingyuan111/article/details/74014512" 
+  target="_blank" strategy="BlogCommendFromBaidu_0">Kafka 生产者和消费者 demo 
+  (java&amp;scala)</A></H2>
+  <DIV class="summary">前几天完成了kafka 
+  ubuntu单机的搭建，后来就尝试写写kafka的简单代码，网上也有很多例子，但是如果自己编写运行还是有一些坑在里面，我也简单记录以下自己遇到的问题。    
+                   </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/zhumingyuan111" target="_blank" 
+    strategy="BlogCommendFromBaidu_0"><IMG title="zhumingyuan111" alt="zhumingyuan111" 
+    src=""></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/zhumingyuan111">zhumingyuan111</A></LI>
+    <LI class="time">2017-06-30 22:39</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>470</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/vonzhoufz/article/details/52319136" target="_blank" 
+  strategy="BlogCommendFromBaidu_1">利用Kafka发送/消费消息-Java示例</A></H2>
+  <DIV class="summary">                        
+  利用Kafka发送/消费消息-Java示例当使用命令行工具把基本的组件运行起来后，再使用Java 
+  client就很简单，这里是入门的第一个Java客户端程序，有很多需要深入理解的地方。依赖配置    ...                     
+  </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/vonzhoufz" target="_blank" 
+    strategy="BlogCommendFromBaidu_1"><IMG title="vonzhoufz" alt="vonzhoufz" 
+    src="Kafka%20producer(scala版)%20-%20CSDN博客.files/2_vonzhoufz.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/vonzhoufz">vonzhoufz</A></LI>
+    <LI class="time">2016-08-25 22:34</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>10702</SPAN></LI></UL></DD></DL><!--dl class="clearfix csdn-tracking-statistics" data-mod="popu_393">
+                <dt><a href="http://edu.csdn.net/huiyiCourse/series_detail/64?utm_source=blog10" target="_blank"><img class="maxwidth" src="http://img.blog.csdn.net/20170928113144608" alt="" title=""></a></dt>
+                <dd>
+                    <div class="summary">
+                        <h2><a href='http://edu.csdn.net/topic/python1?utm_source=blog10' target='_blank'>伤心啊！年度热门编程语言排行榜出来了...</a></h2>  <div class="summary">近期，IEEE Spectrum 发布了第四届顶级编程语言交互排行榜。结合 10 个线上数据源的 12 个标准，对 48 种语言进行了排行！此外，七牛云许式伟曾说过Go语言会取代Java...气氛... </div> 
+                    </div>
+                </dd>
+            </dl-->
+	 
+<SCRIPT>
+		(function() {
+		    var s = "_" + Math.random().toString(36).slice(2);
+		    document.write('<div id="' + s + '"></div>');
+		    (window.slotbydup=window.slotbydup || []).push({
+			id: '4765209',
+			container: s,
+			size: '808,120',
+			display: 'inlay-fix'
+		    });
+		})();
+	</SCRIPT>
+                         
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/qingye2008/article/details/51005284" target="_blank" 
+  strategy="BlogCommendFromBaidu_2">scala发送消息到kafka示例</A></H2>
+  <DIV class="summary">1) build文件需要填写依赖的jar包         "org.slf4j" % "slf4j-api" % 
+  "1.7.5",        "org.slf4j" % "slf4j-log...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/qingye2008" target="_blank" 
+    strategy="BlogCommendFromBaidu_2"><IMG title="qingye2008" alt="qingye2008" 
+    src="Kafka%20producer(scala版)%20-%20CSDN博客.files/2_qingye2008.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/qingye2008">qingye2008</A></LI>
+    <LI class="time">2016-03-29 13:54</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>921</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/lsshlsw/article/details/47755119" target="_blank" 
+  strategy="BlogCommendFromBaidu_3">kafka 0.8.x  producer 
+Example(scala)</A></H2>
+  <DIV class="summary">                        Producer最简配置  
+  metadata.broker.list参数指定broker地址，这里不需要填上所有的broker地址，但是如果只写一个，这个broker挂掉后就无法往topic中写入信息... 
+                      </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/lsshlsw" target="_blank" 
+    strategy="BlogCommendFromBaidu_3"><IMG title="lsshlsw" alt="lsshlsw" src="Kafka%20producer(scala版)%20-%20CSDN博客.files/2_lsshlsw.jpg"></A></LI>
+    <LI class="user_name"><A 
+href="http://blog.csdn.net/lsshlsw">lsshlsw</A></LI>
+    <LI class="time">2015-08-18 17:29</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>1179</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/fang_sh_lianjia/article/details/52210826" 
+  target="_blank" strategy="BlogCommendFromBaidu_4">kafka中文文档（0.10.0）</A></H2>
+  <DIV class="summary">Kafka是分布式、分区、可复制的提交日志服务。它采用独特的设计来实现消息服务系统。                
+       </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/fang_sh_lianjia" 
+    target="_blank" strategy="BlogCommendFromBaidu_4"><IMG title="fang_sh_lianjia" 
+    alt="fang_sh_lianjia" src="Kafka%20producer(scala版)%20-%20CSDN博客.files/2_fang_sh_lianjia.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/fang_sh_lianjia">fang_sh_lianjia</A></LI>
+    <LI class="time">2016-08-15 14:24</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>4898</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/u012965373/article/details/74548388" target="_blank" 
+  strategy="BlogCommendFromBaidu_5">kafka学习笔记 --- Scala实现Kafka producer 和 
+  consumer</A></H2>
+  <DIV class="summary">                        kafka学习笔记 --- Scala实现Kafka 
+  producer 和 consumer                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/u012965373" target="_blank" 
+    strategy="BlogCommendFromBaidu_5"><IMG title="u012965373" alt="u012965373" 
+    src="Kafka%20producer(scala版)%20-%20CSDN博客.files/2_u012965373.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/u012965373">u012965373</A></LI>
+    <LI class="time">2017-07-06 14:58</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>1119</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/zwt0909/article/details/51779449" target="_blank" 
+  strategy="BlogCommendFromBaidu_6">Kafka Scala Producer API</A></H2>
+  <DIV class="summary">                        Kafka Scala Producer 
+  API官方example：  
+  https://cwiki.apache.org/confluence/display/KAFKA/0.8.0+Producer...            
+           </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/zwt0909" target="_blank" 
+    strategy="BlogCommendFromBaidu_6"><IMG title="zwt0909" alt="zwt0909" 
+    src=""></A></LI>
+    <LI class="user_name"><A 
+href="http://blog.csdn.net/zwt0909">zwt0909</A></LI>
+    <LI class="time">2016-06-28 22:51</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>657</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/stark_summer/article/details/44038247" 
+  target="_blank" strategy="BlogCommendFromBaidu_7">整合Kafka到Spark 
+  Streaming——代码示例和挑战</A></H2>
+  <DIV class="summary">                        作者Michael G. 
+  Noll是瑞士的一位工程师和研究员，效力于Verisign，是Verisign实验室的大规模数据分析基础设施（基础Hadoop）的技术主管。本文，Michael详细的演示了如... 
+                      </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/stark_summer" target="_blank" 
+    strategy="BlogCommendFromBaidu_7"><IMG title="stark_summer" alt="stark_summer" 
+    src="Kafka%20producer(scala版)%20-%20CSDN博客.files/2_stark_summer.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/stark_summer">stark_summer</A></LI>
+    <LI class="time">2015-03-03 14:58</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>106391</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/yfkiss/article/details/17348693" target="_blank" 
+  strategy="BlogCommendFromBaidu_8">Kafka(一)：基础</A></H2>
+  <DIV class="summary">1. 引言
+   互联网够公司的日志无处不在，web日志，js日志，搜索日志，监控日志等等。对于这些日志的离线分析（Hadoop），wget&amp;rsync虽然人力维护成本较高，但可以满足功能行需求。但对于这些... 
+                      </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/yfkiss" target="_blank" 
+    strategy="BlogCommendFromBaidu_8"><IMG title="yfkiss" alt="yfkiss" src="Kafka%20producer(scala版)%20-%20CSDN博客.files/2_yfkiss.jpg"></A></LI>
+    <LI class="user_name"><A href="http://blog.csdn.net/yfkiss">yfkiss</A></LI>
+    <LI class="time">2013-12-18 19:15</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>32592</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/stark_summer/article/details/42460527" 
+  target="_blank" 
+  strategy="BlogCommendFromBaidu_9">scala入门-01-IDEA安装scala插件</A></H2>
+  <DIV class="summary">scala入门-01-IDEA安装scala插件                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/stark_summer" target="_blank" 
+    strategy="BlogCommendFromBaidu_9"><IMG title="stark_summer" alt="stark_summer" 
+    src="Kafka%20producer(scala版)%20-%20CSDN博客.files/2_stark_summer.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/stark_summer">stark_summer</A></LI>
+    <LI class="time">2015-01-06 20:50</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>45817</SPAN></LI></UL></DD></DL></DIV></main><ASIDE>
+<DIV class="right_box user_info">
+<DL class="inf_bar clearfix">
+  <DT class="csdn-tracking-statistics" data-mod="popu_381"><A href="http://blog.csdn.net/lmalds" 
+  target="_blank"><IMG class="avatar_pic" src="Kafka%20producer(scala版)%20-%20CSDN博客.files/1_lmalds.jpg"> 
+                      </A>                     <SPAN title="" 
+  class="medals"><svg xmlns="http://www.w3.org/2000/svg" class="icon" 
+  aria-hidden="true"></svg>               </SPAN></DT>
+  <DD>
+  <H3 class="csdn-tracking-statistics" data-mod="popu_380"><A id="uid" href="http://blog.csdn.net/lmalds" 
+  target="_blank">lmalds</A></H3><SPAN class="csdn-tracking-statistics" 
+  data-mod="popu_379"><A class="btn btn-redborder-small " id="span_add_follow" 
+  target="_self">＋关注</A></SPAN>                 </DD></DL>
+<DIV class="inf_number_box clearfix">
+<DL>
+  <DT>原创</DT>
+  <DD>46</DD></DL>
+<DL>
+  <DT>粉丝</DT>
+  <DD id="fan">26</DD></DL>
+<DL>
+  <DT>喜欢</DT>
+  <DD>0</DD></DL>
+<DL>
+  <DT>码云</DT>
+  <DD>&nbsp;</DD></DL></DIV>
+<DIV class="writings">
+<DIV class="public_signal clearfix">
+<H3>他的最新文章</H3><A class="more_z" href="http://blog.csdn.net/lmalds" target="_blank"><SPAN>更多文章</SPAN></A></DIV>
+<UL class="inf_list clearfix csdn-tracking-statistics" data-mod="popu_382">
+  <LI class="clearfix"><A href="http://blog.csdn.net/lmalds/article/details/75669875" 
+  target="_blank">Flinkspector--Flink单元测试的开源框架</A>                     </LI>
+  <LI class="clearfix"><A href="http://blog.csdn.net/lmalds/article/details/73457767" 
+  target="_blank">Flink流计算编程--Flink扩容、程序升级前后的思考</A>                     </LI>
+  <LI class="clearfix"><A href="http://blog.csdn.net/lmalds/article/details/72547839" 
+  target="_blank">A Year of Blink at Alibaba: Apache Flink in Large Scale 
+  Production--翻译</A>                     </LI>
+  <LI class="clearfix"><A href="http://blog.csdn.net/lmalds/article/details/71123592" 
+  target="_blank">Flink Table &amp; SQL API--动态表与Redo和Undo</A>                   
+    </LI></UL></DIV></DIV>
+<DIV class="extension_other csdn-tracking-statistics" data-mod="popu_389"><!--u3032528-->
+			 
+<DIV class="flashrecommend"><!-- 请置于所有广告位代码之前 --> 
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/dm.js"></SCRIPT>
+            <!-- 广告位：PC端-博客详情页右侧视窗1（feed流）-300*250 --> 
+<SCRIPT>
+(function() {
+    var s = "_" + Math.random().toString(36).slice(2);
+    document.write('<div id="' + s + '"></div>');
+    (window.slotbydup=window.slotbydup || []).push({
+        id: '4770930',
+        container: s,
+        size: '300,250',
+        display: 'inlay-fix'
+    });
+})();
+</SCRIPT>
+		     </DIV></DIV>
+<DIV class="fixRight">
+<DIV class="right_box padb0 csdn-tracking-statistics" data-mod="popu_391">
+<H3 class="tit"><SPAN><EM>在线课程</EM></SPAN></H3>
+<UL class="edu_li clearfix">
+  <LI>
+  <DIV><A href="http://edu.csdn.net/huiyiCourse/series_detail/68?utm_source=wx2" 
+  target="_blank"><IMG title="用户画像系统应用与技术解析" alt="用户画像系统应用与技术解析" src="Kafka%20producer(scala版)%20-%20CSDN博客.files/201710200924553321.png"> 
+                        </A></DIV>
+  <DIV>
+  <P><A href="http://edu.csdn.net/huiyiCourse/series_detail/68?utm_source=wx2" 
+  target="_blank">用户画像系统应用与技术解析</A></P>
+  <P>讲师：汪剑</P></DIV></LI>
+  <LI>
+  <DIV><A href="http://edu.csdn.net/huiyiCourse/series_detail/70?utm_source=blog7" 
+  target="_blank"><IMG title="2017 求职面试集训营之VIP服务版" alt="2017 求职面试集训营之VIP服务版" 
+  src="Kafka%20producer(scala版)%20-%20CSDN博客.files/201710200910059870.jpg">      
+                   </A></DIV>
+  <DIV>
+  <P><A href="http://edu.csdn.net/huiyiCourse/series_detail/70?utm_source=blog7" 
+  target="_blank">2017 求职面试集训营之VIP服务版</A></P>
+  <P>讲师：刘道宽</P></DIV></LI></UL></DIV><!--u3032529-->             <!-- <div class="extension_other csdn-tracking-statistics baidu_box" data-mod="popu_395">
+								
+                <script type="text/javascript" src="http://mpb1.iteye.com/cxpdpmumfaedgm.js"></script>
+            </div> -->
+			 
+<DIV class="extension_other csdn-tracking-statistics bottomRcom" style="position: absolute; z-index: -5; opacity: 0; pointer-events: none;" 
+data-mod="popu_389"><!--u3032528-->				 
+<DIV class="flashrecommend">
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/bwocoltlyzdec.js" type="text/javascript"></SCRIPT>
+				 </DIV></DIV></DIV>
+<DIV class="user-hotArticle">
+<H3>热门文章</H3>
+<UL class="hotArticle-list">
+  <LI><A 
+  href="http://blog.csdn.net/lmalds/article/details/51780950">Flink流计算编程--Kafka+Flink整合demo</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>5883</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/lmalds/article/details/51699037">Flink流计算编程--在WindowedStream中体会EventTime与ProcessingTime</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>4808</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/lmalds/article/details/51743038">Flink流计算编程--在双流中体会joinedStream与coGroupedStream</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>3886</SPAN></DIV></LI>
+  <LI><A href="http://blog.csdn.net/lmalds/article/details/51798814">Kafka 
+  producer(scala版)</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>3790</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/lmalds/article/details/51982696">Flink流计算编程--状态与检查点</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>3394</SPAN></DIV></LI></UL></DIV></ASIDE></DIV>
+<DIV class="left_fixed">
+<DIV class="left_show_button"><SPAN><I 
+class="icon iconfont icon-youjiantou"></I>         </SPAN>       </DIV>
+<UL class="left_menu">
+  <LI><BUTTON class="left-fixed-btn btn-like csdn-tracking-statistics" data-mod="popu_373" 
+  target="_self"><SPAN class="iconbox border_red"><I class="icon iconfont icon-dianzan"></I></SPAN><SPAN 
+  class="txt">1</SPAN></BUTTON>         </LI>
+  <LI id="blog_artical_directory"><BUTTON class="left-fixed-btn left_menu_btn csdn-tracking-statistics" 
+  data-mod="popu_372" target="_self"><SPAN class="iconbox border_black"><I 
+  class="icon iconfont icon-mulu"></I></SPAN></BUTTON>         </LI>
+  <LI class="menu_con">
+  <DIV class="list_father">
+  <DIV class="arr_box"><BUTTON class="btn-noborder arr-btn scroll-down  left_scroll_down"><I 
+  class="icon iconfont icon-xiajiantou"></I></BUTTON>                     
+  <BUTTON class="btn-noborder arr-btn scroll-up left_scroll_top"><I class="icon iconfont icon-shangjiantou"></I></BUTTON> 
+                  </DIV>
+  <DIV class="arr"></DIV>
+  <DIV id="csdnBlogDir"></DIV></DIV></LI>
+  <LI><BUTTON class="left-fixed-btn csdn-tracking-statistics" id="com-quick-collect" 
+  data-mod="popu_374" target="_self"><SPAN class="iconbox border_purple"><I 
+  class="icon iconfont icon-shoucang"></I></SPAN></BUTTON>         </LI>
+  <LI><BUTTON class="left-fixed-btn btn-pinglun"><SPAN class="iconbox border_purple"><I 
+  class="icon iconfont icon-pinglun"></I></SPAN></BUTTON>         </LI>
+  <LI id="share_box"><BUTTON class="left-fixed-btn  csdn-tracking-statistics" 
+  data-mod="popu_375" target="_self"><SPAN class="iconbox border_orange"><I 
+  class="icon iconfont icon-fenxiang"></I></SPAN></BUTTON>             
+  <DIV class="bdsharebuttonbox csdn-tracking-statistics" data-mod="popu_172">
+  <DIV class="outside"><SPAN class="iconbox border_red2"><I class="icon iconfont icon-xinlang"></I></SPAN><A 
+  title="分享到新浪微博" class="bds_tsina" href="http://blog.csdn.net/lmalds/article/details/51798814#" 
+  data-cmd="tsina"></A>                 </DIV>
+  <DIV class="outside"><SPAN class="iconbox border_green"><I class="icon iconfont icon-weixin"></I></SPAN><A 
+  title="分享到微信" class="bds_weixin" href="http://blog.csdn.net/lmalds/article/details/51798814#" 
+  data-cmd="weixin"></A>                 </DIV>
+  <DIV class="outside"><SPAN class="iconbox border_blue"><I class="icon iconfont icon-QQ"></I></SPAN><A 
+  title="分享到QQ空间" class="bds_qzone" href="http://blog.csdn.net/lmalds/article/details/51798814#" 
+  data-cmd="qzone"></A>                 </DIV></DIV></LI></UL></DIV>
+<DIV class="right_fixed">
+<DIV class="r_ico"><I class="icon iconfont icon-jubao"></I><SPAN class="txt" id="reportBtn">内容举报</SPAN></DIV>
+<DIV class="returnTop"><I 
+class="icon iconfont icon-fanhuidingbu"></I><SPAN>返回顶部</SPAN></DIV></DIV>
+<DIV id="pop_win"></DIV>
+<DIV id="popup_mask"></DIV>
+<DIV class="pop_CA_cover"></DIV>
+<DIV class="pop pop_CA">
+<DIV class="CA_header">        收藏助手         <SPAN class="cancel_icon" id="fapancle"></SPAN></DIV><IFRAME 
+width="100%" height="360" id="collectIframe" src="Kafka%20producer(scala版)%20-%20CSDN博客.files/o.htm" 
+frameborder="0" scrolling="no"></IFRAME> </DIV><!--举报--> 
+<DIV id="report_dialog" style="left: 343.5px; top: 250px;">
+<DIV id="panel_report">
+<DIV class="panel_head">不良信息举报</DIV>
+<FORM class="panel_body" id="frmReport" method="post">
+<TABLE class="pop_table" border="0" cellspacing="4" cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD colspan="2">您举报文章：<A href="http://blog.csdn.net/raintungli/article/details/76583070" 
+      target="_blank">深度学习：神经网络中的前向传播和反向传播算法推导</A></TD></TR>
+  <TR>
+    <TH style="width: 60px;">举报原因：</TH>
+    <TD id="panel_reporttype"><LABEL><INPUT name="report_type" class="report_type" 
+      id="report_sex" type="radio" value="1">色情</LABEL>                     
+      <LABEL><INPUT name="report_type" class="report_type" id="report_Politics" 
+      type="radio" value="2">政治</LABEL>                     <LABEL><INPUT name="report_type" 
+      class="report_type" id="report_copy" type="radio" value="3">抄袭</LABEL>     
+                      <LABEL><INPUT name="report_type" class="report_type" id="report_ad" 
+      type="radio" value="4">广告</LABEL>                     <LABEL><INPUT name="report_type" 
+      class="report_type" id="report_want" type="radio" value="5">招聘</LABEL>     
+                      <LABEL><INPUT name="report_type" class="report_type" id="report_call" 
+      type="radio" value="6">骂人</LABEL>                     <BR><LABEL><INPUT 
+      name="report_type" class="report_type" id="report_other" type="radio" 
+      value="7">其他</LABEL>                     <INPUT name="report_other_content" id="report_other_content" style="display: none;" type="text" maxlength="30"> 
+                      </TD></TR>
+  <TR id="panel_originalurl" style="display: none;">
+    <TH>原文地址：</TH>
+    <TD><INPUT name="originalurl" id="originalurl" style="width: 90%;" type="text" value="http://"> 
+                      </TD></TR>
+  <TR>
+    <TH id="sp_reason">原因补充：</TH>
+    <TD><TEXTAREA name="report_description" id="report_description" style="width: 300px;" rows="3"></TEXTAREA> 
+                          
+      <P id="sp_n" 
+      style="margin: 0px; padding: 0px; color: rgb(153, 153, 153);">(最多只允许输入30个字)</P></TD></TR>
+  <TR>
+    <TD></TD>
+    <TD><INPUT name="submit" align="middle" class="btn_1" id="btnSubmitReport" 
+      type="image" src="Kafka%20producer(scala版)%20-%20CSDN博客.files/btn_submit.jpg"> 
+                          <SPAN style="padding-left: 20px;"></SPAN>              
+             <IMG align="middle" id="btnCloseReportDialog" src="Kafka%20producer(scala版)%20-%20CSDN博客.files/btn_cancel.jpg"> 
+                          
+      <DIV id="error" 
+style="color: red;"></DIV></TD></TR></TBODY></TABLE></FORM></DIV>
+<SCRIPT language="javascript" type="text/javascript">
+        var isComment=0;
+        //显示隐藏地址
+        $(function () {
+            if(isComment){
+                $("#report_description").attr("disabled",true);
+                $("#sp_n").hide();
+                $("#sp_reason").html("评论内容：");
+            }
+            $(".report_type").click(function () {
+                $("#panel_originalurl,#report_other_content").hide();
+                switch ($(this).val()) {
+                    case '3':
+                        $("#panel_originalurl").show();
+                        $("#originalurl").focus();
+                        break;
+                    case '7':
+                        if(isComment){
+                            $("#report_other_content").show().focus();
+                        }
+                        break;
+                }
+
+            });
+
+            $("#frmReport").submit(function () {
+                if (!currentUserName) {
+
+                    if (confirm("您的操作必须登录，是否登录？")) {
+                        location.href = "http://passport.csdn.net/account/login?from=" + encodeURIComponent(location.href);
+                        return false;
+                    }
+                    return false;
+                }
+
+                var reportType = $("input[name=report_type]:checked").val();
+                if(!reportType){
+                    alert("请选择举报原因！");
+                    return false;
+                }
+                var otherInfo = "";
+                switch (reportType) {
+                    case '3':
+                        otherInfo = $("#originalurl").val();
+                        if (otherInfo == ""||otherInfo=="http://") {
+                            alert("举报抄袭必须提供原创文章地址！");
+                            $("#originalurl").focus();
+                            return false;
+                        } else if(!checkeURL(otherInfo)) {
+                            alert("请输入正确的原创文章地址！");
+                            $("#originalurl").focus();
+                            return false;
+                        }
+                        break;
+                    case '7':
+                        otherInfo = $("#report_other_content").val();
+                        if (isComment && !otherInfo) {
+                            alert("请填写举报的具体原因！");
+                            $("#report_other_content").focus();
+                            return false;
+                        }
+                        if(!isComment){
+                            if(!$("#report_description").val()){
+                                alert("请填写举报的具体原因！");
+                                $("#report_description").focus();
+                                return false;
+                            }
+                        }
+                        break;
+                }
+                if(!isComment){
+                    if($("#report_description").val().length>30){
+                        alert("举报原因最多只允许输入30个字！");
+                        return false;
+                    }
+                }
+                nowTime = {
+                  year: new Date().getFullYear(),
+                  month: parseInt(new Date().getMonth())+1,
+                  day: new Date().getDate(),
+                  hours: parseInt(new Date().getHours()),
+                  minutes: parseInt(new Date().getMinutes()),
+                  seconds: parseInt(new Date().getSeconds())
+                }
+                var data = {
+                    articleId: fileName,
+                    commentId: 0,
+                    reportType: reportType,
+                    originalurl: $("#originalurl").val(),
+                    report_other_content: $("#report_other_content").val(),
+                    report_description: $("#report_description").val(),
+                    currentUserName: currentUserName,
+                    updatetime: nowTime.year+'/'+nowTime.month+'/'+nowTime.day+' '+ nowTime.hours+':'+nowTime.minutes+':'+seconds,
+                    blogUser: username
+                };
+                if(!isComment){//如果是举报文章
+                    data.report_other_content = data.report_description;
+                    // data.report_description = "1. 神经网络这是一个常见的神经网络的图：这是一个常见的三层神经网络的基本构成，Layer L1是输入层，Layer L2是隐含层";
+                }
+
+                $.post(blog_address + "/common/report?id="+fileName+"&t=2", data, function (data) {
+                    if (data.result == 1){
+                        SetError("感谢您的举报，我们会尽快审核！");
+                    }else{
+                        if (data.content) alert(data.content);
+                    }
+
+                });
+                return false;
+            });
+
+            $("#btnCloseReportDialog").click(function () {
+                CloseDiv();
+            });
+
+        });
+
+        //提示后关闭方法
+        function SetError(error) {
+            $("#btnCloseReportDialog").trigger("click");
+            alert(error);
+            CloseDiv();
+        }
+
+        //关闭方法
+        function CloseDiv() {
+
+            $.removeMask();
+            $("#report_dialog").hide();
+            return false;
+        }
+
+        //验证url
+        function checkeURL(url){
+            return /^http(s)?:\/\/([\w-]+\.)+[\w-]+/i.test(url);
+        }
+
+    </SCRIPT>
+ </DIV>
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/bootstrap.min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/MathJax.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/login.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/blog_ver.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/skin2017.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20producer(scala版)%20-%20CSDN博客.files/cnick.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    if($(".article_collect li").length==1){$(".article_collect").hide();}
+    if($(".article_tags li").length==1){$(".article_tags").hide();}
+    $(".edit a").attr("href","http://write.blog.csdn.net/postedit/"+fileName);
+    $.each($(".edu_li a"),function(){$(this).attr("href",$(this).attr("href").replace("blog7","blog9"))});
+    new CNick('#uid').showNickname();
+if($("#fan").html()=="")
+{
+$("#fan").html(0);	
+}
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    var fromjs=$("#fromjs");
+    if(fromjs.length>0)
+    {                  
+        $("#fromjs .markdown_views pre").addClass("prettyprint");       
+        prettyPrint();
+
+        $('pre.prettyprint code').each(function () {
+            var lines = $(this).text().split('\n').length;
+            var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+            $(this).addClass('has-numbering').parent().append($numbering);
+            for (i = 1; i <= lines; i++) {
+                $numbering.append($('<li/>').text(i));
+            };
+            $numbering.fadeIn(1700);
+        });
+
+        $('.pre-numbering li').css("color","#999");             
+    }
+
+    $(function(){
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },500);         
+       
+
+    });
+
+    setTimeout(function () {
+        $(".toc a[target='_blank']").attr("target", "");
+    }, 500);
+
+</SCRIPT>
+ </BODY></HTML>

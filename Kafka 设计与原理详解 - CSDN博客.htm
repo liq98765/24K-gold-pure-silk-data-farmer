@@ -1,0 +1,1450 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0057)http://blog.csdn.net/suifeng3051/article/details/48053965 -->
+<!DOCTYPE html PUBLIC "" ""><HTML><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+             <LINK href="http://blog.csdn.net/suifeng3051/article/details/48053965" 
+rel="canonical">     
+<SCRIPT type="text/javascript">
+        var username = "suifeng3051";var _blogger = username;var blog_address = "http://blog.csdn.net/suifeng3051";var static_host = "http://static.blog.csdn.net";
+        var currentUserName = ""; var fileName = '48053965';var commentscount = 11; var islock = false
+        window.quickReplyflag = true;
+        var totalFloor=8;
+                
+                 var isBole = false;
+                
+                
+                 var isDigg = false;
+                
+          
+             var isExpert=false;
+          
+    </SCRIPT>
+ 
+<META http-equiv="content-type" content="text/html; charset=utf-8">     
+<META http-equiv="X-UA-Compatible" content="IE=Edge">     
+<META name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+    
+<META name="apple-mobile-web-app-status-bar-style" content="black">     
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/jquery-1.9.1.min.js" type="text/javascript"></SCRIPT>
+     <LINK href="Kafka%20设计与原理详解%20-%20CSDN博客.files/bootstrap.min.css" rel="stylesheet"> 
+    <LINK href="Kafka%20设计与原理详解%20-%20CSDN博客.files/avatar.css" rel="stylesheet"> 
+    <LINK href="Kafka%20设计与原理详解%20-%20CSDN博客.files/default.css" rel="stylesheet" 
+type="text/css">     <LINK href="Kafka%20设计与原理详解%20-%20CSDN博客.files/style.css" 
+rel="stylesheet">     <LINK href="Kafka%20设计与原理详解%20-%20CSDN博客.files/content_toolbar.css" 
+rel="stylesheet">     
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/iconfont.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/main.js"></SCRIPT>
+     
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/tracking_for_recommend.js" type="text/javascript" charset="utf-8"></SCRIPT>
+     
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/tracking.js" type="text/javascript" charset="utf-8"></SCRIPT>
+     
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/cnick.js" type="text/javascript" charset="utf-8"></SCRIPT>
+      <LINK href="Kafka%20设计与原理详解%20-%20CSDN博客.files/prettify.css" rel="stylesheet"> 
+    
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/prettify.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src=""></SCRIPT>
+     
+<SCRIPT type="text/javascript">
+
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+
+
+
+    </SCRIPT>
+     
+<META name="description" content="一、Kafka简介1.1 背景历史当今社会各种应用系统诸如商业、社交、搜索、浏览等像信息工厂一样不断的生产出各种信息，在大数据时代，我们面临如下几个挑战：&#10;如何收集这些巨大的信息&#10;如何分析它&#10;如何及时做到如上两点&#10;以上几个挑战形成了一个业务需求模型，即生产者生产（produce）各种信息，消费者消费（consume）（处理分析）这些信息，而在生产者与消费者之间，需要一个沟通两者的桥梁-消息系统。从一"> 
+    
+<META name="keywords" content="kafka,kafka教程">     
+<META http-equiv="Cache-Control" content="no-siteapp"><LINK href="#" rel="alternate" 
+media="handheld">     
+<META name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848"> 
+    <TITLE>Kafka 设计与原理详解 - CSDN博客</TITLE> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18817"></HEAD> 
+<BODY>
+<SCRIPT id="toolbar-tpl-scriptId" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/content_toolbar.js" type="text/javascript" domain="http://blog.csdn.net" skin="black" prod="download"></SCRIPT>
+ 
+<DIV class="container clearfix"><main><ARTICLE>
+<H1 class="csdn_top">Kafka 设计与原理详解</H1>
+<DIV class="article_bar clearfix">
+<DIV class="artical_tag"><SPAN class="original">原创</SPAN>                     
+<SPAN class="time">2015年08月28日 16:36:32</SPAN>                 </DIV>
+<UL class="article_tags clearfix csdn-tracking-statistics" 
+  data-mod="popu_377"><LI class="tit">标签：</LI>
+  <LI><A href="http://so.csdn.net/so/search/s.do?q=kafka&amp;t=blog" target="_blank">kafka</A> 
+  <SPAN>/</SPAN></LI>
+  <LI><A href="http://so.csdn.net/so/search/s.do?q=kafka教程&amp;t=blog" target="_blank">kafka教程</A> 
+  <SPAN>/</SPAN></LI>
+  <LI><A href="http://so.csdn.net/so/search/s.do?q=kafka详解&amp;t=blog" target="_blank">kafka详解</A> 
+  <SPAN>/</SPAN></LI></UL>
+<UL class="right_bar">
+  <LI><BUTTON class="btn-noborder"><I class="icon iconfont icon-read"></I><SPAN 
+  class="txt">48492</SPAN></BUTTON></LI><!--<li><button class="btn-noborder"><i class="icon iconfont icon-dashang-"></i><span class="txt">0</span></button></li>--> 
+                      
+  <LI class="edit"><A class="btn-noborder" href="Kafka%20设计与原理详解%20-%20CSDN博客.files/suifeng3051.htm"><I 
+  class="icon iconfont icon-bianji"></I><SPAN class="txt">编辑</SPAN>              
+             </A>                     </LI>
+  <LI class="del"><A class="btn-noborder" onclick="javascript:deleteArticle(fileName);return false;"><I 
+  class="icon iconfont icon-shanchu"></I><SPAN class="txt">删除</SPAN>             
+              </A>                     </LI></UL></DIV>
+<DIV class="article_content csdn-tracking-statistics" id="article_content" 
+data-mod="popu_307" data-dsm="post">
+<DIV class="markdown_views">
+<H2 id="一kafka简介">一、Kafka简介</H2>
+<PRE><CODE>本文综合了我之前写的kafka相关文章，可作为一个全面了解学习kafka的培训学习资料。
+</CODE></PRE>
+<P>转载请注明出处 : <A 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965">本文链接</A></P>
+<H3 id="11-背景历史">1.1 背景历史</H3>
+<P>当今社会各种应用系统诸如商业、社交、搜索、浏览等像信息工厂一样不断的生产出各种信息，在大数据时代，我们面临如下几个挑战：</P>
+<OL>
+  <LI>如何收集这些巨大的信息</LI>
+  <LI>如何分析它</LI>
+  <LI>如何及时做到如上两点</LI></OL>
+<P>以上几个挑战形成了一个业务需求模型，即生产者生产（produce）各种信息，消费者消费（consume）（处理分析）这些信息，而在生产者与消费者之间，需要一个沟通两者的桥梁-消息系统。从一个微观层面来说，这种需求也可理解为不同的系统之间如何传递消息。</P>
+<H3 id="12-kafka诞生">1.2 Kafka诞生</H3>
+<P>Kafka由 <STRONG>linked-in</STRONG> 开源 
+<BR>kafka-即是解决上述这类问题的一个框架，它实现了生产者和消费者之间的无缝连接。 <BR>kafka-高产出的分布式消息系统(A 
+high-throughput distributed messaging system)</P>
+<H3 id="13-kafka现在">1.3 Kafka现在</H3>
+<P>Apache kafka 
+是一个分布式的基于push-subscribe的消息系统，它具备快速、可扩展、可持久化的特点。它现在是Apache旗下的一个开源系统，作为hadoop生态系统的一部分，被各种商业公司广泛应用。它的最大的特性就是可以实时的处理大量数据以满足各种需求场景：比如基于hadoop的批处理系统、低延迟的实时系统、storm/spark流式处理引擎。</P>
+<H2 id="二kafka技术概览">二、Kafka技术概览</H2>
+<H3 id="21-kafka的特性">2.1 Kafka的特性</H3>
+<UL>
+  <LI><STRONG>高吞吐量、低延迟</STRONG>：kafka每秒可以处理几十万条消息，它的延迟最低只有几毫秒</LI>
+  <LI><STRONG>可扩展性</STRONG>：kafka集群支持热扩展</LI>
+  <LI><STRONG>持久性、可靠性</STRONG>：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失</LI>
+  <LI><STRONG>容错性</STRONG>：允许集群中节点失败（若副本数量为n,则允许n-1个节点失败）</LI>
+  <LI><STRONG>高并发</STRONG>：支持数千个客户端同时读写</LI></UL>
+<H3 id="22-kafka一些重要设计思想">2.2 Kafka一些重要设计思想</H3>
+<P>下面介绍先大体介绍一下Kafka的主要设计思想，可以让相关人员在短时间内了解到kafka相关特性，如果想深入研究，后面会对其中每一个特性都做详细介绍。</P>
+<UL>
+  <LI><STRONG>Consumergroup</STRONG>：各个consumer可以组成一个组，每个消息只能被组中的一个consumer消费，如果一个消息可以被多个consumer消费的话，那么这些consumer必须在不同的组。</LI>
+  <LI><STRONG>消息状态</STRONG>：在Kafka中，消息的状态被保存在consumer中，broker不会关心哪个消息被消费了被谁消费了，只记录一个offset值（指向partition中下一个要被消费的消息位置），这就意味着如果consumer处理不好的话，broker上的一个消息可能会被消费多次。</LI>
+  <LI><STRONG>消息持久化</STRONG>：Kafka中会把消息持久化到本地文件系统中，并且保持极高的效率。</LI>
+  <LI><STRONG>消息有效期</STRONG>：Kafka会长久保留其中的消息，以便consumer可以多次消费，当然其中很多细节是可配置的。</LI>
+  <LI><STRONG>批量发送</STRONG>：Kafka支持以消息集合为单位进行批量发送，以提高push效率。</LI>
+  <LI><STRONG>push-and-pull</STRONG> : 
+  Kafka中的Producer和consumer采用的是push-and-pull模式，即Producer只管向broker 
+  push消息，consumer只管从broker pull消息，两者对消息的生产和消费是异步的。</LI>
+  <LI><STRONG>Kafka集群中broker之间的关系</STRONG>：不是主从关系，各个broker在集群中地位一样，我们可以随意的增加或删除任何一个broker节点。</LI>
+  <LI><STRONG>负载均衡方面</STRONG>： Kafka提供了一个 metadata 
+  API来管理broker之间的负载（对Kafka0.8.x而言，对于0.7.x主要靠zookeeper来实现负载均衡）。</LI>
+  <LI><STRONG>同步异步</STRONG>：Producer采用异步push方式，极大提高Kafka系统的吞吐率（可以通过参数控制是采用同步还是异步方式）。</LI>
+  <LI><STRONG>分区机制partition</STRONG>：Kafka的broker端支持消息分区，Producer可以决定把消息发到哪个分区，在一个分区中消息的顺序就是Producer发送消息的顺序，一个主题中可以有多个分区，具体分区的数量是可配置的。分区的意义很重大，后面的内容会逐渐体现。</LI>
+  <LI><STRONG>离线数据装载</STRONG>：Kafka由于对可拓展的数据持久化的支持，它也非常适合向Hadoop或者数据仓库中进行数据装载。</LI>
+  <LI><STRONG>插件支持</STRONG>：现在不少活跃的社区已经开发出不少插件来拓展Kafka的功能，如用来配合Storm、Hadoop、flume相关的插件。</LI></UL>
+<H3 id="23-kafka-应用场景">2.3 kafka 应用场景</H3>
+<UL>
+  <LI><STRONG>日志收集</STRONG>：一个公司可以用Kafka可以收集各种服务的log，通过kafka以统一接口服务的方式开放给各种consumer，例如hadoop、Hbase、Solr等。</LI>
+  <LI><STRONG>消息系统</STRONG>：解耦和生产者和消费者、缓存消息等。</LI>
+  <LI><STRONG>用户活动跟踪</STRONG>：Kafka经常被用来记录web用户或者app用户的各种活动，如浏览网页、搜索、点击等活动，这些活动信息被各个服务器发布到kafka的topic中，然后订阅者通过订阅这些topic来做实时的监控分析，或者装载到hadoop、数据仓库中做离线分析和挖掘。</LI>
+  <LI><STRONG>运营指标</STRONG>：Kafka也经常用来记录运营监控数据。包括收集各种分布式应用的数据，生产各种操作的集中反馈，比如报警和报告。</LI>
+  <LI><STRONG>流式处理</STRONG>：比如spark streaming和storm</LI>
+  <LI><STRONG>事件源</STRONG>   </LI></UL>
+<H3 id="24-kafka架构组件">2.4 Kafka架构组件</H3>
+<P>Kafka中发布订阅的对象是topic。我们可以为每类数据创建一个topic，把向topic发布消息的客户端称作producer，从topic订阅消息的客户端称作consumer。Producers和consumers可以同时从多个topic读写数据。一个kafka集群由一个或多个broker服务器组成，它负责持久化和备份具体的kafka消息。</P>
+<UL>
+  <LI>topic：消息存放的目录即主题</LI>
+  <LI>Producer：生产消息到topic的一方</LI>
+  <LI>Consumer：订阅topic消费消息的一方    </LI>
+  <LI>Broker：Kafka的服务实例就是一个broker</LI></UL>
+<P><IMG title="" alt="" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/producer_consumer.png"></P>
+<H3 id="25-kafka-topicpartition">2.5 Kafka Topic&amp;Partition</H3>
+<P>消息发送时都被发送到一个topic，其本质就是一个目录，而topic由是由一些Partition Logs(分区日志)组成,其组织结构如下图所示：</P>
+<P><IMG title="" alt="" 
+src="Kafka%20设计与原理详解%20-%20CSDN博客.files/log_anatomy.png"></P>
+<P>我们可以看到，每个Partition中的消息都是有序的，生产的消息被不断追加到Partition 
+log上，其中的每一个消息都被赋予了一个唯一的offset值。 
+<BR>Kafka集群会保存所有的消息，不管消息有没有被消费；我们可以设定消息的过期时间，只有过期的数据才会被自动清除以释放磁盘空间。比如我们设置消息过期时间为2天，那么这2天内的所有消息都会被保存到集群中，数据只有超过了两天才会被清除。 
+<BR>Kafka需要维持的元数据只有一个–消费消息在Partition中的offset值，Consumer每消费一个消息，offset就会加1。其实消息的状态完全是由Consumer控制的，Consumer可以跟踪和重设这个offset值，这样的话Consumer就可以读取任意位置的消息。 
+<BR>    
+把消息日志以Partition的形式存放有多重考虑，第一，方便在集群中扩展，每个Partition可以通过调整以适应它所在的机器，而一个topic又可以有多个Partition组成，因此整个集群就可以适应任意大小的数据了；第二就是可以提高并发，因为可以以Partition为单位读写了。</P>
+<H2 id="三kafka-核心组件">三、Kafka 核心组件</H2>
+<H3 id="31-replicationspartitions-和leaders">3.1 Replications、Partitions 
+和Leaders</H3>
+<P>通过上面介绍的我们可以知道，kafka中的数据是持久化的并且能够容错的。Kafka允许用户为每个topic设置副本数量，副本数量决定了有几个broker来存放写入的数据。如果你的副本数量设置为3，那么一份数据就会被存放在3台不同的机器上，那么就允许有2个机器失败。一般推荐副本数量至少为2，这样就可以保证增减、重启机器时不会影响到数据消费。如果对数据持久化有更高的要求，可以把副本数量设置为3或者更多。 
+<BR>Kafka中的topic是以partition的形式存放的，每一个topic都可以设置它的partition数量，Partition的数量决定了组成topic的log的数量。Producer在生产数据时，会按照一定规则（这个规则是可以自定义的）把消息发布到topic的各个partition中。上面将的副本都是以partition为单位的，不过只有一个partition的副本会被选举成leader作为读写用。 
+<BR>
+关于如何设置partition值需要考虑的因素。一个partition只能被一个消费者消费（一个消费者可以同时消费多个partition），因此，如果设置的partition的数量小于consumer的数量，就会有消费者消费不到数据。所以，推荐partition的数量一定要大于同时运行的consumer的数量。另外一方面，建议partition的数量大于集群broker的数量，这样leader 
+partition就可以均匀的分布在各个broker中，最终使得集群负载均衡。在Cloudera,每个topic都有上百个partition。需要注意的是，kafka需要为每个partition分配一些内存来缓存消息数据，如果partition数量越大，就要为kafka分配更大的heap 
+space。</P>
+<H3 id="32-producers">3.2 Producers</H3>
+<P>Producers直接发送消息到broker上的leader 
+partition，不需要经过任何中介一系列的路由转发。为了实现这个特性，kafka集群中的每个broker都可以响应producer的请求，并返回topic的一些元信息，这些元信息包括哪些机器是存活的，topic的leader 
+partition都在哪，现阶段哪些leader partition是可以直接被访问的。 
+<BR>Producer客户端自己控制着消息被推送到哪些partition。实现的方式可以是随机分配、实现一类随机负载均衡算法，或者指定一些分区算法。Kafka提供了接口供用户实现自定义的分区，用户可以为每个消息指定一个partitionKey，通过这个key来实现一些hash分区算法。比如，把userid作为partitionkey的话，相同userid的消息将会被推送到同一个分区。 
+<BR>以Batch的方式推送数据可以极大的提高处理效率，kafka Producer 
+可以将消息在内存中累计到一定数量后作为一个batch发送请求。Batch的数量大小可以通过Producer的参数控制，参数值可以设置为累计的消息的数量（如500条）、累计的时间间隔（如100ms）或者累计的数据大小(64KB)。通过增加batch的大小，可以减少网络请求和磁盘IO的次数，当然具体参数设置需要在效率和时效性方面做一个权衡。 
+<BR>Producers可以异步的并行的向kafka发送消息，但是通常producer在发送完消息之后会得到一个future响应，返回的是offset值或者发送过程中遇到的错误。这其中有个非常重要的参数“acks”,这个参数决定了producer要求leader 
+partition 
+收到确认的副本个数，如果acks设置数量为0，表示producer不会等待broker的响应，所以，producer无法知道消息是否发送成功，这样有可能会导致数据丢失，但同时，acks值为0会得到最大的系统吞吐量。 
+<BR>若acks设置为1，表示producer会在leader 
+partition收到消息时得到broker的一个确认，这样会有更好的可靠性，因为客户端会等待直到broker确认收到消息。若设置为-1，producer会在所有备份的partition收到消息时得到broker的确认，这个设置可以得到最高的可靠性保证。 
+<BR>Kafka 
+消息有一个定长的header和变长的字节数组组成。因为kafka消息支持字节数组，也就使得kafka可以支持任何用户自定义的序列号格式或者其它已有的格式如Apache 
+Avro、protobuf等。Kafka没有限定单个消息的大小，但我们推荐消息大小不要超过1MB,通常一般消息大小都在1~10kB之前。</P>
+<H3 id="33-consumers">3.3 Consumers</H3>
+<P>Kafka提供了两套consumer api，分为high-level api和sample-api。Sample-api 
+是一个底层的API，它维持了一个和单一broker的连接，并且这个API是完全无状态的，每次请求都需要指定offset值，因此，这套API也是最灵活的。 
+<BR>
+在kafka中，当前读到消息的offset值是由consumer来维护的，因此，consumer可以自己决定如何读取kafka中的数据。比如，consumer可以通过重设offset值来重新消费已消费过的数据。不管有没有被消费，kafka会保存数据一段时间，这个时间周期是可配置的，只有到了过期时间，kafka才会删除这些数据。 
+<BR>High-level 
+API封装了对集群中一系列broker的访问，可以透明的消费一个topic。它自己维持了已消费消息的状态，即每次消费的都是下一个消息。 
+<BR>High-level 
+API还支持以组的形式消费topic，如果consumers有同一个组名，那么kafka就相当于一个队列消息服务，而各个consumer均衡的消费相应partition中的数据。若consumers有不同的组名，那么此时kafka就相当与一个广播服务，会把topic中的所有消息广播到每个consumer。 
+<BR><IMG title="" alt="" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/consumer-groups.png"></P>
+<H2 id="四kafka核心特性">四、Kafka核心特性</H2>
+<H3 id="41-压缩">4.1 压缩</H3>
+<P>我们上面已经知道了Kafka支持以集合（batch）为单位发送消息，在此基础上，Kafka还支持对消息集合进行压缩，Producer端可以通过GZIP或Snappy格式对消息集合进行压缩。Producer端进行压缩之后，在Consumer端需进行解压。压缩的好处就是减少传输的数据量，减轻对网络传输的压力，在对大数据处理上，瓶颈往往体现在网络上而不是CPU（压缩和解压会耗掉部分CPU资源）。 
+<BR>
+那么如何区分消息是压缩的还是未压缩的呢，Kafka在消息头部添加了一个描述压缩属性字节，这个字节的后两位表示消息的压缩采用的编码，如果后两位为0，则表示消息未被压缩。</P>
+<H3 id="42消息可靠性">4.2消息可靠性</H3>
+<P>在消息系统中，保证消息在生产和消费过程中的可靠性是十分重要的，在实际消息传递过程中，可能会出现如下三中情况：</P>
+<UL>
+  <LI>一个消息发送失败</LI>
+  <LI>一个消息被发送多次</LI>
+  <LI>最理想的情况：exactly-once ,一个消息发送成功且仅发送了一次                   </LI></UL>
+<P>有许多系统声称它们实现了exactly-once，但是它们其实忽略了生产者或消费者在生产和消费过程中有可能失败的情况。比如虽然一个Producer成功发送一个消息，但是消息在发送途中丢失，或者成功发送到broker，也被consumer成功取走，但是这个consumer在处理取过来的消息时失败了。 
+<BR>
+从Producer端看：Kafka是这么处理的，当一个消息被发送后，Producer会等待broker成功接收到消息的反馈（可通过参数控制等待时间），如果消息在途中丢失或是其中一个broker挂掉，Producer会重新发送（我们知道Kafka有备份机制，可以通过参数控制是否等待所有备份节点都收到消息）。 
+<BR>
+从Consumer端看：前面讲到过partition，broker端记录了partition中的一个offset值，这个值指向Consumer下一个即将消费message。当Consumer收到了消息，但却在处理过程中挂掉，此时Consumer可以通过这个offset值重新找到上一个消息再进行处理。Consumer还有权限控制这个offset值，对持久化到broker端的消息做任意处理。</P>
+<H3 id="43-备份机制">4.3 备份机制</H3>
+<P>备份机制是Kafka0.8版本的新特性，备份机制的出现大大提高了Kafka集群的可靠性、稳定性。有了备份机制后，Kafka允许集群中的节点挂掉后而不影响整个集群工作。一个备份数量为n的集群允许n-1个节点失败。在所有备份节点中，有一个节点作为lead节点，这个节点保存了其它备份节点列表，并维持各个备份间的状体同步。下面这幅图解释了Kafka的备份机制:</P>
+<P><IMG title="" alt="这里写图片描述" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/20150828162159461"></P>
+<H3 id="44-kafka高效性相关设计">4.4 Kafka高效性相关设计</H3>
+<H4 id="441-消息的持久化">4.4.1 消息的持久化</H4>
+<P>Kafka高度依赖文件系统来存储和缓存消息，一般的人认为磁盘是缓慢的，这导致人们对持久化结构具有竞争性持怀疑态度。其实，磁盘远比你想象的要快或者慢，这决定于我们如何使用磁盘。 
+<BR>一个和磁盘性能有关的关键事实是：磁盘驱动器的吞吐量跟寻到延迟是相背离的，也就是所，线性写的速度远远大于随机写。比如：在一个6 7200rpm SATA 
+RAID-5 
+的磁盘阵列上线性写的速度大概是600M/秒，但是随机写的速度只有100K/秒，两者相差将近6000倍。线性读写在大多数应用场景下是可以预测的，因此，操作系统利用read-ahead和write-behind技术来从大的数据块中预取数据，或者将多个逻辑上的写操作组合成一个大写物理写操作中。更多的讨论可以在<A 
+href="http://queue.acm.org/detail.cfm?id=1563874">ACMQueueArtical</A>中找到，他们发现，对磁盘的线性读在有些情况下可以比内存的随机访问要快一些。 
+<BR>
+为了补偿这个性能上的分歧，现代操作系统都会把空闲的内存用作磁盘缓存，尽管在内存回收的时候会有一点性能上的代价。所有的磁盘读写操作会在这个统一的缓存上进行。 
+<BR>此外，如果我们是在JVM的基础上构建的，熟悉java内存应用管理的人应该清楚以下两件事情：</P>
+<OL>
+  <LI>一个对象的内存消耗是非常高的，经常是所存数据的两倍或者更多。</LI>
+  <LI>随着堆内数据的增多，Java的垃圾回收会变得非常昂贵。</LI></OL>
+<P>基于这些事实，利用文件系统并且依靠页缓存比维护一个内存缓存或者其他结构要好——我们至少要使得可用的缓存加倍，通过自动访问可用内存，并且通过存储更紧凑的字节结构而不是一个对象，这将有可能再次加倍。这么做的结果就是在一台32GB的机器上，如果不考虑GC惩罚，将最多有28-30GB的缓存。此外，这些缓存将会一直存在即使服务重启，然而进程内缓存需要在内存中重构（10GB缓存需要花费10分钟）或者它需要一个完全冷缓存启动（非常差的初始化性能）。它同时也简化了代码，因为现在所有的维护缓存和文件系统之间内聚的逻辑都在操作系统内部了，这使得这样做比one-off 
+in-process 
+attempts更加高效与准确。如果你的磁盘应用更加倾向于顺序读取，那么read-ahead在每次磁盘读取中实际上获取到这人缓存中的有用数据。 <BR>
+以上这些建议了一个简单的设计：不同于维护尽可能多的内存缓存并且在需要的时候刷新到文件系统中，我们换一种思路。所有的数据不需要调用刷新程序，而是立刻将它写到一个持久化的日志中。事实上，这仅仅意味着，数据将被传输到内核页缓存中并稍后被刷新。我们可以增加一个配置项以让系统的用户来控制数据在什么时候被刷新到物理硬盘上。</P>
+<H4 id="442-常数时间性能保证">4.4.2 常数时间性能保证</H4>
+<P>消息系统中持久化数据结构的设计通常是维护者一个和消费队列有关的B树或者其它能够随机存取结构的元数据信息。B树是一个很好的结构，可以用在事务型与非事务型的语义中。但是它需要一个很高的花费，尽管B树的操作需要O(logN)。通常情况下，这被认为与常数时间等价，但这对磁盘操作来说是不对的。磁盘寻道一次需要10ms，并且一次只能寻一个，因此并行化是受限的。 
+<BR>
+直觉上来讲，一个持久化的队列可以构建在对一个文件的读和追加上，就像一般情况下的日志解决方案。尽管和B树相比，这种结构不能支持丰富的语义，但是它有一个优点，所有的操作都是常数时间，并且读写之间不会相互阻塞。这种设计具有极大的性能优势：最终系统性能和数据大小完全无关，服务器可以充分利用廉价的硬盘来提供高效的消息服务。 
+<BR>
+事实上还有一点，磁盘空间的无限增大而不影响性能这点，意味着我们可以提供一般消息系统无法提供的特性。比如说，消息被消费后不是立马被删除，我们可以将这些消息保留一段相对比较长的时间（比如一个星期）。</P>
+<H4 id="443-进一步提高效率">4.4.3 进一步提高效率</H4>
+<P>我们已经为效率做了非常多的努力。但是有一种非常主要的应用场景是：处理Web活动数据，它的特点是数据量非常大，每一次的网页浏览都会产生大量的写操作。更进一步，我们假设每一个被发布的消息都会被至少一个consumer消费，因此我们更要怒路让消费变得更廉价。 
+<BR>通过上面的介绍，我们已经解决了磁盘方面的效率问题，除此之外，在此类系统中还有两类比较低效的场景：</P>
+<UL>
+  <LI>太多小的I/O操作</LI>
+  <LI>过多的字节拷贝</LI></UL>
+<P>为了减少大量小I/O操作的问题，kafka的协议是围绕消息集合构建的。Producer一次网络请求可以发送一个消息集合，而不是每一次只发一条消息。在server端是以消息块的形式追加消息到log中的，consumer在查询的时候也是一次查询大量的线性数据块。消息集合即MessageSet，实现本身是一个非常简单的API，它将一个字节数组或者文件进行打包。所以对消息的处理，这里没有分开的序列化和反序列化的上步骤，消息的字段可以按需反序列化（如果没有需要，可以不用反序列化）。 
+<BR>
+另一个影响效率的问题就是字节拷贝。为了解决字节拷贝的问题，kafka设计了一种“标准字节消息”，Producer、Broker、Consumer共享这一种消息格式。Kakfa的message 
+log在broker端就是一些目录文件，这些日志文件都是MessageSet按照这种“标准字节消息”格式写入到磁盘的。 <BR>
+维持这种通用的格式对这些操作的优化尤为重要：持久化log 
+块的网络传输。流行的unix操作系统提供了一种非常高效的途径来实现页面缓存和socket之间的数据传递。在Linux操作系统中，这种方式被称作：sendfile 
+system call（Java提供了访问这个系统调用的方法：FileChannel.transferTo api）。</P>
+<P>为了理解sendfile的影响，需要理解一般的将数据从文件传到socket的路径：</P>
+<OL>
+  <LI>操作系统将数据从磁盘读到内核空间的页缓存中</LI>
+  <LI>应用将数据从内核空间读到用户空间的缓存中</LI>
+  <LI>应用将数据写回内核空间的socket缓存中</LI>
+  <LI>操作系统将数据从socket缓存写到网卡缓存中，以便将数据经网络发出</LI></OL>
+<P>这种操作方式明显是非常低效的，这里有四次拷贝，两次系统调用。如果使用sendfile，就可以避免两次拷贝：操作系统将数据直接从页缓存发送到网络上。所以在这个优化的路径中，只有最后一步将数据拷贝到网卡缓存中是需要的。 
+<BR>
+我们期望一个主题上有多个消费者是一种常见的应用场景。利用上述的zero-copy，数据只被拷贝到页缓存一次，然后就可以在每次消费时被重得利用，而不需要将数据存在内存中，然后在每次读的时候拷贝到内核空间中。这使得消息消费速度可以达到网络连接的速度。这样以来，通过页面缓存和sendfile的结合使用，整个kafka集群几乎都已以缓存的方式提供服务，而且即使下游的consumer很多，也不会对整个集群服务造成压力。 
+<BR>关于sendfile和zero-copy，请参考：<A href="https://www.ibm.com/developerworks/linux/library/j-zerocopy/">zero-copy</A></P>
+<H2 id="五kafka集群部署">五、Kafka集群部署</H2>
+<H3 id="51-集群部署">5.1 集群部署</H3>
+<P>为了提高性能，推荐采用专用的服务器来部署kafka集群，尽量与hadoop集群分开，因为kafka依赖磁盘读写和大的页面缓存，如果和hadoop共享节点的话会影响其使用页面缓存的性能。 
+<BR>Kafka集群的大小需要根据硬件的配置、生产者消费者的并发数量、数据的副本个数、数据的保存时长综合确定。 <BR>
+磁盘的吞吐量尤为重要，因为通常kafka的瓶颈就在磁盘上。 
+<BR>Kafka依赖于zookeeper，建议采用专用服务器来部署zookeeper集群，zookeeper集群的节点采用偶数个，一般建议用3、5、7个。注意zookeeper集群越大其读写性能越慢，因为zookeeper需要在节点之间同步数据。一个3节点的zookeeper集群允许一个节点失败，一个5节点集群允许2个几点失败。</P>
+<H3 id="52-集群大小">5.2 集群大小</H3>
+<P>有很多因素决定着kafka集群需要具备存储能力的大小，最准确的衡量办法就是模拟负载来测算一下，Kafka本身也提供了负载测试的工具。 <BR>
+如果不想通过模拟实验来评估集群大小，最好的办法就是根据硬盘的空间需求来推算。下面我就根据网络和磁盘吞吐量需求来做一下估算。 <BR>我们做如下假设：</P>
+<UL>
+  <LI>W：每秒写多少MB</LI>
+  <LI>R ：副本数</LI>
+  <LI>C ：Consumer的数量</LI></UL>
+<P>一般的来说，kafka集群瓶颈在于网络和磁盘吞吐量，所以我们先评估一下集群的网络和磁盘需求。 <BR>
+对于每条消息，每个副本都要写一遍，所以整体写的速度是W*R。读数据的部分主要是集群内部各个副本从leader同步消息读和集群外部的consumer读，所以集群内部读的速率是(R-1)*W,同时，外部consumer读的速度是C*W，因此：</P>
+<UL>
+  <LI>Write：W*R</LI>
+  <LI>Read：（R-1）*W+C*W</LI></UL>
+<P>需要注意的是，我们可以在读的时候缓存部分数据来减少IO操作，如果一个集群有M MB内存，写的速度是W MB/sec，则允许M/(W*R) 
+秒的写可以被缓存。如果集群有32GB内存，写的速度是50MB/s的话，则可以至少缓存10分钟的数据。</P>
+<H3 id="53-kafka性能测试">5.3 Kafka性能测试</H3>
+<P><A href="https://cwiki.apache.org/confluence/display/KAFKA/Performance+testing">Performance 
+testing</A></P>
+<H3 id="54-kafka在zookeeper中的数据结构">5.4 Kafka在zookeeper中的数据结构</H3>
+<P><A href="https://cwiki.apache.org/confluence/display/KAFKA/Kafka+data+structures+in+Zookeeper">Kafka 
+data structures in Zookeeper</A></P>
+<H2 id="六kafka主要配置">六、Kafka主要配置</H2>
+<H3 id="61-broker-config">6.1 Broker Config</H3>
+<TABLE>
+  <THEAD>
+  <TR>
+    <TH>属性</TH>
+    <TH>默认值</TH>
+    <TH>描述</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD>broker.id</TD>
+    <TD></TD>
+    <TD>必填参数，broker的唯一标识</TD></TR>
+  <TR>
+    <TD>log.dirs</TD>
+    <TD>/tmp/kafka-logs</TD>
+    <TD>Kafka数据存放的目录。可以指定多个目录，中间用逗号分隔，当新partition被创建的时会被存放到当前存放partition最少的目录。</TD></TR>
+  <TR>
+    <TD>port</TD>
+    <TD>9092</TD>
+    <TD>BrokerServer接受客户端连接的端口号</TD></TR>
+  <TR>
+    <TD>zookeeper.connect</TD>
+    <TD>null</TD>
+    <TD>Zookeeper的连接串，格式为：hostname1:port1,hostname2:port2,hostname3:port3。可以填一个或多个，为了提高可靠性，建议都填上。注意，此配置允许我们指定一个zookeeper路径来存放此kafka集群的所有数据，为了与其他应用集群区分开，建议在此配置中指定本集群存放目录，格式为：hostname1:port1,hostname2:port2,hostname3:port3/chroot/path 
+      。需要注意的是，消费者的参数要和此参数一致。</TD></TR>
+  <TR>
+    <TD>message.max.bytes</TD>
+    <TD>1000000</TD>
+    <TD>服务器可以接收到的最大的消息大小。注意此参数要和consumer的maximum.message.size大小一致，否则会因为生产者生产的消息太大导致消费者无法消费。</TD></TR>
+  <TR>
+    <TD>num.io.threads</TD>
+    <TD>8</TD>
+    <TD>服务器用来执行读写请求的IO线程数，此参数的数量至少要等于服务器上磁盘的数量。</TD></TR>
+  <TR>
+    <TD>queued.max.requests</TD>
+    <TD>500</TD>
+    <TD>I/O线程可以处理请求的队列大小，若实际请求数超过此大小，网络线程将停止接收新的请求。</TD></TR>
+  <TR>
+    <TD>socket.send.buffer.bytes</TD>
+    <TD>100 * 1024</TD>
+    <TD>The SO_SNDBUFF buffer the server prefers for socket connections.</TD></TR>
+  <TR>
+    <TD>socket.receive.buffer.bytes</TD>
+    <TD>100 * 1024</TD>
+    <TD>The SO_RCVBUFF buffer the server prefers for socket connections.</TD></TR>
+  <TR>
+    <TD>socket.request.max.bytes</TD>
+    <TD>100 * 1024 * 1024</TD>
+    <TD>服务器允许请求的最大值， 用来防止内存溢出，其值应该小于 Java heap size.</TD></TR>
+  <TR>
+    <TD>num.partitions</TD>
+    <TD>1</TD>
+    <TD>默认partition数量，如果topic在创建时没有指定partition数量，默认使用此值，建议改为5</TD></TR>
+  <TR>
+    <TD>log.segment.bytes</TD>
+    <TD>1024 * 1024 * 1024</TD>
+    <TD>Segment文件的大小，超过此值将会自动新建一个segment，此值可以被topic级别的参数覆盖。</TD></TR>
+  <TR>
+    <TD>log.roll.{ms,hours}</TD>
+    <TD>24 * 7 hours</TD>
+    <TD>新建segment文件的时间，此值可以被topic级别的参数覆盖。</TD></TR>
+  <TR>
+    <TD>log.retention.{ms,minutes,hours}</TD>
+    <TD>7 days</TD>
+    <TD>Kafka segment 
+    log的保存周期，保存周期超过此时间日志就会被删除。此参数可以被topic级别参数覆盖。数据量大时，建议减小此值。</TD></TR>
+  <TR>
+    <TD>log.retention.bytes</TD>
+    <TD>-1</TD>
+    <TD>每个partition的最大容量，若数据量超过此值，partition数据将会被删除。注意这个参数控制的是每个partition而不是topic。此参数可以被log级别参数覆盖。</TD></TR>
+  <TR>
+    <TD>log.retention.check.interval.ms</TD>
+    <TD>5 minutes</TD>
+    <TD>删除策略的检查周期</TD></TR>
+  <TR>
+    <TD>auto.create.topics.enable</TD>
+    <TD>true</TD>
+    <TD>自动创建topic参数，建议此值设置为false，严格控制topic管理，防止生产者错写topic。</TD></TR>
+  <TR>
+    <TD>default.replication.factor</TD>
+    <TD>1</TD>
+    <TD>默认副本数量，建议改为2。</TD></TR>
+  <TR>
+    <TD>replica.lag.time.max.ms</TD>
+    <TD>10000</TD>
+    <TD>在此窗口时间内没有收到follower的fetch请求，leader会将其从ISR(in-sync replicas)中移除。</TD></TR>
+  <TR>
+    <TD>replica.lag.max.messages</TD>
+    <TD>4000</TD>
+    <TD>如果replica节点落后leader节点此值大小的消息数量，leader节点就会将其从ISR中移除。</TD></TR>
+  <TR>
+    <TD>replica.socket.timeout.ms</TD>
+    <TD>30 * 1000</TD>
+    <TD>replica向leader发送请求的超时时间。</TD></TR>
+  <TR>
+    <TD>replica.socket.receive.buffer.bytes</TD>
+    <TD>64 * 1024</TD>
+    <TD>The socket receive buffer for network requests to the leader for 
+      replicating data.</TD></TR>
+  <TR>
+    <TD>replica.fetch.max.bytes</TD>
+    <TD>1024 * 1024</TD>
+    <TD>The number of byes of messages to attempt to fetch for each partition 
+      in the fetch requests the replicas send to the leader.</TD></TR>
+  <TR>
+    <TD>replica.fetch.wait.max.ms</TD>
+    <TD>500</TD>
+    <TD>The maximum amount of time to wait time for data to arrive on the 
+      leader in the fetch requests sent by the replicas to the leader.</TD></TR>
+  <TR>
+    <TD>num.replica.fetchers</TD>
+    <TD>1</TD>
+    <TD>Number of threads used to replicate messages from leaders. Increasing 
+      this value can increase the degree of I/O parallelism in the follower 
+      broker.</TD></TR>
+  <TR>
+    <TD>fetch.purgatory.purge.interval.requests</TD>
+    <TD>1000</TD>
+    <TD>The purge interval (in number of requests) of the fetch request 
+      purgatory.</TD></TR>
+  <TR>
+    <TD>zookeeper.session.timeout.ms</TD>
+    <TD>6000</TD>
+    <TD>ZooKeeper session 
+      超时时间。如果在此时间内server没有向zookeeper发送心跳，zookeeper就会认为此节点已挂掉。 
+      此值太低导致节点容易被标记死亡；若太高，.会导致太迟发现节点死亡。</TD></TR>
+  <TR>
+    <TD>zookeeper.connection.timeout.ms</TD>
+    <TD>6000</TD>
+    <TD>客户端连接zookeeper的超时时间。</TD></TR>
+  <TR>
+    <TD>zookeeper.sync.time.ms</TD>
+    <TD>2000</TD>
+    <TD>H ZK follower落后 ZK leader的时间。</TD></TR>
+  <TR>
+    <TD>controlled.shutdown.enable</TD>
+    <TD>true</TD>
+    <TD>允许broker 
+      shutdown。如果启用，broker在关闭自己之前会把它上面的所有leaders转移到其它brokers上，建议启用，增加集群稳定性。</TD></TR>
+  <TR>
+    <TD>auto.leader.rebalance.enable</TD>
+    <TD>true</TD>
+    <TD>If this is enabled the controller will automatically try to balance 
+      leadership for partitions among the brokers by periodically returning 
+      leadership to the “preferred” replica for each partition if it is 
+      available.</TD></TR>
+  <TR>
+    <TD>leader.imbalance.per.broker.percentage</TD>
+    <TD>10</TD>
+    <TD>The percentage of leader imbalance allowed per broker. The controller 
+      will rebalance leadership if this ratio goes above the configured value 
+      per broker.</TD></TR>
+  <TR>
+    <TD>leader.imbalance.check.interval.seconds</TD>
+    <TD>300</TD>
+    <TD>The frequency with which to check for leader imbalance.</TD></TR>
+  <TR>
+    <TD>offset.metadata.max.bytes</TD>
+    <TD>4096</TD>
+    <TD>The maximum amount of metadata to allow clients to save with their 
+      offsets.</TD></TR>
+  <TR>
+    <TD>connections.max.idle.ms</TD>
+    <TD>600000</TD>
+    <TD>Idle connections timeout: the server socket processor threads close 
+      the connections that idle more than this.</TD></TR>
+  <TR>
+    <TD>num.recovery.threads.per.data.dir</TD>
+    <TD>1</TD>
+    <TD>The number of threads per data directory to be used for log recovery 
+      at startup and flushing at shutdown.</TD></TR>
+  <TR>
+    <TD>unclean.leader.election.enable</TD>
+    <TD>true</TD>
+    <TD>Indicates whether to enable replicas not in the ISR set to be elected 
+      as leader as a last resort, even though doing so may result in data 
+    loss.</TD></TR>
+  <TR>
+    <TD>delete.topic.enable</TD>
+    <TD>false</TD>
+    <TD>启用deletetopic参数，建议设置为true。</TD></TR>
+  <TR>
+    <TD>offsets.topic.num.partitions</TD>
+    <TD>50</TD>
+    <TD>The number of partitions for the offset commit topic. Since changing 
+      this after deployment is currently unsupported, we recommend using a 
+      higher setting for production (e.g., 100-200).</TD></TR>
+  <TR>
+    <TD>offsets.topic.retention.minutes</TD>
+    <TD>1440</TD>
+    <TD>Offsets that are older than this age will be marked for deletion. The 
+      actual purge will occur when the log cleaner compacts the offsets 
+  topic.</TD></TR>
+  <TR>
+    <TD>offsets.retention.check.interval.ms</TD>
+    <TD>600000</TD>
+    <TD>The frequency at which the offset manager checks for stale 
+  offsets.</TD></TR>
+  <TR>
+    <TD>offsets.topic.replication.factor</TD>
+    <TD>3</TD>
+    <TD>The replication factor for the offset commit topic. A higher setting 
+      (e.g., three or four) is recommended in order to ensure higher 
+      availability. If the offsets topic is created when fewer brokers than the 
+      replication factor then the offsets topic will be created with fewer 
+      replicas.</TD></TR>
+  <TR>
+    <TD>offsets.topic.segment.bytes</TD>
+    <TD>104857600</TD>
+    <TD>Segment size for the offsets topic. Since it uses a compacted topic, 
+      this should be kept relatively low in order to facilitate faster log 
+      compaction and loads.</TD></TR>
+  <TR>
+    <TD>offsets.load.buffer.size</TD>
+    <TD>5242880</TD>
+    <TD>An offset load occurs when a broker becomes the offset manager for a 
+      set of consumer groups (i.e., when it becomes a leader for an offsets 
+      topic partition). This setting corresponds to the batch size (in bytes) to 
+      use when reading from the offsets segments when loading offsets into the 
+      offset manager’s cache.</TD></TR>
+  <TR>
+    <TD>offsets.commit.required.acks</TD>
+    <TD>-1</TD>
+    <TD>The number of acknowledgements that are required before the offset 
+      commit can be accepted. This is similar to the producer’s acknowledgement 
+      setting. In general, the default should not be overridden.</TD></TR>
+  <TR>
+    <TD>offsets.commit.timeout.ms</TD>
+    <TD>5000</TD>
+    <TD>The offset commit will be delayed until this timeout or the required 
+      number of replicas have received the offset commit. This is similar to the 
+      producer request timeout.</TD></TR></TBODY></TABLE>
+<H3 id="62-producer-config">6.2 Producer Config</H3>
+<TABLE>
+  <THEAD>
+  <TR>
+    <TH>属性</TH>
+    <TH>默认值</TH>
+    <TH>描述</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD>metadata.broker.list</TD>
+    <TD></TD>
+    <TD>启动时producer查询brokers的列表，可以是集群中所有brokers的一个子集。注意，这个参数只是用来获取topic的元信息用，producer会从元信息中挑选合适的broker并与之建立socket连接。格式是：host1:port1,host2:port2。</TD></TR>
+  <TR>
+    <TD>request.required.acks</TD>
+    <TD>0</TD>
+    <TD>参见3.2节介绍</TD></TR>
+  <TR>
+    <TD>request.timeout.ms</TD>
+    <TD>10000</TD>
+    <TD>Broker等待ack的超时时间，若等待时间超过此值，会返回客户端错误信息。</TD></TR>
+  <TR>
+    <TD>producer.type</TD>
+    <TD>sync</TD>
+    <TD>同步异步模式。async表示异步，sync表示同步。如果设置成异步模式，可以允许生产者以batch的形式push数据，这样会极大的提高broker性能，推荐设置为异步。</TD></TR>
+  <TR>
+    <TD>serializer.class</TD>
+    <TD>kafka.serializer.DefaultEncoder</TD>
+    <TD>序列号类，.默认序列化成 byte[] 。</TD></TR>
+  <TR>
+    <TD>key.serializer.class</TD>
+    <TD></TD>
+    <TD>Key的序列化类，默认同上。</TD></TR>
+  <TR>
+    <TD>partitioner.class</TD>
+    <TD>kafka.producer.DefaultPartitioner</TD>
+    <TD>Partition类，默认对key进行hash。</TD></TR>
+  <TR>
+    <TD>compression.codec</TD>
+    <TD>none</TD>
+    <TD>指定producer消息的压缩格式，可选参数为： “none”, “gzip” and “snappy”。关于压缩参见4.1节</TD></TR>
+  <TR>
+    <TD>compressed.topics</TD>
+    <TD>null</TD>
+    <TD>启用压缩的topic名称。若上面参数选择了一个压缩格式，那么压缩仅对本参数指定的topic有效，若本参数为空，则对所有topic有效。</TD></TR>
+  <TR>
+    <TD>message.send.max.retries</TD>
+    <TD>3</TD>
+    <TD>Producer发送失败时重试次数。若网络出现问题，可能会导致不断重试。</TD></TR>
+  <TR>
+    <TD>retry.backoff.ms</TD>
+    <TD>100</TD>
+    <TD>Before each retry, the producer refreshes the metadata of relevant 
+      topics to see if a new leader has been elected. Since leader election 
+      takes a bit of time, this property specifies the amount of time that the 
+      producer waits before refreshing the metadata.</TD></TR>
+  <TR>
+    <TD>topic.metadata.refresh.interval.ms</TD>
+    <TD>600 * 1000</TD>
+    <TD>The producer generally refreshes the topic metadata from brokers when 
+      there is a failure (partition missing, leader not available…). It will 
+      also poll regularly (default: every 10min so 600000ms). If you set this to 
+      a negative value, metadata will only get refreshed on failure. If you set 
+      this to zero, the metadata will get refreshed after each message sent (not 
+      recommended). Important note: the refresh happen only AFTER the message is 
+      sent, so if the producer never sends a message the metadata is never 
+      refreshed</TD></TR>
+  <TR>
+    <TD>queue.buffering.max.ms</TD>
+    <TD>5000</TD>
+    <TD>启用异步模式时，producer缓存消息的时间。比如我们设置成1000时，它会缓存1秒的数据再一次发送出去，这样可以极大的增加broker吞吐量，但也会造成时效性的降低。</TD></TR>
+  <TR>
+    <TD>queue.buffering.max.messages</TD>
+    <TD>10000</TD>
+    <TD>采用异步模式时producer buffer 队列里最大缓存的消息数量，如果超过这个数值，producer就会阻塞或者丢掉消息。</TD></TR>
+  <TR>
+    <TD>queue.enqueue.timeout.ms</TD>
+    <TD>-1</TD>
+    <TD>当达到上面参数值时producer阻塞等待的时间。如果值设置为0，buffer队列满时producer不会阻塞，消息直接被丢掉。若值设置为-1，producer会被阻塞，不会丢消息。</TD></TR>
+  <TR>
+    <TD>batch.num.messages</TD>
+    <TD>200</TD>
+    <TD>采用异步模式时，一个batch缓存的消息数量。达到这个数量值时producer才会发送消息。</TD></TR>
+  <TR>
+    <TD>send.buffer.bytes</TD>
+    <TD>100 * 1024</TD>
+    <TD>Socket write buffer size</TD></TR>
+  <TR>
+    <TD>client.id</TD>
+    <TD>“”</TD>
+    <TD>The client id is a user-specified string sent in each request to help 
+      trace calls. It should logically identify the application making the 
+      request.</TD></TR></TBODY></TABLE>
+<H3 id="63-consumer-config">6.3 Consumer Config</H3>
+<TABLE>
+  <THEAD>
+  <TR>
+    <TH>属性</TH>
+    <TH>默认值</TH>
+    <TH>描述</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD>group.id</TD>
+    <TD></TD>
+    <TD>Consumer的组ID，相同goup.id的consumer属于同一个组。</TD></TR>
+  <TR>
+    <TD>zookeeper.connect</TD>
+    <TD></TD>
+    <TD>Consumer的zookeeper连接串，要和broker的配置一致。</TD></TR>
+  <TR>
+    <TD>consumer.id</TD>
+    <TD>null</TD>
+    <TD>如果不设置会自动生成。</TD></TR>
+  <TR>
+    <TD>socket.timeout.ms</TD>
+    <TD>30 * 1000</TD>
+    <TD>网络请求的socket超时时间。实际超时时间由max.fetch.wait + socket.timeout.ms 确定。</TD></TR>
+  <TR>
+    <TD>socket.receive.buffer.bytes</TD>
+    <TD>64 * 1024</TD>
+    <TD>The socket receive buffer for network requests.</TD></TR>
+  <TR>
+    <TD>fetch.message.max.bytes</TD>
+    <TD>1024 * 1024</TD>
+    <TD>查询topic-partition时允许的最大消息大小。consumer会为每个partition缓存此大小的消息到内存，因此，这个参数可以控制consumer的内存使用量。这个值应该至少比server允许的最大消息大小大，以免producer发送的消息大于consumer允许的消息。</TD></TR>
+  <TR>
+    <TD>num.consumer.fetchers</TD>
+    <TD>1</TD>
+    <TD>The number fetcher threads used to fetch data.</TD></TR>
+  <TR>
+    <TD>auto.commit.enable</TD>
+    <TD>true</TD>
+    <TD>如果此值设置为true，consumer会周期性的把当前消费的offset值保存到zookeeper。当consumer失败重启之后将会使用此值作为新开始消费的值。</TD></TR>
+  <TR>
+    <TD>auto.commit.interval.ms</TD>
+    <TD>60 * 1000</TD>
+    <TD>Consumer提交offset值到zookeeper的周期。</TD></TR>
+  <TR>
+    <TD>queued.max.message.chunks</TD>
+    <TD>2</TD>
+    <TD>用来被consumer消费的message chunks 数量， 
+      每个chunk可以缓存fetch.message.max.bytes大小的数据量。</TD></TR>
+  <TR>
+    <TD>rebalance.max.retries</TD>
+    <TD>4</TD>
+    <TD>When a new consumer joins a consumer group the set of consumers 
+      attempt to “rebalance” the load to assign partitions to each consumer. If 
+      the set of consumers changes while this assignment is taking place the 
+      rebalance will fail and retry. This setting controls the maximum number of 
+      attempts before giving up.</TD></TR>
+  <TR>
+    <TD>fetch.min.bytes</TD>
+    <TD>1</TD>
+    <TD>The minimum amount of data the server should return for a fetch 
+      request. If insufficient data is available the request will wait for that 
+      much data to accumulate before answering the request.</TD></TR>
+  <TR>
+    <TD>fetch.wait.max.ms</TD>
+    <TD>100</TD>
+    <TD>The maximum amount of time the server will block before answering the 
+      fetch request if there isn’t sufficient data to immediately satisfy 
+      fetch.min.bytes.</TD></TR>
+  <TR>
+    <TD>rebalance.backoff.ms</TD>
+    <TD>2000</TD>
+    <TD>Backoff time between retries during rebalance.</TD></TR>
+  <TR>
+    <TD>refresh.leader.backoff.ms</TD>
+    <TD>200</TD>
+    <TD>Backoff time to wait before trying to determine the leader of a 
+      partition that has just lost its leader.</TD></TR>
+  <TR>
+    <TD>auto.offset.reset</TD>
+    <TD>largest</TD>
+    <TD>What to do when there is no initial offset in ZooKeeper or if an 
+      offset is out of range ;smallest : automatically reset the offset to the 
+      smallest offset; largest : automatically reset the offset to the largest 
+      offset;anything else: throw exception to the consumer</TD></TR>
+  <TR>
+    <TD>consumer.timeout.ms</TD>
+    <TD>-1</TD>
+    <TD>若在指定时间内没有消息消费，consumer将会抛出异常。</TD></TR>
+  <TR>
+    <TD>exclude.internal.topics</TD>
+    <TD>true</TD>
+    <TD>Whether messages from internal topics (such as offsets) should be 
+      exposed to the consumer.</TD></TR>
+  <TR>
+    <TD>zookeeper.session.timeout.ms</TD>
+    <TD>6000</TD>
+    <TD>ZooKeeper session timeout. If the consumer fails to heartbeat to 
+      ZooKeeper for this period of time it is considered dead and a rebalance 
+      will occur.</TD></TR>
+  <TR>
+    <TD>zookeeper.connection.timeout.ms</TD>
+    <TD>6000</TD>
+    <TD>The max time that the client waits while establishing a connection to 
+      zookeeper.</TD></TR>
+  <TR>
+    <TD>zookeeper.sync.time.ms</TD>
+    <TD>2000</TD>
+    <TD>How far a ZK follower can be behind a ZK leader</TD></TR></TBODY></TABLE>
+<H3 id="64-topic-级别的配置">6.4 Topic 级别的配置</H3>
+<P><A 
+href="http://kafka.apache.org/documentation.html#topic-config">topic-config</A></P><LINK 
+href="Kafka%20设计与原理详解%20-%20CSDN博客.files/markdown_views.css" 
+rel="stylesheet"></DIV><LINK href="Kafka%20设计与原理详解%20-%20CSDN博客.files/markdown_views.css" 
+rel="stylesheet">             </DIV></ARTICLE>
+<DIV class="readall_box csdn-tracking-statistics" data-mod="popu_376">
+<DIV class="read_more_mask"></DIV><A class="btn btn-large btn-gray-fred read_more_btn" 
+target="_self">阅读全文</A>         </DIV>
+<DIV class="article_copyright">            版权声明：本文为博主原创文章，未经博主允许不得转载。         
+</DIV><!--  <div class="reward_box">
+            <div class="tit">
+              <button class="btn_reward"><i class="icon iconfont icon-dashang-"></i></button>
+            </div>
+            <dl class="clearfix">
+              <dt><a href="#" target="_blank">近期打赏</a></dt>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+            </dl>
+          </div>--> 
+        
+<UL class="article_collect clearfix csdn-tracking-statistics" data-mod="popu_378">
+  <LI class="tit">本文已收录于以下专栏：</LI></UL>
+<DIV class="comment_box clearfix">
+<DIV id="comment_form">
+<DIV id="commentsbmitarear"><!-- <h6><span>11</span>条评论</h6> -->            <!--          <dl class="clearfix" id="commentbox">
+                        <dt>
+                            <a href="http://my.csdn.net/"><img src="" ></a>
+                        </dt>
+                        <dd>
+                            <a href="http://my.csdn.net/" target="_blank"></a>
+                        </dd>
+                        <dd class="txt_tip"><span id="tip_comment" class="tip"></span></dd>
+                    </dl> --> 
+                    
+<DIV class="comment_area clearfix">
+<DIV class="userimg"><A href="http://my.csdn.net/"><IMG src="Kafka%20设计与原理详解%20-%20CSDN博客.files/suifeng3051.htm"></A></DIV>
+<FORM id="commentform" onsubmit="return subform(this);" action="/suifeng3051/comment/submit?id=48053965" 
+method="post"><TEXTAREA name="comment_content" class="comment_content" id="comment_content" placeholder="发表你的评论">发表你的评论</TEXTAREA> 
+                            
+<DIV class="bot_bar clearfix">
+<DIV class="add_code" id="ubbtools"><A href="http://blog.csdn.net/suifeng3051/article/details/48053965#insertcode" 
+target="_self" code="code"><I class="icon iconfont icon-daima"></I></A>          
+                       
+</DIV><INPUT name="comment_replyId" id="comment_replyId" type="hidden">          
+                       <INPUT name="comment_userId" id="comment_userId" type="hidden"> 
+                                <INPUT name="commentId" id="commentId" type="hidden"> 
+                                
+<INPUT class="btn btn-redborder" type="submit" value="发表评论">								 <SPAN 
+class="tip" id="tip_comment">
+<DIV class="csdn-tracking-statistics" style="display: none;" 
+data-mod="popu_384"><A class="comment_area_btn" href="http://blog.csdn.net/suifeng3051/article/details/48053965#" 
+target="_blank">发表评论</A></DIV>
+<DIV id="lang_list" code="code"><A class="long_name" style="width: 95px;" href="http://blog.csdn.net/suifeng3051/article/details/48053965#html" 
+target="_self">HTML/XML</A>                                     <A class="long_name" 
+style="width: 95px;" href="http://blog.csdn.net/suifeng3051/article/details/48053965#objc" 
+target="_self">objective-c</A>                                     <A class="zhong_name" 
+style="width: 58px;" href="http://blog.csdn.net/suifeng3051/article/details/48053965#delphi" 
+target="_self">Delphi</A>                                     <A class="zhong_name" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#ruby" target="_self">Ruby</A> 
+                                    <A href="http://blog.csdn.net/suifeng3051/article/details/48053965#php" 
+target="_self">PHP</A>                                     <A class="duan_name" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#csharp" target="_self">C#</A> 
+                                    <A class="duan_name" style="border-right-color: currentColor; border-right-width: medium; border-right-style: none;" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#cpp" target="_self">C++</A> 
+                                    <A class="long_name" style="width: 95px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#javascript" 
+target="_self">JavaScript</A>                                     <A class="long_name" 
+style="width: 95px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#vb" target="_self">Visual 
+Basic</A>                                     <A class="zhong_name" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#python" target="_self">Python</A> 
+                                    <A class="zhong_name" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#java" target="_self">Java</A> 
+                                    <A class="duan_name" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#css" target="_self">CSS</A> 
+                                    <A class="duan_name" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#sql" target="_self">SQL</A> 
+                                    <A class="duan_name" style="border: currentColor; border-image: none;" 
+href="http://blog.csdn.net/suifeng3051/article/details/48053965#plain" target="_self">其它</A> 
+                                    <SPAN class="arrb"></SPAN>                   
+              </DIV></SPAN></DIV></FORM></DIV></DIV></DIV></DIV>
+<DIV class="comment_li_outbox">
+<DIV id="comment_list"></DIV></DIV>
+<DIV class="more_comment">
+<DIV class="trackgin-ad" id="comment_bar" data-mod="popu_385"></DIV></DIV>
+<H3 class="recommend_tit">相关文章推荐</H3>
+<DIV class="recommend_list clearfix">
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/lifuxiangcaohui/article/details/51374862" 
+  target="_blank" strategy="BlogCommendFromBaidu_0">kafka原理分析</A></H2>
+  <DIV 
+  class="summary">Kafka是由LinkedIn开发的一个分布式的消息系统，使用Scala编写，它以可水平扩展和高吞吐率而被广泛使用。目前越来越多的开源分布式处理系统如Cloudera、Apache 
+  Storm、Spa...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/lifuxiangcaohui" 
+    target="_blank" strategy="BlogCommendFromBaidu_0"><IMG title="lifuxiangcaohui" 
+    alt="lifuxiangcaohui" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_lifuxiangcaohui.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/lifuxiangcaohui">lifuxiangcaohui</A></LI>
+    <LI class="time">2016-05-11 15:25</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>1917</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/qq_31382921/article/details/52327253" 
+  target="_blank" 
+  strategy="BlogCommendFromBaidu_1">kafka入门：简介、使用场景、设计原理、主要配置及集群搭建</A></H2>
+  <DIV class="summary">                        问题导读：  1.zookeeper在kafka的作用是什么？  
+  2.kafka中几乎不允许对消息进行“随机读写”的原因是什么？  3.kafka集群consumer和producer状态信息是如何保...         
+              </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/qq_31382921" target="_blank" 
+    strategy="BlogCommendFromBaidu_1"><IMG title="qq_31382921" alt="qq_31382921" 
+    src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_qq_31382921.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/qq_31382921">qq_31382921</A></LI>
+    <LI class="time">2016-08-26 12:31</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>1132</SPAN></LI></UL></DD></DL><!--dl class="clearfix csdn-tracking-statistics" data-mod="popu_393">
+                <dt><a href="http://edu.csdn.net/huiyiCourse/series_detail/64?utm_source=blog10" target="_blank"><img class="maxwidth" src="http://img.blog.csdn.net/20170928113144608" alt="" title=""></a></dt>
+                <dd>
+                    <div class="summary">
+                        <h2><a href='http://edu.csdn.net/topic/python1?utm_source=blog10' target='_blank'>伤心啊！年度热门编程语言排行榜出来了...</a></h2>  <div class="summary">近期，IEEE Spectrum 发布了第四届顶级编程语言交互排行榜。结合 10 个线上数据源的 12 个标准，对 48 种语言进行了排行！此外，七牛云许式伟曾说过Go语言会取代Java...气氛... </div> 
+                    </div>
+                </dd>
+            </dl-->
+	 
+<SCRIPT>
+		(function() {
+		    var s = "_" + Math.random().toString(36).slice(2);
+		    document.write('<div id="' + s + '"></div>');
+		    (window.slotbydup=window.slotbydup || []).push({
+			id: '4765209',
+			container: s,
+			size: '808,120',
+			display: 'inlay-fix'
+		    });
+		})();
+	</SCRIPT>
+                         
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/suifeng3051/article/details/38321043" 
+  target="_blank" 
+strategy="BlogCommendFromBaidu_2">Kafka详解二、如何配置Kafka集群</A></H2>
+  <DIV class="summary">Kafka集群配置比较简单，为了更好的让大家理解，在这里要分别介绍下面三种配置
+   单节点：一个broker的集群单节点：多个broker的集群多节点：多broker集群 一、单节点单broker实例...                 
+      </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/suifeng3051" target="_blank" 
+    strategy="BlogCommendFromBaidu_2"><IMG title="suifeng3051" alt="suifeng3051" 
+    src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_suifeng3051.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/suifeng3051">suifeng3051</A></LI>
+    <LI class="time">2014-07-31 17:39</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>22381</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/tiantang_1986/article/details/50826826" 
+  target="_blank" strategy="BlogCommendFromBaidu_3">Kafka Consumer的底层API- 
+  SimpleConsumer</A></H2>
+  <DIV class="summary">                        Kafka提供了两套API给Consumer The 
+  high-level Consumer APIThe SimpleConsumer API &nbsp; &nbsp;&nbsp; 
+  第一种高度抽象的Consum...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/tiantang_1986" target="_blank" 
+    strategy="BlogCommendFromBaidu_3"><IMG title="tiantang_1986" alt="tiantang_1986" 
+    src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_tiantang_1986.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/tiantang_1986">tiantang_1986</A></LI>
+    <LI class="time">2016-03-08 14:18</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>465</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/qq_35799003/article/details/52213627" 
+  target="_blank" strategy="BlogCommendFromBaidu_4">kafka进击之路（二） —— 
+架构设计</A></H2>
+  <DIV class="summary">kafka 架构设计，producer consumer 日志格式                     
+  </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/qq_35799003" target="_blank" 
+    strategy="BlogCommendFromBaidu_4"><IMG title="qq_35799003" alt="qq_35799003" 
+    src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_qq_35799003.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/qq_35799003">qq_35799003</A></LI>
+    <LI class="time">2016-08-15 18:28</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>187</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/qq_35799003/article/details/52224865" 
+  target="_blank" strategy="BlogCommendFromBaidu_5">kafka进击之路（三） ——consumer high 
+  API开发</A></H2>
+  <DIV class="summary">                        
+  说明kafka版本：kafka_2.10-0.8.2.1（kafka0.9.xx版本提供了新的API）  IED环境：intellij14 + 
+  maven3.3  语言：javaconsumer hi...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/qq_35799003" target="_blank" 
+    strategy="BlogCommendFromBaidu_5"><IMG title="qq_35799003" alt="qq_35799003" 
+    src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_qq_35799003.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/qq_35799003">qq_35799003</A></LI>
+    <LI class="time">2016-08-16 20:41</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>388</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/qq_35799003/article/details/52212356" 
+  target="_blank" strategy="BlogCommendFromBaidu_6">kafka进击之路（一） —— 入门</A></H2>
+  <DIV class="summary">Kafka  安装 集群安装 命令使用                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/qq_35799003" target="_blank" 
+    strategy="BlogCommendFromBaidu_6"><IMG title="qq_35799003" alt="qq_35799003" 
+    src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_qq_35799003.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/qq_35799003">qq_35799003</A></LI>
+    <LI class="time">2016-08-15 16:28</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>212</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/suifeng3051/article/details/38657465" 
+  target="_blank" strategy="BlogCommendFromBaidu_7">Kafka详解五、Kafka 
+  Consumer的底层API- SimpleConsumer</A></H2>
+  <DIV class="summary">                        Kafka提供了两套API给Consumer The 
+  high-level Consumer APIThe SimpleConsumer API &nbsp; &nbsp;&nbsp; 
+  第一种高度抽象的Consumer API...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/suifeng3051" target="_blank" 
+    strategy="BlogCommendFromBaidu_7"><IMG title="suifeng3051" alt="suifeng3051" 
+    src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_suifeng3051.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/suifeng3051">suifeng3051</A></LI>
+    <LI class="time">2014-08-18 11:26</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>12192</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/suifeng3051/article/details/38656805" 
+  target="_blank" strategy="BlogCommendFromBaidu_8">kafka详解一、Kafka简介</A></H2>
+  <DIV class="summary">                        背景： &nbsp; &nbsp; 
+  &nbsp;当今社会各种应用系统诸如商业、社交、搜索、浏览等像信息工厂一样不断的生产出各种信息，在大数据时代，我们面临如下几个挑战：
+   如何收集这些巨大的信息如何分析它 &nbsp;&nbsp; &nbsp; &nbsp;如何及时做...                     
+</DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/suifeng3051" target="_blank" 
+    strategy="BlogCommendFromBaidu_8"><IMG title="suifeng3051" alt="suifeng3051" 
+    src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_suifeng3051.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/suifeng3051">suifeng3051</A></LI>
+    <LI class="time">2014-08-18 10:45</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>8590</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/qq_33227127/article/details/50220527" 
+  target="_blank" strategy="BlogCommendFromBaidu_9">kafka SimpleConsumerDemo 
+  消费者</A></H2>
+  <DIV class="summary">package com.ctcc.kafka.examples; import 
+  java.nio.ByteBuffer; import java.util.ArrayList; impo...                     
+  </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/qq_33227127" target="_blank" 
+    strategy="BlogCommendFromBaidu_9"><IMG title="qq_33227127" alt="qq_33227127" 
+    src="Kafka%20设计与原理详解%20-%20CSDN博客.files/2_qq_33227127.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/qq_33227127">qq_33227127</A></LI>
+    <LI class="time">2015-12-08 16:20</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>819</SPAN></LI></UL></DD></DL></DIV></main><ASIDE>
+<DIV class="right_box user_info">
+<DL class="inf_bar clearfix">
+  <DT class="csdn-tracking-statistics" data-mod="popu_381"><A href="http://blog.csdn.net/suifeng3051" 
+  target="_blank"><IMG class="avatar_pic" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/1_suifeng3051.jpg"> 
+                      </A>                     <SPAN title="" 
+  class="medals"><svg xmlns="http://www.w3.org/2000/svg" class="icon" 
+  aria-hidden="true"></svg>               </SPAN></DT>
+  <DD>
+  <H3 class="csdn-tracking-statistics" data-mod="popu_380"><A id="uid" href="http://blog.csdn.net/suifeng3051" 
+  target="_blank">suifeng3051</A></H3><SPAN class="csdn-tracking-statistics" 
+  data-mod="popu_379"><A class="btn btn-redborder-small " id="span_add_follow" 
+  target="_self">＋关注</A></SPAN>                 </DD></DL>
+<DIV class="inf_number_box clearfix">
+<DL>
+  <DT>原创</DT>
+  <DD>94</DD></DL>
+<DL>
+  <DT>粉丝</DT>
+  <DD id="fan">503</DD></DL>
+<DL>
+  <DT>喜欢</DT>
+  <DD>0</DD></DL>
+<DL>
+  <DT>码云</DT>
+  <DD>&nbsp;</DD></DL></DIV>
+<DIV class="writings">
+<DIV class="public_signal clearfix">
+<H3>他的最新文章</H3><A class="more_z" href="http://blog.csdn.net/suifeng3051" target="_blank"><SPAN>更多文章</SPAN></A></DIV>
+<UL class="inf_list clearfix csdn-tracking-statistics" data-mod="popu_382">
+  <LI class="clearfix"><A href="http://blog.csdn.net/suifeng3051/article/details/53992560" 
+  target="_blank">浅谈服务治理与微服务</A>                     </LI>
+  <LI class="clearfix"><A href="http://blog.csdn.net/suifeng3051/article/details/52779886" 
+  target="_blank">关于网络IO中的同步、异步、阻塞、非阻塞</A>                     </LI>
+  <LI class="clearfix"><A href="http://blog.csdn.net/suifeng3051/article/details/52691210" 
+  target="_blank">关于分布式事务</A>                     </LI>
+  <LI class="clearfix"><A href="http://blog.csdn.net/suifeng3051/article/details/52669644" 
+  target="_blank">数据库索引原理及优化</A>                     </LI></UL></DIV></DIV>
+<DIV class="extension_other csdn-tracking-statistics" data-mod="popu_389"><!--u3032528-->
+			 
+<DIV class="flashrecommend"><!-- 请置于所有广告位代码之前 --> 
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/dm.js"></SCRIPT>
+            <!-- 广告位：PC端-博客详情页右侧视窗1（feed流）-300*250 --> 
+<SCRIPT>
+(function() {
+    var s = "_" + Math.random().toString(36).slice(2);
+    document.write('<div id="' + s + '"></div>');
+    (window.slotbydup=window.slotbydup || []).push({
+        id: '4770930',
+        container: s,
+        size: '300,250',
+        display: 'inlay-fix'
+    });
+})();
+</SCRIPT>
+		     </DIV></DIV>
+<DIV class="host-column">
+<H3>博主专栏</H3>
+<UL class="column-list">
+  <LI class="clearfix">
+  <DIV class="img list-left"><A href="http://blog.csdn.net/column/details/heaven-hadoop.html"><IMG 
+  alt="" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/20151123180537583">             
+        
+  <DIV>9</DIV></A>               </DIV>
+  <DIV class="content list-left">
+  <H4 class="title"><A href="http://blog.csdn.net/column/details/heaven-hadoop.html">Hadoop教程</A></H4>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>35306</SPAN></DIV></DIV></LI>
+  <LI class="clearfix">
+  <DIV class="img list-left"><A href="http://blog.csdn.net/column/details/heaven-java-column.html"><IMG 
+  alt="" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/20151123180530520">             
+        
+  <DIV>3</DIV></A>               </DIV>
+  <DIV class="content list-left">
+  <H4 class="title"><A href="http://blog.csdn.net/column/details/heaven-java-column.html">Java 
+  从基础到高级</A></H4>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>2592</SPAN></DIV></DIV></LI>
+  <LI class="clearfix">
+  <DIV class="img list-left"><A href="http://blog.csdn.net/column/details/heaven-storm-column.html"><IMG 
+  alt="" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/20151123180530364">             
+        
+  <DIV>10</DIV></A>               </DIV>
+  <DIV class="content list-left">
+  <H4 class="title"><A href="http://blog.csdn.net/column/details/heaven-storm-column.html">Storm 
+  实时计算</A></H4>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>46287</SPAN></DIV></DIV></LI></UL>
+<DIV class="unfold-btn"><SPAN>展开</SPAN><I 
+class="icon iconfont icon-xiajiantou"></I>           </DIV></DIV>
+<DIV class="fixRight">
+<DIV class="right_box padb0 csdn-tracking-statistics" data-mod="popu_391">
+<H3 class="tit"><SPAN><EM>在线课程</EM></SPAN></H3>
+<UL class="edu_li clearfix">
+  <LI>
+  <DIV><A href="http://edu.csdn.net/huiyiCourse/series_detail/68?utm_source=wx2" 
+  target="_blank"><IMG title="用户画像系统应用与技术解析" alt="用户画像系统应用与技术解析" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/201710200924553321.png"> 
+                        </A></DIV>
+  <DIV>
+  <P><A href="http://edu.csdn.net/huiyiCourse/series_detail/68?utm_source=wx2" 
+  target="_blank">用户画像系统应用与技术解析</A></P>
+  <P>讲师：汪剑</P></DIV></LI>
+  <LI>
+  <DIV><A href="http://edu.csdn.net/huiyiCourse/series_detail/70?utm_source=blog7" 
+  target="_blank"><IMG title="2017 求职面试集训营之VIP服务版" alt="2017 求职面试集训营之VIP服务版" 
+  src="Kafka%20设计与原理详解%20-%20CSDN博客.files/201710200910059870.jpg">               
+          </A></DIV>
+  <DIV>
+  <P><A href="http://edu.csdn.net/huiyiCourse/series_detail/70?utm_source=blog7" 
+  target="_blank">2017 求职面试集训营之VIP服务版</A></P>
+  <P>讲师：刘道宽</P></DIV></LI></UL></DIV><!--u3032529-->             <!-- <div class="extension_other csdn-tracking-statistics baidu_box" data-mod="popu_395">
+								
+                <script type="text/javascript" src="http://mpb1.iteye.com/cxpdpmumfaedgm.js"></script>
+            </div> -->
+			 
+<DIV class="extension_other csdn-tracking-statistics bottomRcom" style="position: absolute; z-index: -5; opacity: 0; pointer-events: none;" 
+data-mod="popu_389"><!--u3032528-->				 
+<DIV class="flashrecommend">
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/bwocoltlyzdec.js" type="text/javascript"></SCRIPT>
+				 </DIV></DIV></DIV>
+<DIV class="user-hotArticle">
+<H3>热门文章</H3>
+<UL class="hotArticle-list">
+  <LI><A href="http://blog.csdn.net/suifeng3051/article/details/48053965">Kafka 
+  设计与原理详解</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>48457</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/suifeng3051/article/details/52611310">全面理解Java内存模型</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>32148</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/suifeng3051/article/details/38321043">Kafka详解二、如何配置Kafka集群</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>22371</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/suifeng3051/article/details/28861883">Netty4详解三：Netty架构设计</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>21930</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/suifeng3051/article/details/25238243">Netty4详解二：开发第一个Netty应用程序</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>21761</SPAN></DIV></LI></UL></DIV></ASIDE></DIV>
+<DIV class="left_fixed">
+<DIV class="left_show_button"><SPAN><I 
+class="icon iconfont icon-youjiantou"></I>         </SPAN>       </DIV>
+<UL class="left_menu">
+  <LI><BUTTON class="left-fixed-btn btn-like csdn-tracking-statistics" data-mod="popu_373" 
+  target="_self"><SPAN class="iconbox border_red"><I class="icon iconfont icon-dianzan"></I></SPAN><SPAN 
+  class="txt">41</SPAN></BUTTON>         </LI>
+  <LI id="blog_artical_directory"><BUTTON class="left-fixed-btn left_menu_btn csdn-tracking-statistics" 
+  data-mod="popu_372" target="_self"><SPAN class="iconbox border_black"><I 
+  class="icon iconfont icon-mulu"></I></SPAN></BUTTON>         </LI>
+  <LI class="menu_con">
+  <DIV class="list_father">
+  <DIV class="arr_box"><BUTTON class="btn-noborder arr-btn scroll-down  left_scroll_down"><I 
+  class="icon iconfont icon-xiajiantou"></I></BUTTON>                     
+  <BUTTON class="btn-noborder arr-btn scroll-up left_scroll_top"><I class="icon iconfont icon-shangjiantou"></I></BUTTON> 
+                  </DIV>
+  <DIV class="arr"></DIV>
+  <DIV id="csdnBlogDir"></DIV></DIV></LI>
+  <LI><BUTTON class="left-fixed-btn csdn-tracking-statistics" id="com-quick-collect" 
+  data-mod="popu_374" target="_self"><SPAN class="iconbox border_purple"><I 
+  class="icon iconfont icon-shoucang"></I></SPAN></BUTTON>         </LI>
+  <LI><BUTTON class="left-fixed-btn btn-pinglun"><SPAN class="iconbox border_purple"><I 
+  class="icon iconfont icon-pinglun"></I></SPAN></BUTTON>         </LI>
+  <LI id="share_box"><BUTTON class="left-fixed-btn  csdn-tracking-statistics" 
+  data-mod="popu_375" target="_self"><SPAN class="iconbox border_orange"><I 
+  class="icon iconfont icon-fenxiang"></I></SPAN></BUTTON>             
+  <DIV class="bdsharebuttonbox csdn-tracking-statistics" data-mod="popu_172">
+  <DIV class="outside"><SPAN class="iconbox border_red2"><I class="icon iconfont icon-xinlang"></I></SPAN><A 
+  title="分享到新浪微博" class="bds_tsina" href="http://blog.csdn.net/suifeng3051/article/details/48053965#" 
+  data-cmd="tsina"></A>                 </DIV>
+  <DIV class="outside"><SPAN class="iconbox border_green"><I class="icon iconfont icon-weixin"></I></SPAN><A 
+  title="分享到微信" class="bds_weixin" href="http://blog.csdn.net/suifeng3051/article/details/48053965#" 
+  data-cmd="weixin"></A>                 </DIV>
+  <DIV class="outside"><SPAN class="iconbox border_blue"><I class="icon iconfont icon-QQ"></I></SPAN><A 
+  title="分享到QQ空间" class="bds_qzone" href="http://blog.csdn.net/suifeng3051/article/details/48053965#" 
+  data-cmd="qzone"></A>                 </DIV></DIV></LI></UL></DIV>
+<DIV class="right_fixed">
+<DIV class="r_ico"><I class="icon iconfont icon-jubao"></I><SPAN class="txt" id="reportBtn">内容举报</SPAN></DIV>
+<DIV class="returnTop"><I 
+class="icon iconfont icon-fanhuidingbu"></I><SPAN>返回顶部</SPAN></DIV></DIV>
+<DIV id="pop_win"></DIV>
+<DIV id="popup_mask"></DIV>
+<DIV class="pop_CA_cover"></DIV>
+<DIV class="pop pop_CA">
+<DIV class="CA_header">        收藏助手         <SPAN class="cancel_icon" id="fapancle"></SPAN></DIV><IFRAME 
+width="100%" height="360" id="collectIframe" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/o.htm" 
+frameborder="0" scrolling="no"></IFRAME> </DIV><!--举报--> 
+<DIV id="report_dialog" style="left: 343.5px; top: 250px;">
+<DIV id="panel_report">
+<DIV class="panel_head">不良信息举报</DIV>
+<FORM class="panel_body" id="frmReport" method="post">
+<TABLE class="pop_table" border="0" cellspacing="4" cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD colspan="2">您举报文章：<A href="http://blog.csdn.net/raintungli/article/details/76583070" 
+      target="_blank">深度学习：神经网络中的前向传播和反向传播算法推导</A></TD></TR>
+  <TR>
+    <TH style="width: 60px;">举报原因：</TH>
+    <TD id="panel_reporttype"><LABEL><INPUT name="report_type" class="report_type" 
+      id="report_sex" type="radio" value="1">色情</LABEL>                     
+      <LABEL><INPUT name="report_type" class="report_type" id="report_Politics" 
+      type="radio" value="2">政治</LABEL>                     <LABEL><INPUT name="report_type" 
+      class="report_type" id="report_copy" type="radio" value="3">抄袭</LABEL>     
+                      <LABEL><INPUT name="report_type" class="report_type" id="report_ad" 
+      type="radio" value="4">广告</LABEL>                     <LABEL><INPUT name="report_type" 
+      class="report_type" id="report_want" type="radio" value="5">招聘</LABEL>     
+                      <LABEL><INPUT name="report_type" class="report_type" id="report_call" 
+      type="radio" value="6">骂人</LABEL>                     <BR><LABEL><INPUT 
+      name="report_type" class="report_type" id="report_other" type="radio" 
+      value="7">其他</LABEL>                     <INPUT name="report_other_content" id="report_other_content" style="display: none;" type="text" maxlength="30"> 
+                      </TD></TR>
+  <TR id="panel_originalurl" style="display: none;">
+    <TH>原文地址：</TH>
+    <TD><INPUT name="originalurl" id="originalurl" style="width: 90%;" type="text" value="http://"> 
+                      </TD></TR>
+  <TR>
+    <TH id="sp_reason">原因补充：</TH>
+    <TD><TEXTAREA name="report_description" id="report_description" style="width: 300px;" rows="3"></TEXTAREA> 
+                          
+      <P id="sp_n" 
+      style="margin: 0px; padding: 0px; color: rgb(153, 153, 153);">(最多只允许输入30个字)</P></TD></TR>
+  <TR>
+    <TD></TD>
+    <TD><INPUT name="submit" align="middle" class="btn_1" id="btnSubmitReport" 
+      type="image" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/btn_submit.jpg">      
+                     <SPAN style="padding-left: 20px;"></SPAN>                   
+        <IMG align="middle" id="btnCloseReportDialog" src="Kafka%20设计与原理详解%20-%20CSDN博客.files/btn_cancel.jpg"> 
+                          
+      <DIV id="error" 
+style="color: red;"></DIV></TD></TR></TBODY></TABLE></FORM></DIV>
+<SCRIPT language="javascript" type="text/javascript">
+        var isComment=0;
+        //显示隐藏地址
+        $(function () {
+            if(isComment){
+                $("#report_description").attr("disabled",true);
+                $("#sp_n").hide();
+                $("#sp_reason").html("评论内容：");
+            }
+            $(".report_type").click(function () {
+                $("#panel_originalurl,#report_other_content").hide();
+                switch ($(this).val()) {
+                    case '3':
+                        $("#panel_originalurl").show();
+                        $("#originalurl").focus();
+                        break;
+                    case '7':
+                        if(isComment){
+                            $("#report_other_content").show().focus();
+                        }
+                        break;
+                }
+
+            });
+
+            $("#frmReport").submit(function () {
+                if (!currentUserName) {
+
+                    if (confirm("您的操作必须登录，是否登录？")) {
+                        location.href = "http://passport.csdn.net/account/login?from=" + encodeURIComponent(location.href);
+                        return false;
+                    }
+                    return false;
+                }
+
+                var reportType = $("input[name=report_type]:checked").val();
+                if(!reportType){
+                    alert("请选择举报原因！");
+                    return false;
+                }
+                var otherInfo = "";
+                switch (reportType) {
+                    case '3':
+                        otherInfo = $("#originalurl").val();
+                        if (otherInfo == ""||otherInfo=="http://") {
+                            alert("举报抄袭必须提供原创文章地址！");
+                            $("#originalurl").focus();
+                            return false;
+                        } else if(!checkeURL(otherInfo)) {
+                            alert("请输入正确的原创文章地址！");
+                            $("#originalurl").focus();
+                            return false;
+                        }
+                        break;
+                    case '7':
+                        otherInfo = $("#report_other_content").val();
+                        if (isComment && !otherInfo) {
+                            alert("请填写举报的具体原因！");
+                            $("#report_other_content").focus();
+                            return false;
+                        }
+                        if(!isComment){
+                            if(!$("#report_description").val()){
+                                alert("请填写举报的具体原因！");
+                                $("#report_description").focus();
+                                return false;
+                            }
+                        }
+                        break;
+                }
+                if(!isComment){
+                    if($("#report_description").val().length>30){
+                        alert("举报原因最多只允许输入30个字！");
+                        return false;
+                    }
+                }
+                nowTime = {
+                  year: new Date().getFullYear(),
+                  month: parseInt(new Date().getMonth())+1,
+                  day: new Date().getDate(),
+                  hours: parseInt(new Date().getHours()),
+                  minutes: parseInt(new Date().getMinutes()),
+                  seconds: parseInt(new Date().getSeconds())
+                }
+                var data = {
+                    articleId: fileName,
+                    commentId: 0,
+                    reportType: reportType,
+                    originalurl: $("#originalurl").val(),
+                    report_other_content: $("#report_other_content").val(),
+                    report_description: $("#report_description").val(),
+                    currentUserName: currentUserName,
+                    updatetime: nowTime.year+'/'+nowTime.month+'/'+nowTime.day+' '+ nowTime.hours+':'+nowTime.minutes+':'+seconds,
+                    blogUser: username
+                };
+                if(!isComment){//如果是举报文章
+                    data.report_other_content = data.report_description;
+                    // data.report_description = "1. 神经网络这是一个常见的神经网络的图：这是一个常见的三层神经网络的基本构成，Layer L1是输入层，Layer L2是隐含层";
+                }
+
+                $.post(blog_address + "/common/report?id="+fileName+"&t=2", data, function (data) {
+                    if (data.result == 1){
+                        SetError("感谢您的举报，我们会尽快审核！");
+                    }else{
+                        if (data.content) alert(data.content);
+                    }
+
+                });
+                return false;
+            });
+
+            $("#btnCloseReportDialog").click(function () {
+                CloseDiv();
+            });
+
+        });
+
+        //提示后关闭方法
+        function SetError(error) {
+            $("#btnCloseReportDialog").trigger("click");
+            alert(error);
+            CloseDiv();
+        }
+
+        //关闭方法
+        function CloseDiv() {
+
+            $.removeMask();
+            $("#report_dialog").hide();
+            return false;
+        }
+
+        //验证url
+        function checkeURL(url){
+            return /^http(s)?:\/\/([\w-]+\.)+[\w-]+/i.test(url);
+        }
+
+    </SCRIPT>
+ </DIV>
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/bootstrap.min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/MathJax.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/login.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/blog_ver.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/skin2017.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Kafka%20设计与原理详解%20-%20CSDN博客.files/cnick.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    if($(".article_collect li").length==1){$(".article_collect").hide();}
+    if($(".article_tags li").length==1){$(".article_tags").hide();}
+    $(".edit a").attr("href","http://write.blog.csdn.net/postedit/"+fileName);
+    $.each($(".edu_li a"),function(){$(this).attr("href",$(this).attr("href").replace("blog7","blog9"))});
+    new CNick('#uid').showNickname();
+if($("#fan").html()=="")
+{
+$("#fan").html(0);	
+}
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    var fromjs=$("#fromjs");
+    if(fromjs.length>0)
+    {                  
+        $("#fromjs .markdown_views pre").addClass("prettyprint");       
+        prettyPrint();
+
+        $('pre.prettyprint code').each(function () {
+            var lines = $(this).text().split('\n').length;
+            var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+            $(this).addClass('has-numbering').parent().append($numbering);
+            for (i = 1; i <= lines; i++) {
+                $numbering.append($('<li/>').text(i));
+            };
+            $numbering.fadeIn(1700);
+        });
+
+        $('.pre-numbering li').css("color","#999");             
+    }
+
+    $(function(){
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },500);         
+       
+
+    });
+
+    setTimeout(function () {
+        $(".toc a[target='_blank']").attr("target", "");
+    }, 500);
+
+</SCRIPT>
+ </BODY></HTML>
