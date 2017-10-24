@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.futuredate.hbase</groupId>
+  <artifactId>Spark_Kafka_Hbase</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <properties>
+  	<hbase.version>1.2.0-cdh5.8.5</hbase.version>
+  	<hadoop.version>2.6.0-cdh5.8.5</hadoop.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>cloudera</id>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+	<dependency>
+		<groupId>spark</groupId>
+		<artifactId>spark-assembly</artifactId>
+		<version>1.6.0-hadoop2.6.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.spark</groupId>
+		<artifactId>spark-streaming-kafka_2.10</artifactId>
+		<version>1.6.3</version>
+	</dependency>
+	  <dependency>
+		  <groupId>org.apache.hbase</groupId>
+		  <artifactId>hbase-client</artifactId>
+		  <version>${hbase.version}</version>
+	  </dependency>
+
+	  <dependency>
+		  <groupId>org.apache.hbase</groupId>
+		  <artifactId>hbase-server</artifactId>
+		  <version>${hbase.version}</version>
+	  </dependency>
+
+	  <dependency>
+		  <groupId>org.apache.hadoop</groupId>
+		  <artifactId>hadoop-client</artifactId>
+		  <version>${hadoop.version}</version>
+	  </dependency>
+		<dependency>
+		        <groupId>org.apache.hadoop</groupId>
+		        <artifactId>hadoop-common</artifactId>
+		       <version>${hadoop.version}</version>
+		</dependency>
+	    <dependency>
+	        <groupId>org.apache.hive</groupId>
+	        <artifactId>hive-jdbc</artifactId>
+	        <version>1.1.0-cdh5.8.5</version>
+		</dependency>
+        <dependency>
+            <groupId>jdk.tools</groupId>
+            <artifactId>jdk.tools</artifactId>
+            <version>1.8</version>
+            <scope>system</scope>
+            <systemPath>C:\Program Files\Java\jdk1.8.0_91/lib/tools.jar</systemPath>
+        </dependency>
+  </dependencies>
+
+</project>

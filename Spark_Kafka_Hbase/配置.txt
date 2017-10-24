@@ -1,0 +1,11 @@
+1，追加自己虚拟机的IP
+C:\Windows\System32\drivers\etc\hosts
+192.168.244.148 ubuntu
+
+2，MyHbase\src\main\resources下面的配置文件改成自己虚拟机IP
+core-site.xml
+hbase-site.xml
+
+3，java build path 换成自己java home的
+
+4,普通java的main函数运行就可以

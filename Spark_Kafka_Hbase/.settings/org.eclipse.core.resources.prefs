@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/futuredata/hbase/App.java=UTF-8
+encoding//src/main/java/com/futuredata/hbase/HBaseCounterIncrementor.java=UTF-8
+encoding//src/main/java/com/futuredata/hbase/HbaseTest.java=UTF-8
+encoding//src/main/java/com/futuredata/hbase/SparkStreamingOnKafkaDirect.java=UTF-8
