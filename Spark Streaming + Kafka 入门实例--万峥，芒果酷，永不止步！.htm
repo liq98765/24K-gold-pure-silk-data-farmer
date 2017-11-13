@@ -1,0 +1,547 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0039)http://mangocool.com/1479867274843.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+    	 <LINK href="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shCore.css" 
+rel="stylesheet" type="text/css" media="screen">		 <LINK href="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shThemeDefault.css" 
+rel="stylesheet" type="text/css" media="screen">		 <LINK href="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shCoreDefault.css" 
+rel="stylesheet" type="text/css" media="screen">		 
+<SCRIPT src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shCore.js" type="text/javascript"></SCRIPT>
+		 
+<SCRIPT src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shAutoloader.js" type="text/javascript"></SCRIPT>
+		 
+<SCRIPT src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushCss.js" type="text/javascript"></SCRIPT>
+		 
+<SCRIPT src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushJScript.js" type="text/javascript"></SCRIPT>
+		 
+<SCRIPT src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushJava.js" type="text/javascript"></SCRIPT>
+		 
+<SCRIPT src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushPython.js" type="text/javascript"></SCRIPT>
+		 
+<SCRIPT src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushBash.js" type="text/javascript"></SCRIPT>
+		 
+<SCRIPT class="javascript" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushPowerShell.js"></SCRIPT>
+		 
+<SCRIPT class="javascript" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushCSharp.js"></SCRIPT>
+		 
+<SCRIPT class="javascript" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushPhp.js"></SCRIPT>
+		 
+<SCRIPT class="javascript" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushVb.js"></SCRIPT>
+		 
+<SCRIPT class="javascript" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushSql.js"></SCRIPT>
+		 
+<SCRIPT class="javascript" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushXml.js"></SCRIPT>
+		 
+<SCRIPT class="javascript" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushDelphi.js"></SCRIPT>
+		 
+<SCRIPT class="javascript" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushRuby.js"></SCRIPT>
+		 
+<SCRIPT class="javascript" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/shBrushCpp.js"></SCRIPT>
+         
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8"> <LINK href="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/logo.css" 
+rel="stylesheet"> <LINK href="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/main.css" 
+rel="stylesheet" type="text/css"> <LINK href="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/detail.css" 
+rel="stylesheet" type="text/css"> <LINK href="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/iconFont.css" 
+rel="stylesheet" type="text/css" media="all"> 
+<META name="keywords" content="芒果酷，永不止步，万峥，个人博客，IT，技术，分布式，大数据，Java，Scala，Hadoop，Hbase，Hive，Spark，Storm，Greenplum，Openstack"> 
+<META name="description" content="芒果酷，永不止步！若不积跬步，则无以至千里，我们必须学无止步！当你的才华还撑不起你的野心的时候，你就应该静下心来学习！永不止步！"> 
+<TITLE>Spark Streaming + Kafka 入门实例--万峥，芒果酷，永不止步！</TITLE> 
+<SCRIPT>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?af1daa23becbc24b5a563dd65e527df9";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</SCRIPT>
+     
+<META name="GENERATOR" content="MSHTML 11.00.9600.18817"></HEAD>     
+<BODY>
+<DIV class="top">
+<DIV class="topcontent"><A href="http://mangocool.com/"></A>
+<DIV class="logo_index"><A href="http://mangocool.com/">		         
+<DIV class="logoc left" 
+style="font-size: 26px; margin-top: 20px;"><SPAN>MANGO</SPAN>COOL</DIV></A>     <!--导航--> 
+    
+<DIV class="right nright">
+<UL class="navbar">
+  <LI><A href="http://mangocool.com/">芒果酷</A></LI>
+  <LI><A class="current" href="http://mangocool.com/software.html">软件技术</A></LI>
+  <LI><A href="http://mangocool.com/diary.html">芒果日记</A></LI>
+  <LI><A href="http://mangocool.com/compute.html">电脑技术</A></LI></UL></DIV>
+<DIV class="clear"></DIV></DIV><!--导航-->               </DIV></DIV><!--top end--> 
+                <!--内容-->         
+<DIV class="middle">
+<DIV>
+<H2 style="color: rgb(52, 152, 219);">Spark Streaming + Kafka 入门实例</H2>
+<H5><SPAN>2016-11-23 
+09:54:36</SPAN>&nbsp;&nbsp;&nbsp;<SPAN>作者：MangoCool</SPAN>&nbsp;&nbsp;&nbsp;<SPAN>来源：MangoCool</SPAN></H5>
+<P><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">初学Spark 
+Streaming和Kafka，直接从网上找个例子入门，大致的流程：有日志数据源源不断地进入kafka，我们用一个spark 
+streaming程序从kafka中消费日志数据，这些日志是一个字符串，然后将这些字符串用空格分割开，实时计算每一个单词出现的次数。</SPAN> </P>
+<P><SPAN style="font-family: Microsoft YaHei; font-size: 14px;"></SPAN> </P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><STRONG><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">部署安装zookeeper：</SPAN></STRONG> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">1、官网下载zookeeper：</SPAN><A 
+href="http://mirror.metrocast.net/apache/zookeeper/" target="_blank"><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">http://mirror.metrocast.net/apache/zookeeper/</SPAN></A> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">2、解压安装：</SPAN> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN></SPAN> </P>
+<PRE class="prettyprint brush:html;">tar -zxvf zookeeper-3.4.8.tar.gz</PRE>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">3、配置conf/zoo.cfg：</SPAN> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN></SPAN> </P>
+<PRE class="prettyprint brush:html;">dataDir=/home/hadoop/data/zookeeper/data
+# the port at which the clients will connect
+clientPort=2181
+# the maximum number of client connections.
+# increase this if you need to handle more clients
+#maxClientCnxns=60
+#
+# Be sure to read the maintenance section of the
+# administrator guide before turning on autopurge.
+#
+# http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance
+#
+# The number of snapshots to retain in dataDir
+#autopurge.snapRetainCount=3
+# Purge task interval in hours
+# Set to "0" to disable auto purge feature
+#autopurge.purgeInterval=1
+
+server.1=h181:2889:3889
+maxSessionTimeout=1200000</PRE>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">4、启动，到zookeeper的bin目录下执行命令：</SPAN> 
+</P>
+<PRE class="prettyprint brush:html;">./zkServer.sh start ../conf/zoo.cfg 1&gt;/dev/null 2&gt;&amp;1 &amp;</PRE>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">5、可以用ps命令是否启动：</SPAN> 
+</P>
+<PRE class="prettyprint brush:html;">ps -ef|grep zookeeper</PRE>
+<P><BR></P>
+<P><STRONG><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">部署安装Kafka：</SPAN></STRONG> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">1、官网下载kafka：</SPAN><A 
+href="https://kafka.apache.org/downloads" target="_blank"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">https://kafka.apache.org/downloads</SPAN></A> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">2、解压安装：</SPAN> 
+</P>
+<PRE class="prettyprint brush:html;">tar -zxvf kafka_2.11-0.10.1.0.tgz</PRE>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">3、配置：</SPAN> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">config/server.properties：</SPAN> 
+</P>
+<PRE class="prettyprint brush:html;">broker.id=0
+
+listeners=PLAINTEXT://h181:9092
+
+advertised.listeners=PLAINTEXT://h181:9092
+
+num.network.threads=3
+
+num.io.threads=8
+
+socket.send.buffer.bytes=102400
+
+socket.receive.buffer.bytes=102400
+
+socket.request.max.bytes=104857600
+
+log.dirs=/tmp/kafka-logs
+
+num.partitions=1
+
+num.recovery.threads.per.data.dir=1
+
+log.retention.hours=168
+
+log.segment.bytes=1073741824
+
+log.retention.check.interval.ms=300000
+
+zookeeper.connect=h181:2181
+
+zookeeper.connection.timeout.ms=6000</PRE>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">这里只修改了listeners、advertised.listeners、zookeeper.connect。</SPAN> 
+</P>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">config/consumer.properties：</SPAN> 
+</P>
+<PRE class="prettyprint brush:html;">zookeeper.connect=h181:2181
+
+# timeout in ms for connecting to zookeeper
+zookeeper.connection.timeout.ms=6000
+
+#consumer group id
+group.id=test-consumer-group</PRE>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">4、启动，到kafka的bin目录下执行命令：</SPAN> 
+</P>
+<PRE class="prettyprint brush:html;">./kafka-server-start.sh ../config/server.properties 1&gt;/dev/null 2&gt;&amp;1 &amp;</PRE>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">5、可以用ps命令是否启动：</SPAN> 
+</P>
+<PRE class="prettyprint brush:html;">ps -ef|grep kafka</PRE>
+<P><BR></P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><STRONG><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">示例程序：</SPAN></STRONG> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">依赖：jdk1.7，spark-2.0.1，kafka_2.11-0.10.1.0，zookeeper-3.4.8，scala-2.118</SPAN> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">开发环境：ideaIU-14.1.4</SPAN> 
+</P>
+<P style="font-family: 微软雅黑; font-size: 14px;"><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">测试环境：win7</SPAN> 
+</P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">建立maven工程KafkaSparkDemo，在pom.xml配置文件添加必要的依赖：</SPAN> 
+
+<PRE class="prettyprint brush:xml;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    
+	&lt;groupId&gt;kafka-spark-demo&lt;/groupId&gt;
+	&lt;artifactId&gt;kafka-spark-demo&lt;/artifactId&gt;
+	&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;properties&gt;
+        &lt;spark.version&gt;2.0.1&lt;/spark.version&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+	
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
+            &lt;artifactId&gt;spark-core_2.11&lt;/artifactId&gt;
+            &lt;version&gt;${spark.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+		
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
+            &lt;artifactId&gt;spark-streaming_2.11&lt;/artifactId&gt;
+            &lt;version&gt;${spark.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
+            &lt;artifactId&gt;spark-streaming-kafka_2.11&lt;/artifactId&gt;
+            &lt;version&gt;1.6.2&lt;/version&gt;
+        &lt;/dependency&gt;
+		
+		&lt;dependency&gt;
+            &lt;groupId&gt;org.scala-lang&lt;/groupId&gt;
+            &lt;artifactId&gt;scala-library&lt;/artifactId&gt;
+            &lt;version&gt;2.11.8&lt;/version&gt;
+        &lt;/dependency&gt;
+
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;</PRE>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">KafkaSparkDemo对象：</SPAN> 
+</P>
+<PRE class="prettyprint brush:java;">package com.mangocool.kafkaspark
+
+import kafka.serializer.StringDecoder
+import org.apache.spark.SparkConf
+import org.apache.spark.streaming.dstream.InputDStream
+import org.apache.spark.streaming.kafka.KafkaUtils
+import org.apache.spark.streaming.{Duration, StreamingContext}
+
+/**
+  * Created by MANGOCOOL on 2016/11/11.
+  */
+object KafkaSparkDemo {
+  def main(args: Array[String]) {
+
+    System.setProperty("hadoop.home.dir", "E:\\Program Files\\hadoop-2.7.0")
+    System.setProperty("HADOOP_USER_NAME","hadoop")
+    System.setProperty("HADOOP_USER_PASSWORD","hadoop")
+    val sparkConf = new SparkConf().setMaster("local[2]").setAppName("kafka-spark-demo")
+    val scc = new StreamingContext(sparkConf, Duration(5000))
+    scc.sparkContext.setLogLevel("ERROR")
+    scc.checkpoint(".") // 因为使用到了updateStateByKey,所以必须要设置checkpoint
+    val topics = Set("kafka-spark-demo") //我们需要消费的kafka数据的topic
+    val brokers = "192.168.21.181:9092"
+    val kafkaParam = Map[String, String](
+//      "zookeeper.connect" -&gt; "192.168.21.181:2181",
+//      "group.id" -&gt; "test-consumer-group",
+      "metadata.broker.list" -&gt; brokers,// kafka的broker list地址
+      "serializer.class" -&gt; "kafka.serializer.StringEncoder"
+    )
+
+    val stream: InputDStream[(String, String)] = createStream(scc, kafkaParam, topics)
+
+    stream.map(_._2)      // 取出value
+      .flatMap(_.split(" ")) // 将字符串使用空格分隔
+      .map(r =&gt; (r, 1))      // 每个单词映射成一个pair
+      .updateStateByKey[Int](updateFunc)  // 用当前batch的数据区更新已有的数据
+      .print() // 打印前10个数据
+    scc.start() // 真正启动程序
+    scc.awaitTermination() //阻塞等待
+  }
+  val updateFunc = (currentValues: Seq[Int], preValue: Option[Int]) =&gt; {
+    val curr = currentValues.sum
+    val pre = preValue.getOrElse(0)
+    Some(curr + pre)
+  }
+  /**
+    * 创建一个从kafka获取数据的流.
+    * @param scc           spark streaming上下文
+    * @param kafkaParam    kafka相关配置
+    * @param topics        需要消费的topic集合
+    * @return
+    */
+  def createStream(scc: StreamingContext, kafkaParam: Map[String, String], topics: Set[String]) = {
+    KafkaUtils.createDirectStream[String, String, StringDecoder, StringDecoder](scc, kafkaParam, topics)
+  }
+}
+</PRE>
+<P><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">直接运行程序：</SPAN> 
+</P>
+<P><IMG alt="" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/20161123110442123.jpg"> 
+</P>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">因为kafka队列里面还没有消息，所以为空。</SPAN> 
+</P>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">启动kafka-console-producer工具，手动往kafka中依次写入如下数据：</SPAN> 
+</P>
+<PRE class="prettyprint brush:html;">./kafka-console-producer.sh --topic kafka-spark-demo --broker-list h181:9092</PRE>
+<P><IMG alt="" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/20161123110750826.jpg"> 
+</P>
+<P><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">结果如下：</SPAN> 
+</P>
+<P><IMG alt="" src="Spark%20Streaming%20+%20Kafka%20入门实例--万峥，芒果酷，永不止步！.files/20161123110809303.jpg"> 
+</P>
+<P><SPAN style="color: rgb(229, 51, 51); font-family: Microsoft YaHei; font-size: 14px;"><STRONG>注：</STRONG></SPAN><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">这里的broker-list的主机别用localhost，不然可能会遇到以下错误：</SPAN> 
+</P>
+<PRE class="prettyprint brush:html;">[hadoop@h181 bin]$ ./kafka-console-producer.sh --topic kafka-spark-demo --broker-list localhost:9092
+hh
+[2016-11-22 17:09:34,539] ERROR Error when sending message to topic kafka-spark-demo with key: null, value: 2 bytes with error: (org.apache.kafka.clients.producer.internals.ErrorLoggingCallback)
+org.apache.kafka.common.errors.TimeoutException: Failed to update metadata after 60000 ms.</PRE><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">如果broker-list的端口不对，会遇到以下错误： 
+</SPAN> 
+<PRE class="prettyprint brush:html;">Exception in thread "main" org.apache.spark.SparkException: java.nio.channels.ClosedChannelException
+	at org.apache.spark.streaming.kafka.KafkaCluster$$anonfun$checkErrors$1.apply(KafkaCluster.scala:366)
+	at org.apache.spark.streaming.kafka.KafkaCluster$$anonfun$checkErrors$1.apply(KafkaCluster.scala:366)
+	at scala.util.Either.fold(Either.scala:98)
+	at org.apache.spark.streaming.kafka.KafkaCluster$.checkErrors(KafkaCluster.scala:365)
+	at org.apache.spark.streaming.kafka.KafkaUtils$.getFromOffsets(KafkaUtils.scala:222)
+	at org.apache.spark.streaming.kafka.KafkaUtils$.createDirectStream(KafkaUtils.scala:484)
+	at com.dtxy.xbdp.test.KafkaSparkDemoMain$.createStream(KafkaSparkDemoMain.scala:54)
+	at com.dtxy.xbdp.test.KafkaSparkDemoMain$.main(KafkaSparkDemo.scala:31)
+	at com.dtxy.xbdp.test.KafkaSparkDemoMain.main(KafkaSparkDemo.scala)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+</PRE>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">你还可以用程序写入数据到kafka。<SPAN 
+id="__kindeditor_bookmark_start_12__"></SPAN></SPAN> </P>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">KafkaProducer类：</SPAN> 
+</P>
+<P><SPAN style="font-family: Microsoft YaHei; font-size: 14px;"></SPAN> </P>
+<PRE class="prettyprint brush:java;">package com.mangocool.kafkaspark;
+
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import kafka.javaapi.producer.Producer;
+import kafka.producer.KeyedMessage;
+import kafka.producer.ProducerConfig;
+import kafka.serializer.StringEncoder;
+
+/**
+ * Created by MANGOCOOL on 2016/11/23.
+ */
+public class kafkaProducer extends Thread {
+
+    private String topic;
+
+    public kafkaProducer(String topic){
+        super();
+        this.topic = topic;
+    }
+
+    @Override
+    public void run() {
+        Producer producer = createProducer();
+        int i=0;
+        while(true){
+            producer.send(new KeyedMessage&lt;Integer, String&gt;(topic, "message: " + i++));
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private Producer createProducer() {
+        Properties properties = new Properties();
+        properties.put("zookeeper.connect", "h181:2181");//声明zk
+        properties.put("serializer.class", StringEncoder.class.getName());
+        properties.put("metadata.broker.list", "h181:9092");// 声明kafka broker
+        return new Producer&lt;Integer, String&gt;(new ProducerConfig(properties));
+    }
+
+    public static void main(String[] args) {
+        new kafkaProducer("kafka-spark-demo").start();// 使用kafka集群中创建好的主题 kafka-spark-demo
+
+    }
+}</PRE>
+<P><SPAN id="__kindeditor_bookmark_start_12__"></SPAN><SPAN style="font-family: Microsoft YaHei; font-size: 14px;">文章就此结束，如有错误欢迎指正和交流！</SPAN> 
+</P>
+<P><BR></P>
+<P><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">文章参考：</SPAN><SPAN style="font-family: Microsoft YaHei; font-size: 14px;"><A 
+href="http://qifuguang.me/2015/12/24/Spark-streaming-kafka%E5%AE%9E%E6%88%98%E6%95%99%E7%A8%8B/" 
+target="_blank">http://qifuguang.me/2015/12/24/Spark-streaming-kafka%E5%AE%9E%E6%88%98%E6%95%99%E7%A8%8B/</A></SPAN> 
+</P>
+<P>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="http://chengjianxiaoxue.iteye.com/blog/2190488" target="_blank"><SPAN 
+style="font-family: Microsoft YaHei; font-size: 14px;">http://chengjianxiaoxue.iteye.com/blog/2190488</SPAN><SPAN 
+style='font-family: ""; font-size: 14px;'></SPAN></A> </P>
+<DIV class="line"></DIV>
+<P class="tag">标签：	              	              	 <A>Spark</A> 	              	  
+            	<A>Streaming</A> 	              	              	<A>Kafka</A> 	      
+        	              	<A>demo</A> 	              	              	<A>例子</A> 	   
+                         </P>
+<P style="margin-top: 6px; float: left;">分享：
+<DIV class="bdsharebuttonbox"><A class="bds_more" href="http://mangocool.com/1479867274843.html#" 
+data-cmd="more"></A><A title="分享到QQ空间" class="bds_qzone" href="http://mangocool.com/1479867274843.html#" 
+data-cmd="qzone"></A><A title="分享到新浪微博" class="bds_tsina" href="http://mangocool.com/1479867274843.html#" 
+data-cmd="tsina"></A><A title="分享到腾讯微博" class="bds_tqq" href="http://mangocool.com/1479867274843.html#" 
+data-cmd="tqq"></A><A title="分享到人人网" class="bds_renren" href="http://mangocool.com/1479867274843.html#" 
+data-cmd="renren"></A><A title="分享到微信" class="bds_weixin" href="http://mangocool.com/1479867274843.html#" 
+data-cmd="weixin"></A><A title="分享到Facebook" class="bds_fbook" href="http://mangocool.com/1479867274843.html#" 
+data-cmd="fbook"></A><A title="分享到linkedin" class="bds_linkedin" href="http://mangocool.com/1479867274843.html#" 
+data-cmd="linkedin"></A><A title="分享到Twitter" class="bds_twi" href="http://mangocool.com/1479867274843.html#" 
+data-cmd="twi"></A></DIV>
+<SCRIPT>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</SCRIPT>
+			  
+<DIV class="clear">
+<P></P>
+<P class="page"><A 
+href="http://mangocool.com/1481243581703.html"><SPAN>上一篇</SPAN>maven 
+setting.xml配置详解</A><SPAN class="clear"></SPAN></P>
+<P class="page"><A 
+href="http://mangocool.com/1478853295895.html"><SPAN>下一篇</SPAN>org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): 
+Permission denied: user=MANGOCOOL, access=WRITE, 
+inode="/user/MANGOCOOL":hadoop:supergroup:drwxr-xr-x</A><SPAN 
+class="clear"></SPAN></P><!-- 多说评论框 start -->	 
+<DIV class="ds-thread" data-url="http://mangocool.com/1479867274843.html" 
+data-title="Spark Streaming + Kafka 入门实例" data-thread-key="1479867274843"></DIV><!-- 多说评论框 end --> <!-- 多说公共JS代码 start (一个网页只需插入一次) --> 
+<SCRIPT type="text/javascript">
+var duoshuoQuery = {short_name:"mangocool"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</SCRIPT>
+ <!-- 多说公共JS代码 end -->           </DIV></DIV><!--middle end-->         <!--内容--> 
+          
+<DIV class="foot">
+<DIV class="foot_1">
+<DIV class="news_aboutme content_1">
+<H4>关于我</H4>
+<P>
+<P>	一个喜欢唱歌，热衷旅行，爱好电子产品的码农。没事，跟三五好友吼上几嗓子，约上几个背着行囊去露营或者宅在家里抱着孩子敲代码。 </P>
+<P>	座右铭：当你的才华还撑不起你的野心的时候，你就应该静下心来学习，<SPAN>永不止步！</SPAN> </P>
+<P><SPAN>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp;&nbsp;人生之旅历途甚长，所争决不在一年半月，万不可因此着急失望，招精神之萎葸。<BR></SPAN> </P>
+<P><BR></P>
+<P></P></DIV>
+<DIV class="news_link">
+<H4>联系方式</H4>
+<P>联系QQ：58742094</P>
+<P>联系电话：151****5656</P>
+<P>工作邮箱：58742094@qq.com</P></DIV>
+<DIV class="news tag">
+<H4>热门标签</H4>
+<P><A href="http://mangocool.com/hotLabel_14327129679660.html" 
+target="_blank">java</A>		        		        	 <A href="http://mangocool.com/hotLabel_14337327667643.html" 
+target="_blank">Scala</A>		        		        	 <A href="http://mangocool.com/hotLabel_14339076218562.html" 
+target="_blank">Exception</A>		        		        	 <A href="http://mangocool.com/hotLabel_14406438555442.html" 
+target="_blank">error</A>		        		        			        		        			        		  
+      			        		        			        		        			        		        			        
+		        			        		        			        	         </P>
+<P><A href="http://mangocool.com/hotLabel_14337305268043.html" 
+target="_blank">Spark</A>		        		        	 <A href="http://mangocool.com/hotLabel_14342047965800.html" 
+target="_blank">阿里妈妈</A>		        		        	 <A href="http://mangocool.com/hotLabel_14611244305460.html" 
+target="_blank">hive</A>		        		        	 <A href="http://mangocool.com/hotLabel_14351177592683.html" 
+target="_blank">demo</A>		        		        			        		        			        		   
+     			        		        			        	         </P>
+<P><A href="http://mangocool.com/hotLabel_14337305268040.html" 
+target="_blank">hadoop</A>		        		        	 <A href="http://mangocool.com/hotLabel_14334798790032.html" 
+target="_blank">linux</A>		        		        	 <A href="http://mangocool.com/hotLabel_14334798790031.html" 
+target="_blank">centos</A>		        		        	 <A href="http://mangocool.com/hotLabel_14528420726191.html" 
+target="_blank">Greenplum</A>		        	         </P></DIV></DIV>
+<DIV class="clear"></DIV></DIV><!--foot end--> 
+<DIV class="bottom">
+<DIV class="bottomc">
+<P>Copyright <SPAN id="footerYear"></SPAN><SPAN class="blue"> 
+芒果酷（mangocool.com）</SPAN> All rights reserved. <SPAN>湘ICP备14019394号</SPAN>       
+  </P>
+<P>免责声明：本网站部分文章转载其他媒体，意在为公众提供免费服务。如有信息侵犯了您的权益，可与本网站联系，本网站将尽快予以撤除。</P></DIV></DIV>
+<SCRIPT type="text/javascript">
+	var date = new Date();
+	var span = document.getElementById("footerYear");
+	span.innerText=date.getFullYear();
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+function path()
+{
+  var args = arguments,
+      result = []
+      ;
+        
+  for(var i = 0; i < args.length; i++)
+      result.push(args[i].replace('@', 'syntax/js/'));
+        
+  return result
+};
+  
+SyntaxHighlighter.autoloader.apply(null, path(
+  'applescript            @shBrushAppleScript.js',
+  'actionscript3 as3      @shBrushAS3.js',
+  'bash shell             @shBrushBash.js',
+  'coldfusion cf          @shBrushColdFusion.js',
+  'cpp c                  @shBrushCpp.js',
+  'c# c-sharp csharp      @shBrushCSharp.js',
+  'css                    @shBrushCss.js',
+  'delphi pascal          @shBrushDelphi.js',
+  'diff patch pas         @shBrushDiff.js',
+  'erl erlang             @shBrushErlang.js',
+  'groovy                 @shBrushGroovy.js',
+  'java                   @shBrushJava.js',
+  'jfx javafx             @shBrushJavaFX.js',
+  'js jscript javascript  @shBrushJScript.js',
+  'perl pl                @shBrushPerl.js',
+  'php                    @shBrushPhp.js',
+  'text plain             @shBrushPlain.js',
+  'py python              @shBrushPython.js',
+  'ruby rails ror rb      @shBrushRuby.js',
+  'sass scss              @shBrushSass.js',
+  'scala                  @shBrushScala.js',
+  'sql                    @shBrushSql.js',
+  'vb vbnet               @shBrushVb.js',
+  'xml xhtml xslt html    @shBrushXml.js'
+));
+SyntaxHighlighter.all();
+</SCRIPT>
+         </DIV></BODY></HTML>

@@ -1,0 +1,965 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0053)http://blog.csdn.net/zeroder/article/details/73650731 -->
+<!DOCTYPE html PUBLIC "" ""><HTML><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+             <LINK href="http://blog.csdn.net/zeroder/article/details/73650731" 
+rel="canonical">     
+<SCRIPT type="text/javascript">
+        var username = "zeroder";var _blogger = username;var blog_address = "http://blog.csdn.net/zeroder";var static_host = "http://static.blog.csdn.net";
+        var currentUserName = ""; var fileName = '73650731';var commentscount = 0; var islock = false
+        window.quickReplyflag = true;
+        var totalFloor=0;
+                
+                 var isBole = false;
+                
+                
+                 var isDigg = false;
+                
+          
+             var isExpert=false;
+        
+          
+        var isAdm=false;
+        
+
+    </SCRIPT>
+ 
+<META http-equiv="content-type" content="text/html; charset=utf-8">     
+<META http-equiv="X-UA-Compatible" content="IE=Edge">     
+<META name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+    
+<META name="apple-mobile-web-app-status-bar-style" content="black">     
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/jquery-1.9.1.min.js" type="text/javascript"></SCRIPT>
+     <LINK href="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/bootstrap.min.css" 
+rel="stylesheet">     <LINK href="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/avatar.css" 
+rel="stylesheet">     <LINK href="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/default.css" 
+rel="stylesheet" type="text/css">     <LINK href="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/style.css" 
+rel="stylesheet">     <LINK href="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/content_toolbar.css" 
+rel="stylesheet">               <!-- adhoc sdk -->		 
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/ab.plus.js"></SCRIPT>
+		 
+<SCRIPT>
+		adhoc('init', {
+		  appKey: 'ADHOC_0e0bce4f-8793-4f68-89cf-34c14f2532bb',
+		  defaultFlags: {isLogin: true}
+		})
+		</SCRIPT>
+               <!-- adhoc sdk end -->    	 
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/switchHome.js"></SCRIPT>
+		    
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/iconfont.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/main.js"></SCRIPT>
+     
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/tracking_for_recommend.js" type="text/javascript" charset="utf-8"></SCRIPT>
+     
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/tracking.js" type="text/javascript" charset="utf-8"></SCRIPT>
+     
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/cnick.js" type="text/javascript" charset="utf-8"></SCRIPT>
+      <LINK href="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/prettify.css" 
+rel="stylesheet">     
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/prettify.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/ds.js"></SCRIPT>
+     
+<SCRIPT type="text/javascript">
+
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+
+
+
+    </SCRIPT>
+     
+<META name="description" content="Spark2.11 两种流操作 + KafkaSpark2.x 自从引入了 Structured Streaming 后，未来数据操作将逐步转化到 DataFrame/DataSet，以下将介绍 Spark2.x 如何与 Kafka0.10+整合Structured Streaming + Kafka&#10;引包&#10;groupId = org.apache.spark&#10;artifactId = spark-"> 
+    
+<META name="keywords" content="spark">     
+<META http-equiv="Cache-Control" content="no-siteapp"><LINK href="#" rel="alternate" 
+media="handheld">     
+<META name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848"> 
+    <TITLE>Spark2.11 两种流操作 + Kafka - CSDN博客</TITLE> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18817"></HEAD> 
+<BODY>
+<SCRIPT id="toolbar-tpl-scriptId" src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/content_toolbar.js" type="text/javascript" domain="http://blog.csdn.net" skin="black" prod="download"></SCRIPT>
+ 
+<DIV class="container clearfix"><main><ARTICLE>
+<H1 class="csdn_top">Spark2.11 两种流操作 + Kafka</H1>
+<DIV class="article_bar clearfix">
+<DIV class="artical_tag"><SPAN class="original">原创</SPAN>                     
+<SPAN class="time">2017年06月23日 17:59:58</SPAN>                 </DIV>
+<UL class="article_tags clearfix csdn-tracking-statistics" 
+  data-mod="popu_377"><LI class="tit">标签：</LI>
+  <LI><A href="http://so.csdn.net/so/search/s.do?q=spark&amp;t=blog" target="_blank">spark</A> 
+  <SPAN>/</SPAN></LI></UL>
+<UL class="right_bar">
+  <LI><BUTTON class="btn-noborder"><I class="icon iconfont icon-read"></I><SPAN 
+  class="txt">1109</SPAN></BUTTON></LI><!--<li><button class="btn-noborder"><i class="icon iconfont icon-dashang-"></i><span class="txt">0</span></button></li>--> 
+                      
+  <LI class="edit"><A class="btn-noborder" href="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/zeroder.htm"><I 
+  class="icon iconfont icon-bianji"></I><SPAN class="txt">编辑</SPAN>              
+             </A>                     </LI>
+  <LI class="del"><A class="btn-noborder" onclick="javascript:deleteArticle(fileName);return false;"><I 
+  class="icon iconfont icon-shanchu"></I><SPAN class="txt">删除</SPAN>             
+              </A>                     </LI></UL></DIV>
+<DIV class="article_content csdn-tracking-statistics" id="article_content" 
+data-mod="popu_519" data-dsm="post">
+<DIV class="markdown_views">
+<H1 id="spark211-两种流操作-kafka">Spark2.11 两种流操作 + Kafka</H1>
+<P>Spark2.x 自从引入了 <CODE>Structured Streaming</CODE> 后，未来数据操作将逐步转化到 
+<CODE>DataFrame/DataSet</CODE>，以下将介绍 Spark2.x 如何与 <CODE>Kafka0.10+</CODE>整合</P>
+<H2 id="structured-streaming-kafka">Structured Streaming + Kafka</H2>
+<OL>
+  <LI>引包</LI></OL>
+<PRE class="prettyprint"><CODE class=" hljs ini"><SPAN class="hljs-setting">groupId = <SPAN class="hljs-value">org.apache.spark</SPAN></SPAN>
+<SPAN class="hljs-setting">artifactId = <SPAN class="hljs-value">spark-sql-kafka-<SPAN class="hljs-number">0</SPAN>-<SPAN class="hljs-number">10</SPAN>_2.<SPAN class="hljs-number">11</SPAN></SPAN></SPAN>
+<SPAN class="hljs-setting">version = <SPAN class="hljs-value"><SPAN class="hljs-number">2.1</SPAN>.<SPAN class="hljs-number">1</SPAN></SPAN></SPAN></CODE></PRE>
+<P>为了让更直观的展示包的依赖，以下是我的工程 sbt 文件</P>
+<PRE class="prettyprint"><CODE class=" hljs avrasm">name := <SPAN class="hljs-string">"spark-test"</SPAN>
+version := <SPAN class="hljs-string">"1.0"</SPAN>
+scalaVersion := <SPAN class="hljs-string">"2.11.7"</SPAN>
+// https://mvnrepository<SPAN class="hljs-preprocessor">.com</SPAN>/artifact/org<SPAN class="hljs-preprocessor">.apache</SPAN><SPAN class="hljs-preprocessor">.spark</SPAN>/spark-core_2<SPAN class="hljs-number">.11</SPAN>
+libraryDependencies += <SPAN class="hljs-string">"org.apache.spark"</SPAN> % <SPAN class="hljs-string">"spark-core_2.11"</SPAN> % <SPAN class="hljs-string">"2.1.1"</SPAN> % <SPAN class="hljs-string">"provided"</SPAN>
+// https://mvnrepository<SPAN class="hljs-preprocessor">.com</SPAN>/artifact/org<SPAN class="hljs-preprocessor">.apache</SPAN><SPAN class="hljs-preprocessor">.spark</SPAN>/spark-mllib_2<SPAN class="hljs-number">.11</SPAN>
+libraryDependencies += <SPAN class="hljs-string">"org.apache.spark"</SPAN> % <SPAN class="hljs-string">"spark-mllib_2.11"</SPAN> % <SPAN class="hljs-string">"2.1.1"</SPAN> % <SPAN class="hljs-string">"provided"</SPAN>
+// https://mvnrepository<SPAN class="hljs-preprocessor">.com</SPAN>/artifact/org<SPAN class="hljs-preprocessor">.apache</SPAN><SPAN class="hljs-preprocessor">.spark</SPAN>/spark-streaming_2<SPAN class="hljs-number">.11</SPAN>
+libraryDependencies += <SPAN class="hljs-string">"org.apache.spark"</SPAN> % <SPAN class="hljs-string">"spark-streaming_2.11"</SPAN> % <SPAN class="hljs-string">"2.1.1"</SPAN> % <SPAN class="hljs-string">"provided"</SPAN>
+// https://mvnrepository<SPAN class="hljs-preprocessor">.com</SPAN>/artifact/org<SPAN class="hljs-preprocessor">.apache</SPAN><SPAN class="hljs-preprocessor">.hadoop</SPAN>/hadoop-client
+libraryDependencies += <SPAN class="hljs-string">"org.apache.hadoop"</SPAN> % <SPAN class="hljs-string">"hadoop-client"</SPAN> % <SPAN class="hljs-string">"2.7.3"</SPAN>
+// https://mvnrepository<SPAN class="hljs-preprocessor">.com</SPAN>/artifact/mysql/mysql-connector-java
+libraryDependencies += <SPAN class="hljs-string">"mysql"</SPAN> % <SPAN class="hljs-string">"mysql-connector-java"</SPAN> % <SPAN class="hljs-string">"5.1.38"</SPAN>
+// https://mvnrepository<SPAN class="hljs-preprocessor">.com</SPAN>/artifact/org<SPAN class="hljs-preprocessor">.apache</SPAN><SPAN class="hljs-preprocessor">.kafka</SPAN>/kafka_2<SPAN class="hljs-number">.11</SPAN>
+libraryDependencies += <SPAN class="hljs-string">"org.apache.kafka"</SPAN> % <SPAN class="hljs-string">"kafka_2.11"</SPAN> % <SPAN class="hljs-string">"0.10.2.1"</SPAN>
+//libraryDependencies += <SPAN class="hljs-string">"org.apache.spark"</SPAN> % <SPAN class="hljs-string">"spark-streaming-kafka-0-10_2.11"</SPAN> % <SPAN class="hljs-string">"2.1.1"</SPAN>
+libraryDependencies += <SPAN class="hljs-string">"org.apache.spark"</SPAN> % <SPAN class="hljs-string">"spark-sql-kafka-0-10_2.11"</SPAN> % <SPAN class="hljs-string">"2.1.1"</SPAN></CODE></PRE>
+<OL>
+  <LI>Structured Streaming 连接 Kafka</LI></OL>
+<PRE class="prettyprint"><CODE class=" hljs avrasm">def main(args: Array[String]): Unit = {
+
+    val spark = SparkSession
+      <SPAN class="hljs-preprocessor">.builder</SPAN>()
+      <SPAN class="hljs-preprocessor">.appName</SPAN>(<SPAN class="hljs-string">"Spark structured streaming Kafka example"</SPAN>)
+      //      <SPAN class="hljs-preprocessor">.master</SPAN>(<SPAN class="hljs-string">"local[2]"</SPAN>)
+      <SPAN class="hljs-preprocessor">.getOrCreate</SPAN>()
+
+    val inputstream = spark<SPAN class="hljs-preprocessor">.readStream</SPAN>
+      <SPAN class="hljs-preprocessor">.format</SPAN>(<SPAN class="hljs-string">"kafka"</SPAN>)
+      <SPAN class="hljs-preprocessor">.option</SPAN>(<SPAN class="hljs-string">"kafka.bootstrap.servers"</SPAN>, <SPAN class="hljs-string">"127.0.0.1:9092"</SPAN>)
+      <SPAN class="hljs-preprocessor">.option</SPAN>(<SPAN class="hljs-string">"subscribe"</SPAN>, <SPAN class="hljs-string">"testss"</SPAN>)
+      <SPAN class="hljs-preprocessor">.load</SPAN>()
+    import spark<SPAN class="hljs-preprocessor">.implicits</SPAN>._
+    val query = inputstream<SPAN class="hljs-preprocessor">.select</SPAN>($<SPAN class="hljs-string">"key"</SPAN>, $<SPAN class="hljs-string">"value"</SPAN>)
+      <SPAN class="hljs-preprocessor">.as</SPAN>[(String, String)]<SPAN class="hljs-preprocessor">.map</SPAN>(kv =&gt; kv._1 + <SPAN class="hljs-string">" "</SPAN> + kv._2)<SPAN class="hljs-preprocessor">.as</SPAN>[String]
+      <SPAN class="hljs-preprocessor">.writeStream</SPAN>
+      <SPAN class="hljs-preprocessor">.outputMode</SPAN>(<SPAN class="hljs-string">"append"</SPAN>)
+      <SPAN class="hljs-preprocessor">.format</SPAN>(<SPAN class="hljs-string">"console"</SPAN>)
+      <SPAN class="hljs-preprocessor">.start</SPAN>()
+
+    query<SPAN class="hljs-preprocessor">.awaitTermination</SPAN>()
+  }</CODE></PRE>
+<P>流的元数据如下</P>
+<TABLE>
+  <THEAD>
+  <TR>
+    <TH>Column</TH>
+    <TH>Type</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD>key</TD>
+    <TD>binary</TD></TR>
+  <TR>
+    <TD>value</TD>
+    <TD>binary</TD></TR>
+  <TR>
+    <TD>topic</TD>
+    <TD>string</TD></TR>
+  <TR>
+    <TD>partition</TD>
+    <TD>int</TD></TR>
+  <TR>
+    <TD>offset</TD>
+    <TD>long</TD></TR>
+  <TR>
+    <TD>timestamp</TD>
+    <TD>long</TD></TR>
+  <TR>
+    <TD>timestampType</TD>
+    <TD>int</TD></TR></TBODY></TABLE>
+<P><STRONG>可配参数</STRONG></P>
+<TABLE>
+  <THEAD>
+  <TR>
+    <TH>Option</TH>
+    <TH>value</TH>
+    <TH>meaning</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD>assign</TD>
+    <TD>json string {“topicA”:[0,1],”topicB”:[2,4]}</TD>
+    <TD>用于指定消费的 
+      TopicPartitions，<CODE>assign</CODE>，<CODE>subscribe</CODE>，<CODE>subscribePattern</CODE> 
+      是三种消费方式，只能同时指定一个</TD></TR>
+  <TR>
+    <TD>subscribe</TD>
+    <TD>A comma-separated list of topics</TD>
+    <TD>用于指定要消费的 topic</TD></TR>
+  <TR>
+    <TD>subscribePattern</TD>
+    <TD>Java regex string</TD>
+    <TD>使用正则表达式匹配消费的 topic</TD></TR>
+  <TR>
+    <TD>kafka.bootstrap.servers</TD>
+    <TD>A comma-separated list of host:port</TD>
+    <TD>kafka brokers</TD></TR></TBODY></TABLE>
+<P><STRONG>不能配置的参数</STRONG> <BR>- <CODE>group.id</CODE>: 对每个查询，kafka 自动创建一个唯一的 
+group <BR>- <CODE>auto.offset.reset</CODE>: 可以通过 startingOffsets 指定，Structured 
+Streaming 会对任何流数据维护 offset, 以保证承诺的 exactly once. <BR>- 
+<CODE>key.deserializer</CODE>: 在 DataFrame 上指定，默认 
+<CODE>ByteArrayDeserializer</CODE> <BR>- <CODE>value.deserializer</CODE>: 在 
+DataFrame 上指定，默认 <CODE>ByteArrayDeserializer</CODE> <BR>- 
+<CODE>enable.auto.commit</CODE>: <BR>- <CODE>interceptor.classes</CODE>:</P>
+<H2 id="stream-kafka">Stream + Kafka</H2>
+<OL>
+  <LI>
+  <P>从最新offset开始消费</P>
+<PRE class="prettyprint"><CODE class=" hljs avrasm">def main(args: Array[String]): Unit = {
+    val kafkaParams = Map[String, Object](
+      <SPAN class="hljs-string">"bootstrap.servers"</SPAN> -&gt; <SPAN class="hljs-string">"localhost:9092"</SPAN>,
+      <SPAN class="hljs-string">"key.deserializer"</SPAN> -&gt; classOf[StringDeserializer],
+      <SPAN class="hljs-string">"value.deserializer"</SPAN> -&gt; classOf[StringDeserializer],
+      <SPAN class="hljs-string">"group.id"</SPAN> -&gt; <SPAN class="hljs-string">"use_a_separate_group_id_for_each_stream"</SPAN>,
+      <SPAN class="hljs-string">"auto.offset.reset"</SPAN> -&gt; <SPAN class="hljs-string">"latest"</SPAN>,
+      <SPAN class="hljs-string">"enable.auto.commit"</SPAN> -&gt; (false: java<SPAN class="hljs-preprocessor">.lang</SPAN><SPAN class="hljs-preprocessor">.Boolean</SPAN>)
+    )
+
+    val ssc =new StreamingContext(OpContext<SPAN class="hljs-preprocessor">.sc</SPAN>, Seconds(<SPAN class="hljs-number">2</SPAN>))
+    val topics = Array(<SPAN class="hljs-string">"test"</SPAN>)
+    val stream = KafkaUtils<SPAN class="hljs-preprocessor">.createDirectStream</SPAN>[String, String](
+      ssc,
+      PreferConsistent,
+      Subscribe[String, String](topics, kafkaParams)
+    )
+    stream<SPAN class="hljs-preprocessor">.foreachRDD</SPAN>(rdd=&gt;{
+      val offsetRanges=rdd<SPAN class="hljs-preprocessor">.asInstanceOf</SPAN>[HasOffsetRanges]<SPAN class="hljs-preprocessor">.offsetRanges</SPAN>
+      rdd<SPAN class="hljs-preprocessor">.foreachPartition</SPAN>(iter=&gt;{
+        val o: OffsetRange = offsetRanges(TaskContext<SPAN class="hljs-preprocessor">.get</SPAN><SPAN class="hljs-preprocessor">.partitionId</SPAN>)
+        println(s<SPAN class="hljs-string">"${o.topic} ${o.partition} ${o.fromOffset} ${o.untilOffset}"</SPAN>)
+      })
+      stream<SPAN class="hljs-preprocessor">.asInstanceOf</SPAN>[CanCommitOffsets]<SPAN class="hljs-preprocessor">.commitAsync</SPAN>(offsetRanges)
+    })
+
+//    stream<SPAN class="hljs-preprocessor">.map</SPAN>(record =&gt; (record<SPAN class="hljs-preprocessor">.key</SPAN>, record<SPAN class="hljs-preprocessor">.value</SPAN>))<SPAN class="hljs-preprocessor">.print</SPAN>(<SPAN class="hljs-number">1</SPAN>)
+    ssc<SPAN class="hljs-preprocessor">.start</SPAN>()
+    ssc<SPAN class="hljs-preprocessor">.awaitTermination</SPAN>()
+  }</CODE></PRE></LI>
+  <LI>
+  <P>从指定的offset开始消费</P>
+<PRE class="prettyprint"><CODE class=" hljs coffeescript">def main(<SPAN class="hljs-attribute">args</SPAN>: Array[String]): Unit = {
+  val kafkaParams = Map[String, Object](
+    <SPAN class="hljs-string">"bootstrap.servers"</SPAN><SPAN class="hljs-function"> -&gt;</SPAN> <SPAN class="hljs-string">"localhost:9092"</SPAN>,
+    <SPAN class="hljs-string">"key.deserializer"</SPAN><SPAN class="hljs-function"> -&gt;</SPAN> classOf[StringDeserializer],
+    <SPAN class="hljs-string">"value.deserializer"</SPAN><SPAN class="hljs-function"> -&gt;</SPAN> classOf[StringDeserializer],
+    <SPAN class="hljs-string">"group.id"</SPAN><SPAN class="hljs-function"> -&gt;</SPAN> <SPAN class="hljs-string">"use_a_separate_group_id_for_each_stream"</SPAN>,
+    <SPAN class="hljs-regexp">//</SPAN>      <SPAN class="hljs-string">"auto.offset.reset"</SPAN><SPAN class="hljs-function"> -&gt;</SPAN> <SPAN class="hljs-string">"latest"</SPAN>,
+    <SPAN class="hljs-string">"enable.auto.commit"</SPAN><SPAN class="hljs-function"> -&gt;</SPAN> (<SPAN class="hljs-attribute">false</SPAN>: java.lang.Boolean)
+  )
+  val ssc = <SPAN class="hljs-keyword">new</SPAN> StreamingContext(OpContext.sc, Seconds(<SPAN class="hljs-number">2</SPAN>))
+  val fromOffsets = Map<SPAN class="hljs-function"><SPAN class="hljs-params">(<SPAN class="hljs-keyword">new</SPAN> TopicPartition(<SPAN class="hljs-string">"test"</SPAN>, <SPAN class="hljs-number">0</SPAN>) -&gt; <SPAN class="hljs-number">1100449855</SPAN>L)</SPAN>
+  <SPAN class="hljs-title">val</SPAN> <SPAN class="hljs-title">stream</SPAN> = <SPAN class="hljs-title">KafkaUtils</SPAN>.<SPAN class="hljs-title">createDirectStream</SPAN>[<SPAN class="hljs-title">String</SPAN>, <SPAN class="hljs-title">String</SPAN>]<SPAN class="hljs-params">(
+    ssc,
+    PreferConsistent,
+    Assign[String, String](fromOffsets.keys.toList, kafkaParams, fromOffsets)
+  )</SPAN>
+
+  <SPAN class="hljs-title">stream</SPAN>.<SPAN class="hljs-title">foreachRDD</SPAN><SPAN class="hljs-params">(rdd =&gt; {
+    val offsetRanges = rdd.asInstanceOf[HasOffsetRanges].offsetRanges
+    <SPAN class="hljs-keyword">for</SPAN> (o &lt;- offsetRanges) {
+      println(s<SPAN class="hljs-string">"${o.topic} ${o.partition} ${o.fromOffset} ${o.untilOffset}"</SPAN>)
+    }
+    stream.asInstanceOf[CanCommitOffsets].commitAsync(offsetRanges)
+  })</SPAN>
+
+  //    <SPAN class="hljs-title">stream</SPAN>.<SPAN class="hljs-title">map</SPAN><SPAN class="hljs-params">(record =&gt; (record.key, record.value))</SPAN>.<SPAN class="hljs-title">print</SPAN><SPAN class="hljs-params">(<SPAN class="hljs-number">1</SPAN>)</SPAN>
+  <SPAN class="hljs-title">ssc</SPAN>.<SPAN class="hljs-title">start</SPAN><SPAN class="hljs-params">()</SPAN>
+  <SPAN class="hljs-title">ssc</SPAN>.<SPAN class="hljs-title">awaitTermination</SPAN><SPAN class="hljs-params">()</SPAN>
+}</SPAN></CODE></PRE></LI></OL><LINK 
+href="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/markdown_views.css" rel="stylesheet"></DIV><LINK 
+href="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/markdown_views.css" rel="stylesheet"> 
+            </DIV></ARTICLE>
+<DIV class="readall_box csdn-tracking-statistics" data-mod="popu_376">
+<DIV class="read_more_mask"></DIV><A class="btn btn-large btn-gray-fred read_more_btn" 
+target="_self">阅读全文</A>         </DIV>
+<DIV class="article_copyright">            版权声明：本文为博主原创文章，未经博主允许不得转载。         
+</DIV><!--  <div class="reward_box">
+            <div class="tit">
+              <button class="btn_reward"><i class="icon iconfont icon-dashang-"></i></button>
+            </div>
+            <dl class="clearfix">
+              <dt><a href="#" target="_blank">近期打赏</a></dt>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+            </dl>
+          </div>--> 
+        
+<UL class="article_collect clearfix csdn-tracking-statistics" data-mod="popu_378">
+  <LI class="tit">本文已收录于以下专栏：</LI></UL>
+<DIV class="comment_box clearfix">
+<DIV id="comment_form">
+<DIV id="commentsbmitarear"><!-- <h6><span>0</span>条评论</h6> -->            <!--          <dl class="clearfix" id="commentbox">
+                        <dt>
+                            <a href="http://my.csdn.net/"><img src="" ></a>
+                        </dt>
+                        <dd>
+                            <a href="http://my.csdn.net/" target="_blank"></a>
+                        </dd>
+                        <dd class="txt_tip"><span id="tip_comment" class="tip"></span></dd>
+                    </dl> --> 
+                    
+<DIV class="comment_area clearfix">
+<DIV class="userimg"><A href="http://my.csdn.net/"><IMG src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/zeroder.htm"></A></DIV>
+<FORM id="commentform" onsubmit="return subform(this);" action="/zeroder/comment/submit?id=73650731" 
+method="post"><TEXTAREA name="comment_content" class="comment_content" id="comment_content" placeholder="发表你的评论">发表你的评论</TEXTAREA> 
+                            
+<DIV class="bot_bar clearfix">
+<DIV class="add_code" id="ubbtools"><A href="http://blog.csdn.net/zeroder/article/details/73650731#insertcode" 
+target="_self" code="code"><I class="icon iconfont icon-daima"></I></A>          
+                       
+</DIV><INPUT name="comment_replyId" id="comment_replyId" type="hidden">          
+                       <INPUT name="comment_userId" id="comment_userId" type="hidden"> 
+                                <INPUT name="commentId" id="commentId" type="hidden"> 
+                                
+<INPUT class="btn btn-redborder" type="submit" value="发表评论">								 <SPAN 
+class="tip" id="tip_comment">
+<DIV class="csdn-tracking-statistics" style="display: none;" 
+data-mod="popu_384"><A class="comment_area_btn" href="http://blog.csdn.net/zeroder/article/details/73650731#" 
+target="_blank">发表评论</A></DIV>
+<DIV id="lang_list" code="code"><A class="long_name" style="width: 95px;" href="http://blog.csdn.net/zeroder/article/details/73650731#html" 
+target="_self">HTML/XML</A>                                     <A class="long_name" 
+style="width: 95px;" href="http://blog.csdn.net/zeroder/article/details/73650731#objc" 
+target="_self">objective-c</A>                                     <A class="zhong_name" 
+style="width: 58px;" href="http://blog.csdn.net/zeroder/article/details/73650731#delphi" 
+target="_self">Delphi</A>                                     <A class="zhong_name" 
+href="http://blog.csdn.net/zeroder/article/details/73650731#ruby" 
+target="_self">Ruby</A>                                     <A href="http://blog.csdn.net/zeroder/article/details/73650731#php" 
+target="_self">PHP</A>                                     <A class="duan_name" 
+href="http://blog.csdn.net/zeroder/article/details/73650731#csharp" target="_self">C#</A> 
+                                    <A class="duan_name" style="border-right-color: currentColor; border-right-width: medium; border-right-style: none;" 
+href="http://blog.csdn.net/zeroder/article/details/73650731#cpp" 
+target="_self">C++</A>                                     <A class="long_name" 
+style="width: 95px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/zeroder/article/details/73650731#javascript" target="_self">JavaScript</A> 
+                                    <A class="long_name" style="width: 95px; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/zeroder/article/details/73650731#vb" 
+target="_self">Visual Basic</A>                                     <A class="zhong_name" 
+style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/zeroder/article/details/73650731#python" target="_self">Python</A> 
+                                    <A class="zhong_name" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/zeroder/article/details/73650731#java" 
+target="_self">Java</A>                                     <A class="duan_name" 
+style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/zeroder/article/details/73650731#css" 
+target="_self">CSS</A>                                     <A class="duan_name" 
+style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;" 
+href="http://blog.csdn.net/zeroder/article/details/73650731#sql" 
+target="_self">SQL</A>                                     <A class="duan_name" 
+style="border: currentColor; border-image: none;" href="http://blog.csdn.net/zeroder/article/details/73650731#plain" 
+target="_self">其它</A>                                     <SPAN 
+class="arrb"></SPAN>                                 
+</DIV></SPAN></DIV></FORM></DIV></DIV></DIV></DIV>
+<DIV class="comment_li_outbox">
+<DIV id="comment_list"></DIV></DIV>
+<DIV class="more_comment">
+<DIV class="trackgin-ad" id="comment_bar" data-mod="popu_385"></DIV></DIV>
+<H3 class="recommend_tit">相关文章推荐</H3>
+<DIV class="recommend_list clearfix">
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/asia_kobe/article/details/49933001" target="_blank" 
+  strategy="BlogCommendFromBaidu_1">Spark学习（二）---kafka+SparkStreaming的搭建与连接</A></H2>
+  <DIV class="summary">kafka+Sparkstreaming环境搭建与配置说明以及相关的测试代码的编写                 
+      </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/ASIA_kobe" target="_blank" 
+    strategy="BlogCommendFromBaidu_1"><IMG title="ASIA_kobe" alt="ASIA_kobe" 
+    src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/2_asia_kobe.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/ASIA_kobe">ASIA_kobe</A></LI>
+    <LI class="time">2015-11-19 21:18</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>6806</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/jthink_/article/details/52709629" target="_blank" 
+  strategy="BlogCommendFromBaidu_2">kafka java api 消费入es</A></H2>
+  <DIV class="summary">最近在做日志监控，日志通过logback或者log4j写入kafka，需要用kafka的java 
+  api写个消费端。由于是进行日志消费，可以允许有一定的丢失和重复消费，但是应该尽量避免。 代码： ...                     
+</DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/JThink_" target="_blank" 
+    strategy="BlogCommendFromBaidu_2"><IMG title="JThink_" alt="JThink_" src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/2_jthink_.jpg"></A></LI>
+    <LI class="user_name"><A 
+href="http://blog.csdn.net/JThink_">JThink_</A></LI>
+    <LI class="time">2016-09-30 10:34</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>1776</SPAN></LI></UL></DD></DL><!--dl class="clearfix csdn-tracking-statistics" data-mod="popu_393">
+                <dt><a href="http://edu.csdn.net/huiyiCourse/series_detail/64?utm_source=blog10" target="_blank"><img class="maxwidth" src="http://img.blog.csdn.net/20170928113144608" alt="" title=""></a></dt>
+                <dd>
+                    <div class="summary">
+                        <h2><a href='http://edu.csdn.net/topic/python1?utm_source=blog10' target='_blank'>伤心啊！年度热门编程语言排行榜出来了...</a></h2>  <div class="summary">近期，IEEE Spectrum 发布了第四届顶级编程语言交互排行榜。结合 10 个线上数据源的 12 个标准，对 48 种语言进行了排行！此外，七牛云许式伟曾说过Go语言会取代Java...气氛... </div> 
+                    </div>
+                </dd>
+            </dl-->
+	 
+<SCRIPT>
+		(function() {
+		    var s = "_" + Math.random().toString(36).slice(2);
+		    document.write('<div id="' + s + '"></div>');
+		    (window.slotbydup=window.slotbydup || []).push({
+			id: '4765209',
+			container: s,
+			size: '808,120',
+			display: 'inlay-fix'
+		    });
+		})();
+	</SCRIPT>
+                         
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/javastart/article/details/50642996" target="_blank" 
+  strategy="BlogCommendFromBaidu_3">Spark Core 问题详解</A></H2>
+  <DIV class="summary">Spark Core 问题详解 时间&nbsp;2015-11-17 
+  13:00:00&nbsp;&nbsp;IBM developerWorks中国
+   原文&nbsp;&nbsp;http://www.ibm.com/developerw...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/javastart" target="_blank" 
+    strategy="BlogCommendFromBaidu_3"><IMG title="javastart" alt="javastart" 
+    src=""></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/javastart">javastart</A></LI>
+    <LI class="time">2016-02-07 16:40</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>1251</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/jacklin929/article/details/53888763" target="_blank" 
+  strategy="BlogCommendFromBaidu_4">java8下spark-streaming结合kafka编程（spark 2.0 
+  &amp; kafka 0.10）</A></H2>
+  <DIV class="summary">                        
+  前面有说道spark-streaming的简单demo，也有说到kafka成功跑通的例子，这里就结合二者，也是常用的使用之一。1.相关组件版本 
+   首先确认版本，因为跟之前的版本有些不一样，所以才有必要...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/jacklin929" target="_blank" 
+    strategy="BlogCommendFromBaidu_4"><IMG title="jacklin929" alt="jacklin929" 
+    src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/2_jacklin929.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/jacklin929">jacklin929</A></LI>
+    <LI class="time">2016-12-26 19:45</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>4121</SPAN></LI></UL></DD></DL><!-- 广告位：PC端-博客详情通栏7（feed流）-808*120 -->
+<SCRIPT> (function() {    var s = "_" + Math.random().toString(36).slice(2);   document.write('<div id="' + s + '"></div>');    (window.slotbydup=window.slotbydup || []).push({        id: '4983339',       container: s,        size: '808,120',        display: 'inlay-fix'    }); })();  </SCRIPT>
+             
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/zhongguozhichuang/article/details/53282858" 
+  target="_blank" strategy="BlogCommendFromBaidu_5">Spark Streaming -2. 
+  Kafka集成指南（Kafka版本0.10.0或更高版本）</A></H2>
+  <DIV class="summary">                        
+  在spark1.3版本后，kafkautil里面提供了两个创建dstream的方法， 1、KafkaUtils.createDstream 
+  构造函数为KafkaUtils.createDstrea...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/ZhongGuoZhiChuang" 
+    target="_blank" strategy="BlogCommendFromBaidu_5"><IMG title="ZhongGuoZhiChuang" 
+    alt="ZhongGuoZhiChuang" src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/2_zhongguozhichuang.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/ZhongGuoZhiChuang">ZhongGuoZhiChuang</A></LI>
+    <LI class="time">2016-11-22 10:20</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>3264</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/u010906369/article/details/52884321" target="_blank" 
+  strategy="BlogCommendFromBaidu_6">Spark2.0与spark-streaming-kafka_2.11集成报java.lang.NoClassDefFoundError: 
+  :错误</A></H2>
+  <DIV 
+  class="summary">Spark2.0与spark-streaming-kafka_2.11集成报java.lang.NoClassDefFoundError: 
+  org/apache/spark/Logging错误 原...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/u010906369" target="_blank" 
+    strategy="BlogCommendFromBaidu_6"><IMG title="u010906369" alt="u010906369" 
+    src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/2_u010906369.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/u010906369">u010906369</A></LI>
+    <LI class="time">2016-10-21 16:04</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>2524</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/stark_summer/article/details/44038247" 
+  target="_blank" strategy="BlogCommendFromBaidu_7">整合Kafka到Spark 
+  Streaming——代码示例和挑战</A></H2>
+  <DIV class="summary">                        作者Michael G. 
+  Noll是瑞士的一位工程师和研究员，效力于Verisign，是Verisign实验室的大规模数据分析基础设施（基础Hadoop）的技术主管。本文，Michael详细的演示了如... 
+                      </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/stark_summer" target="_blank" 
+    strategy="BlogCommendFromBaidu_7"><IMG title="stark_summer" alt="stark_summer" 
+    src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/2_stark_summer.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/stark_summer">stark_summer</A></LI>
+    <LI class="time">2015-03-03 14:58</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>108524</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/svmachine/article/details/51659973" target="_blank" 
+  strategy="BlogCommendFromBaidu_8">zookeeper+kafka安装以及kafka+spark streaming 
+  的简单整合</A></H2>
+  <DIV class="summary">                        一.zookeeper的安装
+   下载zookeeperhttp://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.6/下载3.4.6版本
+   安装配置（前...                     </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/svmachine" target="_blank" 
+    strategy="BlogCommendFromBaidu_8"><IMG title="svmachine" alt="svmachine" 
+    src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/2_svmachine.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/svmachine">svmachine</A></LI>
+    <LI class="time">2016-06-13 21:58</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>2239</SPAN></LI></UL></DD></DL>
+<DL class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-dsm="post" 
+data-feed-show="false" data-poputype="feed">
+  <DD>
+  <H2><A href="http://blog.csdn.net/snail_gesture/article/details/51344369" 
+  target="_blank" strategy="BlogCommendFromBaidu_9">SparkStreaming  on 
+  Kafka之Kafka解析和安装实战</A></H2>
+  <DIV class="summary">                        本篇博文将从以下方面组织内容：          1. 
+  Kafka解析          2. 消息组件Kafka         3. Kafka安装  实验搭建所需要的软件：          ...     
+                  </DIV>
+  <UL>
+    <LI class="avatar_img"><A href="http://blog.csdn.net/snail_gesture" target="_blank" 
+    strategy="BlogCommendFromBaidu_9"><IMG title="snail_gesture" alt="snail_gesture" 
+    src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/2_snail_gesture.jpg"></A></LI>
+    <LI class="user_name"><A 
+    href="http://blog.csdn.net/snail_gesture">snail_gesture</A></LI>
+    <LI class="time">2016-05-08 10:13</LI>
+    <LI class="visited_num"><I 
+    class="icon iconfont icon-read"></I><SPAN>3875</SPAN></LI></UL></DD></DL></DIV></main><ASIDE>
+<DIV class="right_box user_info">
+<DL class="inf_bar clearfix">
+  <DT class="csdn-tracking-statistics" data-mod="popu_381"><A href="http://blog.csdn.net/zeroder" 
+  target="_blank"><IMG class="avatar_pic" src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/1_zeroder.jpg"> 
+                      </A>                     <SPAN title="" 
+  class="medals"><svg xmlns="http://www.w3.org/2000/svg" class="icon" 
+  aria-hidden="true"></svg>               </SPAN></DT>
+  <DD>
+  <H3 class="csdn-tracking-statistics" data-mod="popu_380"><A id="uid" href="http://blog.csdn.net/zeroder" 
+  target="_blank">zeroder</A></H3><SPAN class="csdn-tracking-statistics" 
+  data-mod="popu_379"><A class="btn btn-redborder-small " id="span_add_follow" 
+  target="_self">＋关注</A></SPAN>                 </DD></DL>
+<DIV class="inf_number_box clearfix">
+<DL>
+  <DT>原创</DT>
+  <DD>30</DD></DL>
+<DL>
+  <DT>粉丝</DT>
+  <DD id="fan">0</DD></DL>
+<DL>
+  <DT>喜欢</DT>
+  <DD>0</DD></DL>
+<DL>
+  <DT>码云</DT>
+  <DD>&nbsp;</DD></DL></DIV>
+<DIV class="writings">
+<DIV class="public_signal clearfix">
+<H3>他的最新文章</H3><A class="more_z" href="http://blog.csdn.net/zeroder" target="_blank"><SPAN>更多文章</SPAN></A></DIV>
+<UL class="inf_list clearfix csdn-tracking-statistics" data-mod="popu_382">
+  <LI class="clearfix"><A href="http://blog.csdn.net/zeroder/article/details/73924369" 
+  target="_blank">Java中使用 Long 表示枚举类</A>                     </LI>
+  <LI class="clearfix"><A href="http://blog.csdn.net/zeroder/article/details/73650777" 
+  target="_blank">Structured Streaming 之窗口事件时间聚合操作</A>                     </LI>
+  <LI class="clearfix"><A href="http://blog.csdn.net/zeroder/article/details/73650738" 
+  target="_blank">Structured Streaming 输入输出</A>                     </LI>
+  <LI class="clearfix"><A href="http://blog.csdn.net/zeroder/article/details/73650731" 
+  target="_blank">Spark2.11 两种流操作 + Kafka</A>                     
+</LI></UL></DIV></DIV>
+<DIV class="extension_other csdn-tracking-statistics" data-mod="popu_389"><!--u3032528-->
+			 
+<DIV class="flashrecommend"><!-- 请置于所有广告位代码之前 --> 
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/dm.js"></SCRIPT>
+            <!-- 广告位：PC端-博客详情页右侧视窗1（feed流）-300*250 --> 
+<SCRIPT>
+(function() {
+    var s = "_" + Math.random().toString(36).slice(2);
+    document.write('<div id="' + s + '"></div>');
+    (window.slotbydup=window.slotbydup || []).push({
+        id: '4770930',
+        container: s,
+        size: '300,250',
+        display: 'inlay-fix'
+    });
+})();
+</SCRIPT>
+		     </DIV></DIV>
+<DIV class="fixRight">
+<DIV class="right_box padb0 csdn-tracking-statistics" data-mod="popu_391">
+<H3 class="tit"><SPAN><EM>在线课程</EM></SPAN></H3>
+<UL class="edu_li clearfix">
+  <LI>
+  <DIV><A href="http://edu.csdn.net/huiyiCourse/detail/603?utm_source=blog7" 
+  target="_blank"><IMG title="MVVM在美团点评酒旅移动端的最佳实践" alt="MVVM在美团点评酒旅移动端的最佳实践" 
+  src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/201711101450316277.png"> 
+                        </A></DIV>
+  <DIV>
+  <P><A href="http://edu.csdn.net/huiyiCourse/detail/603?utm_source=blog7" 
+  target="_blank">MVVM在美团点评酒旅移动端的最佳实践</A></P>
+  <P>讲师：王禹华</P></DIV></LI>
+  <LI>
+  <DIV><A href="http://edu.csdn.net/huiyiCourse/detail/594?utm_source=blog7" 
+  target="_blank"><IMG title="C语言大型软件设计的面向对象" alt="C语言大型软件设计的面向对象" src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/201711101448389242.png"> 
+                        </A></DIV>
+  <DIV>
+  <P><A href="http://edu.csdn.net/huiyiCourse/detail/594?utm_source=blog7" 
+  target="_blank">C语言大型软件设计的面向对象</A></P>
+  <P>讲师：宋宝华</P></DIV></LI></UL></DIV><!--u3032529-->             <!-- <div class="extension_other csdn-tracking-statistics baidu_box" data-mod="popu_395">
+								
+                <script type="text/javascript" src="http://mpb1.iteye.com/cxpdpmumfaedgm.js"></script>
+            </div> -->
+			 
+<DIV class="extension_other csdn-tracking-statistics bottomRcom" style="position: absolute; z-index: -5; opacity: 0; pointer-events: none;" 
+data-mod="popu_389"><!--u3032528-->				 
+<DIV class="flashrecommend">
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/bwocoltlyzdec.js" type="text/javascript"></SCRIPT>
+				 </DIV></DIV></DIV>
+<DIV class="user-hotArticle">
+<H3>热门文章</H3>
+<UL class="hotArticle-list csdn-tracking-statistics" data-mod="popu_521">
+  <LI><A 
+  href="http://blog.csdn.net/zeroder/article/details/50579130">OpenBLAS安装手册</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>7306</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/zeroder/article/details/54319021">Pandas中ix,loc,iloc有什么区别？</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>4055</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/zeroder/article/details/45102411">机器学习算法——LR(逻辑回归)</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>1491</SPAN></DIV></LI>
+  <LI><A 
+  href="http://blog.csdn.net/zeroder/article/details/57130668">spark.eventLog.dir和spark.history.fs.logDirectory的区别</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>1457</SPAN></DIV></LI>
+  <LI><A href="http://blog.csdn.net/zeroder/article/details/73650731">Spark2.11 
+  两种流操作 + Kafka</A>
+  <DIV class="read list-left"><I 
+  class="icon iconfont icon-read"></I><SPAN>1101</SPAN></DIV></LI></UL></DIV></ASIDE></DIV>
+<DIV class="left_fixed">
+<DIV class="left_show_button"><SPAN><I 
+class="icon iconfont icon-youjiantou"></I>         </SPAN>       </DIV>
+<UL class="left_menu">
+  <LI><BUTTON class="left-fixed-btn btn-like csdn-tracking-statistics" data-mod="popu_373" 
+  target="_self"><SPAN class="iconbox border_red"><I class="icon iconfont icon-dianzan"></I></SPAN><SPAN 
+  class="txt">6</SPAN></BUTTON>         </LI>
+  <LI id="blog_artical_directory"><BUTTON class="left-fixed-btn left_menu_btn csdn-tracking-statistics" 
+  data-mod="popu_372" target="_self"><SPAN class="iconbox border_black"><I 
+  class="icon iconfont icon-mulu"></I></SPAN></BUTTON>         </LI>
+  <LI class="menu_con">
+  <DIV class="list_father">
+  <DIV class="arr_box"><BUTTON class="btn-noborder arr-btn scroll-down  left_scroll_down"><I 
+  class="icon iconfont icon-xiajiantou"></I></BUTTON>                     
+  <BUTTON class="btn-noborder arr-btn scroll-up left_scroll_top"><I class="icon iconfont icon-shangjiantou"></I></BUTTON> 
+                  </DIV>
+  <DIV class="arr"></DIV>
+  <DIV id="csdnBlogDir"></DIV></DIV></LI>
+  <LI><BUTTON class="left-fixed-btn csdn-tracking-statistics" id="com-quick-collect" 
+  data-mod="popu_374" target="_self"><SPAN class="iconbox border_purple"><I 
+  class="icon iconfont icon-shoucang"></I></SPAN></BUTTON>         </LI>
+  <LI><BUTTON class="left-fixed-btn btn-pinglun"><SPAN class="iconbox border_purple"><I 
+  class="icon iconfont icon-pinglun"></I></SPAN></BUTTON>         </LI>
+  <LI id="share_box"><BUTTON class="left-fixed-btn  csdn-tracking-statistics" 
+  data-mod="popu_375" target="_self"><SPAN class="iconbox border_orange"><I 
+  class="icon iconfont icon-fenxiang"></I></SPAN></BUTTON>             
+  <DIV class="bdsharebuttonbox csdn-tracking-statistics" data-mod="popu_172">
+  <DIV class="outside"><SPAN class="iconbox border_red2"><I class="icon iconfont icon-xinlang"></I></SPAN><A 
+  title="分享到新浪微博" class="bds_tsina" href="http://blog.csdn.net/zeroder/article/details/73650731#" 
+  data-cmd="tsina"></A>                 </DIV>
+  <DIV class="outside"><SPAN class="iconbox border_green"><I class="icon iconfont icon-weixin"></I></SPAN><A 
+  title="分享到微信" class="bds_weixin" href="http://blog.csdn.net/zeroder/article/details/73650731#" 
+  data-cmd="weixin"></A>                 </DIV>
+  <DIV class="outside"><SPAN class="iconbox border_blue"><I class="icon iconfont icon-QQ"></I></SPAN><A 
+  title="分享到QQ空间" class="bds_qzone" href="http://blog.csdn.net/zeroder/article/details/73650731#" 
+  data-cmd="qzone"></A>                 </DIV></DIV></LI></UL></DIV>
+<DIV class="right_fixed">
+<DIV class="r_ico"><I class="icon iconfont icon-jubao"></I><SPAN class="txt" id="reportBtn">内容举报</SPAN></DIV>
+<DIV class="returnTop"><I 
+class="icon iconfont icon-fanhuidingbu"></I><SPAN>返回顶部</SPAN></DIV></DIV>
+<DIV id="pop_win"></DIV>
+<DIV id="popup_mask"></DIV>
+<DIV class="pop_CA_cover"></DIV>
+<DIV class="pop pop_CA">
+<DIV class="CA_header">        收藏助手         <SPAN class="cancel_icon" id="fapancle"></SPAN></DIV><IFRAME 
+width="100%" height="360" id="collectIframe" src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/o.htm" 
+frameborder="0" scrolling="no"></IFRAME> </DIV><!--举报--> 
+<DIV id="report_dialog" style="left: 343.5px; top: 250px;">
+<DIV id="panel_report">
+<DIV class="panel_head">不良信息举报</DIV>
+<FORM class="panel_body" id="frmReport" method="post">
+<TABLE class="pop_table" border="0" cellspacing="4" cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD colspan="2">您举报文章：<A href="http://blog.csdn.net/raintungli/article/details/76583070" 
+      target="_blank">深度学习：神经网络中的前向传播和反向传播算法推导</A></TD></TR>
+  <TR>
+    <TH style="width: 60px;">举报原因：</TH>
+    <TD id="panel_reporttype"><LABEL><INPUT name="report_type" class="report_type" 
+      id="report_sex" type="radio" value="1">色情</LABEL>                     
+      <LABEL><INPUT name="report_type" class="report_type" id="report_Politics" 
+      type="radio" value="2">政治</LABEL>                     <LABEL><INPUT name="report_type" 
+      class="report_type" id="report_copy" type="radio" value="3">抄袭</LABEL>     
+                      <LABEL><INPUT name="report_type" class="report_type" id="report_ad" 
+      type="radio" value="4">广告</LABEL>                     <LABEL><INPUT name="report_type" 
+      class="report_type" id="report_want" type="radio" value="5">招聘</LABEL>     
+                      <LABEL><INPUT name="report_type" class="report_type" id="report_call" 
+      type="radio" value="6">骂人</LABEL>                     <BR><LABEL><INPUT 
+      name="report_type" class="report_type" id="report_other" type="radio" 
+      value="7">其他</LABEL>                     <INPUT name="report_other_content" id="report_other_content" style="display: none;" type="text" maxlength="30"> 
+                      </TD></TR>
+  <TR id="panel_originalurl" style="display: none;">
+    <TH>原文地址：</TH>
+    <TD><INPUT name="originalurl" id="originalurl" style="width: 90%;" type="text" value="http://"> 
+                      </TD></TR>
+  <TR>
+    <TH id="sp_reason">原因补充：</TH>
+    <TD><TEXTAREA name="report_description" id="report_description" style="width: 300px;" rows="3"></TEXTAREA> 
+                          
+      <P id="sp_n" 
+      style="margin: 0px; padding: 0px; color: rgb(153, 153, 153);">(最多只允许输入30个字)</P></TD></TR>
+  <TR>
+    <TD></TD>
+    <TD><INPUT name="submit" align="middle" class="btn_1" id="btnSubmitReport" 
+      type="image" src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/btn_submit.jpg"> 
+                          <SPAN style="padding-left: 20px;"></SPAN>              
+             <IMG align="middle" id="btnCloseReportDialog" src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/btn_cancel.jpg"> 
+                          
+      <DIV id="error" 
+style="color: red;"></DIV></TD></TR></TBODY></TABLE></FORM></DIV>
+<SCRIPT language="javascript" type="text/javascript">
+        var isComment=0;
+        //显示隐藏地址
+        $(function () {
+            if(isComment){
+                $("#report_description").attr("disabled",true);
+                $("#sp_n").hide();
+                $("#sp_reason").html("评论内容：");
+            }
+            $(".report_type").click(function () {
+                $("#panel_originalurl,#report_other_content").hide();
+                switch ($(this).val()) {
+                    case '3':
+                        $("#panel_originalurl").show();
+                        $("#originalurl").focus();
+                        break;
+                    case '7':
+                        if(isComment){
+                            $("#report_other_content").show().focus();
+                        }
+                        break;
+                }
+
+            });
+
+            $("#frmReport").submit(function () {
+                if (!currentUserName) {
+
+                    if (confirm("您的操作必须登录，是否登录？")) {
+                        location.href = "http://passport.csdn.net/account/login?from=" + encodeURIComponent(location.href);
+                        return false;
+                    }
+                    return false;
+                }
+
+                var reportType = $("input[name=report_type]:checked").val();
+                if(!reportType){
+                    alert("请选择举报原因！");
+                    return false;
+                }
+                var otherInfo = "";
+                switch (reportType) {
+                    case '3':
+                        otherInfo = $("#originalurl").val();
+                        if (otherInfo == ""||otherInfo=="http://") {
+                            alert("举报抄袭必须提供原创文章地址！");
+                            $("#originalurl").focus();
+                            return false;
+                        } else if(!checkeURL(otherInfo)) {
+                            alert("请输入正确的原创文章地址！");
+                            $("#originalurl").focus();
+                            return false;
+                        }
+                        break;
+                    case '7':
+                        otherInfo = $("#report_other_content").val();
+                        if (isComment && !otherInfo) {
+                            alert("请填写举报的具体原因！");
+                            $("#report_other_content").focus();
+                            return false;
+                        }
+                        if(!isComment){
+                            if(!$("#report_description").val()){
+                                alert("请填写举报的具体原因！");
+                                $("#report_description").focus();
+                                return false;
+                            }
+                        }
+                        break;
+                }
+                if(!isComment){
+                    if($("#report_description").val().length>30){
+                        alert("举报原因最多只允许输入30个字！");
+                        return false;
+                    }
+                }
+                nowTime = {
+                  year: new Date().getFullYear(),
+                  month: parseInt(new Date().getMonth())+1,
+                  day: new Date().getDate(),
+                  hours: parseInt(new Date().getHours()),
+                  minutes: parseInt(new Date().getMinutes()),
+                  seconds: parseInt(new Date().getSeconds())
+                }
+                var data = {
+                    articleId: fileName,
+                    commentId: 0,
+                    reportType: reportType,
+                    originalurl: $("#originalurl").val(),
+                    report_other_content: $("#report_other_content").val(),
+                    report_description: $("#report_description").val(),
+                    currentUserName: currentUserName,
+                    updatetime: nowTime.year+'/'+nowTime.month+'/'+nowTime.day+' '+ nowTime.hours+':'+nowTime.minutes+':'+seconds,
+                    blogUser: username
+                };
+                if(!isComment){//如果是举报文章
+                    data.report_other_content = data.report_description;
+                    // data.report_description = "1. 神经网络这是一个常见的神经网络的图：这是一个常见的三层神经网络的基本构成，Layer L1是输入层，Layer L2是隐含层";
+                }
+
+                $.post(blog_address + "/common/report?id="+fileName+"&t=2", data, function (data) {
+                    if (data.result == 1){
+                        SetError("感谢您的举报，我们会尽快审核！");
+                    }else{
+                        if (data.content) alert(data.content);
+                    }
+
+                });
+                return false;
+            });
+
+            $("#btnCloseReportDialog").click(function () {
+                CloseDiv();
+            });
+
+        });
+
+        //提示后关闭方法
+        function SetError(error) {
+            $("#btnCloseReportDialog").trigger("click");
+            alert(error);
+            CloseDiv();
+        }
+
+        //关闭方法
+        function CloseDiv() {
+
+            $.removeMask();
+            $("#report_dialog").hide();
+            return false;
+        }
+
+        //验证url
+        function checkeURL(url){
+            return /^http(s)?:\/\/([\w-]+\.)+[\w-]+/i.test(url);
+        }
+
+    </SCRIPT>
+ </DIV>
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/bootstrap.min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/MathJax.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/login.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/blog_ver.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/skin2017.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Spark2_11%20两种流操作%20+%20Kafka%20-%20CSDN博客.files/cnick.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    if($(".article_collect li").length==1){$(".article_collect").hide();}
+    if($(".article_tags li").length==1){$(".article_tags").hide();}
+    $(".edit a").attr("href","http://write.blog.csdn.net/postedit/"+fileName);
+    $.each($(".edu_li a"),function(){$(this).attr("href",$(this).attr("href").replace("blog7","blog9"))});
+    new CNick('#uid').showNickname();
+if($("#fan").html()=="")
+{
+$("#fan").html(0);	
+}
+
+	var blogCustomType ='{customtype}';
+                
+        $("#custom"+blogCustomType).show();
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    var fromjs=$("#fromjs");
+    if(fromjs.length>0)
+    {                  
+        $("#fromjs .markdown_views pre").addClass("prettyprint");       
+        prettyPrint();
+
+        $('pre.prettyprint code').each(function () {
+            var lines = $(this).text().split('\n').length;
+            var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+            $(this).addClass('has-numbering').parent().append($numbering);
+            for (i = 1; i <= lines; i++) {
+                $numbering.append($('<li/>').text(i));
+            };
+            $numbering.fadeIn(1700);
+        });
+
+        $('.pre-numbering li').css("color","#999");             
+    }
+
+    $(function(){
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },500);         
+       
+
+    });
+
+    setTimeout(function () {
+        $(".toc a[target='_blank']").attr("target", "");
+    }, 500);
+
+</SCRIPT>
+ </BODY></HTML>
